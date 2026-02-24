@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayurveda — Srav Health</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  .qualification-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 64px; }
+  .q-card { background: var(--ivory); padding: 36px 40px; }
+  .q-card-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .q-card h3 { font-family: var(--font-serif); font-size: 20px; color: var(--navy); margin-bottom: 12px; font-weight: 400; }
+  .q-card p, .q-card ul { font-size: 13px; color: var(--text-mid); line-height: 1.8; font-weight: 300; }
+  .q-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .q-card ul li { padding-left: 16px; position: relative; }
+  .q-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; font-size: 11px; }
+  .approach-block { max-width: 760px; margin-bottom: 80px; }
+  .approach-block h3 { font-family: var(--font-serif); font-size: 28px; font-weight: 400; color: var(--navy); margin-bottom: 16px; }
+  .approach-block p { font-size: 15px; line-height: 1.85; color: var(--text-mid); font-weight: 300; margin-bottom: 16px; }
+  .approach-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 40px; }
+  .pillar { background: var(--green); padding: 32px; }
+  .pillar h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--gold); margin-bottom: 10px; }
+  .pillar p { font-size: 13px; color: rgba(245,240,232,0.6); line-height: 1.7; font-weight: 300; }
+  .coming-soon-bar { background: var(--navy); padding: 60px 0; }
+  .coming-soon-inner { max-width: var(--max); margin: 0 auto; padding: 0 48px; text-align: center; }
+  .coming-soon-inner h3 { font-family: var(--font-serif); font-size: 28px; font-weight: 300; color: var(--ivory); margin-bottom: 16px; }
+  .coming-soon-inner p { font-size: 14px; color: rgba(245,240,232,0.45); margin-bottom: 32px; }
+  .modality-coming-grid { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .modality-coming-item { padding: 14px 28px; border: 1px solid rgba(245,240,232,0.15); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.4); }
+  @media(max-width:900px) { .qualification-grid { grid-template-columns: 1fr; } .approach-pillars { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-ear" width="28" height="34" viewBox="0 0 56 68" fill="none">
+      <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.75)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37" stroke="rgba(245,240,232,0.3)" stroke-width="1" stroke-linecap="round" fill="none"/>
+      <circle cx="28" cy="30" r="3.5" fill="#C4A35A"/>
+      <circle cx="28" cy="30" r="1.5" fill="#E8C878"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Integrative Practitioner Growth</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="ayurveda.html" style="color:var(--ivory)">Ayurveda</a>
+    <a href="how-we-work.html">How We Work</a>
+    <a href="apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="ayurveda.html" onclick="toggleMenu()">Ayurveda</a>
+  <a href="how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="section-label">Modality</div>
+    <h1>Ayurveda &amp;<br>Women's Health</h1>
+    <p>Ancient wisdom. Modern clients. We help qualified Ayurvedic practitioners build the trust and visibility needed to reach women who are actively seeking integrative care.</p>
+  </div>
+</div>
+
+<!-- QUALIFICATION STANDARDS -->
+<section class="section" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-label">Practitioner Standards</div>
+    <h2 class="section-title">Who we work with.<br>Quality is non-negotiable.</h2>
+    <p class="section-intro">We are selective by design. We only partner with practitioners who meet our qualification standards — because our reputation is built on your outcomes.</p>
+
+    <div class="qualification-grid">
+      <div class="q-card">
+        <div class="q-card-label">Education</div>
+        <h3>Formal Ayurvedic Training</h3>
+        <ul>
+          <li>Bachelor of Ayurvedic Medicine and Surgery (BAMS) from an accredited institution</li>
+          <li>OR equivalent 3+ year accredited Ayurvedic program in the US (NAMA-recognized schools preferred)</li>
+          <li>Continuing education in women's health, gynecology, or hormonal balance</li>
+          <li>Active membership in NAMA (National Ayurvedic Medical Association) preferred</li>
+        </ul>
+      </div>
+      <div class="q-card">
+        <div class="q-card-label">Clinical Experience</div>
+        <h3>Established Practice</h3>
+        <ul>
+          <li>Minimum 3 years of clinical practice post-graduation</li>
+          <li>Active client base of at least 20 current or recent clients</li>
+          <li>Women's health as a primary or significant focus area</li>
+          <li>Experience with conditions including hormonal imbalance, perimenopause, stress, gut health, or fertility support</li>
+        </ul>
+      </div>
+      <div class="q-card">
+        <div class="q-card-label">Proof of Outcomes</div>
+        <h3>Demonstrable Results</h3>
+        <ul>
+          <li>Minimum 5 documented client success stories or case studies</li>
+          <li>At least 3 verifiable client testimonials or reviews</li>
+          <li>Willingness to share outcomes data (anonymized) to support content</li>
+          <li>No active disciplinary actions or unresolved complaints</li>
+        </ul>
+      </div>
+      <div class="q-card">
+        <div class="q-card-label">Geography &amp; Readiness</div>
+        <h3>US-Based, Growth-Ready</h3>
+        <ul>
+          <li>Currently serving clients in the US, with focus on SF Bay Area or Austin, TX</li>
+          <li>Capacity to take on 3–8 new clients per month</li>
+          <li>Willing to invest 2–3 hours/week in the positioning and content process</li>
+          <li>Open to refining how you communicate your methodology for Western audiences</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section" style="background:var(--ivory)">
+  <div class="section-inner">
+    <div class="section-label">Our Approach for Ayurveda</div>
+    <h2 class="section-title">How we position<br>Ayurvedic practitioners.</h2>
+
+    <div class="approach-block">
+      <h3>The positioning challenge is specific</h3>
+      <p>Ayurvedic practitioners face a unique communication challenge in the Western market. Your methodology is 5,000 years deep — but your potential clients are health-conscious, science-literate women in SF and Austin who are skeptical of anything that feels too esoteric, yet hungry for solutions that conventional medicine hasn't provided.</p>
+      <p>The practitioners who win this market are the ones who can hold both: ancient wisdom and modern evidence. Not watering down the tradition — translating it into language that builds trust before the first consultation.</p>
+      <p>We specialize in this translation. We help you claim a clear, confident positioning that respects your training and converts your ideal client.</p>
+    </div>
+
+    <div class="approach-pillars">
+      <div class="pillar">
+        <h4>Dosha-Informed Messaging</h4>
+        <p>We build your content around the specific conditions your clients are experiencing — fatigue, hormonal imbalance, perimenopause, gut health — bridging Ayurvedic concepts to felt symptoms without over-simplifying your methodology.</p>
+      </div>
+      <div class="pillar">
+        <h4>Evidence Bridge</h4>
+        <p>We integrate current research on Ayurvedic interventions alongside your clinical experience. Your ideal client trusts both ancient wisdom and modern evidence. We help you speak both languages fluently.</p>
+      </div>
+      <div class="pillar">
+        <h4>Community Distribution</h4>
+        <p>SF and Austin have specific communities of health-conscious women. We identify where they congregate online and offline, and build your presence there systematically — not with ads, but with genuine authority content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON MODALITIES -->
+<div class="coming-soon-bar">
+  <div class="coming-soon-inner">
+    <h3>More modalities coming soon</h3>
+    <p>We are building the same depth of approach for Functional Medicine and Traditional Chinese Medicine practitioners.</p>
+    <div class="modality-coming-grid">
+      <div class="modality-coming-item">Functional Medicine</div>
+      <div class="modality-coming-item">Traditional Chinese Medicine</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="section cta-section dark-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <div class="cta-ear">
+      <svg width="56" height="68" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <h2 class="cta-title">Ready to apply?</h2>
+    <p class="cta-sub">If you meet our qualification standards and are ready to scale your Ayurvedic practice, we'd love to hear from you. We review applications within 5 business days.</p>
+    <a href="apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="20" height="24" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3" fill="#C4A35A" opacity="0.7"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="ayurveda.html">Ayurveda</a>
+      <a href="how-we-work.html">How We Work</a>
+      <a href="apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
