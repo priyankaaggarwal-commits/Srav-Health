@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply — Srav Health</title>
+<title>Apply Srav Health</title>
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -123,13 +123,13 @@
         <div class="section-label" style="color:rgba(196,163,90,0.6);margin-bottom:16px">Application</div>
         <h2>Tell us about<br>your practice.</h2>
       </div>
-      <p>This short conversation helps us understand where you are and whether we're the right fit for each other. Be honest — there are no wrong answers.</p>
+      <p>This short conversation helps us understand where you are and whether we're the right fit for each other. Be honest there are no wrong answers.</p>
       <div class="apply-checklist">
         <div class="apply-check"><div class="apply-check-dot"></div>Takes about 5 minutes</div>
         <div class="apply-check"><div class="apply-check-dot"></div>No commitment required</div>
         <div class="apply-check"><div class="apply-check-dot"></div>We review within 5 business days</div>
         <div class="apply-check"><div class="apply-check-dot"></div>Discovery call scheduled if it's a fit</div>
-        <div class="apply-check"><div class="apply-check-dot"></div>We work with a small cohort — quality over volume</div>
+        <div class="apply-check"><div class="apply-check-dot"></div>We work with a small cohort quality over volume</div>
       </div>
     </div>
     <div class="apply-left-foot">
@@ -197,7 +197,7 @@
 <script src="main.js"></script>
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
-// FORMSPREE SETUP — one-time, takes 2 minutes:
+// FORMSPREE SETUP one-time, takes 2 minutes:
 //
 //  1. Go to https://formspree.io/register
 //  2. Sign up with priyankaaggarwal@aurafemhealth.com
@@ -218,7 +218,7 @@ const AGENT_AVATAR = `<svg width="16" height="19" viewBox="0 0 56 68" fill="none
 const questions = [
   {
     id: 0,
-    agent: "Hello — I'm here to learn about your practice. Let's start simply: what's your name and what modality do you practice?",
+    agent: "Hello I'm here to learn about your practice. Let's start simply: what's your name and what modality do you practice?",
     type: 'text',
     placeholder: 'e.g. Dr. Sarah Chen, Ayurveda',
     field: 'name_and_modality'
@@ -250,10 +250,10 @@ const questions = [
   },
   {
     id: 4,
-    agent: "What's your biggest growth challenge right now? Be honest — this is what helps us know if we can genuinely help.",
+    agent: "What's your biggest growth challenge right now? Be honest this is what helps us know if we can genuinely help.",
     type: 'options',
     options: [
-      'Inconsistent client flow — feast or famine',
+      'Inconsistent client flow feast or famine',
       'I get enquiries but struggle to convert them',
       'I don\'t know how to market myself online',
       'No time for marketing alongside clinical work',
@@ -265,13 +265,13 @@ const questions = [
   },
   {
     id: 5,
-    agent: "Are you looking to scale client volume, increase the value of your offering, or launch group programs — or a mix?",
+    agent: "Are you looking to scale client volume, increase the value of your offering, or launch group programs or a mix?",
     type: 'options',
     options: [
-      'Scale volume — fill my calendar',
-      'Increase value — premium packages or retainers',
+      'Scale volume fill my calendar',
+      'Increase value premium packages or retainers',
       'Launch a group program or online course',
-      'All three — let\'s find the right path'
+      'All three let\'s find the right path'
     ],
     field: 'growth_goal'
   },
@@ -385,7 +385,7 @@ async function finishApplication() {
     const msgEl = document.createElement('div');
     msgEl.className = 'msg agent';
     msgEl.innerHTML = `<div class="msg-avatar">${AGENT_AVATAR}</div>
-      <div class="msg-bubble">Thank you — that's everything we need. Priyanka will personally review your application and reach out within 5 business days. We look forward to learning more about your practice.</div>`;
+      <div class="msg-bubble">Thank you that's everything we need. Priyanka will personally review your application and reach out within 5 business days. We look forward to learning more about your practice.</div>`;
     document.getElementById('chatMessages').appendChild(msgEl);
     scrollToBottom();
   }, 500);
@@ -395,7 +395,7 @@ async function finishApplication() {
   const replyTo = emailMatch ? emailMatch[0] : '';
 
   const payload = {
-    _subject: `New Practice Application — Srav Health`,
+    _subject: `New Practice Application Srav Health`,
     _replyto: replyTo,
     name_and_modality:       answers.name_and_modality       || '',
     location:                answers.location                || '',
