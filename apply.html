@@ -277,12 +277,19 @@ const questions = [
     field: 'growth_goal'
   },
   {
-    id: 6,
-    agent: "Last one: what would success look like for you in 90 days? And what's the best email address to reach you on?",
-    type: 'text',
-    placeholder: 'Share your vision and your email address...',
-    field: 'success_and_email'
-  }
+  id: 6,
+  agent: "Last question before we wrap up: what would success look like for you in 90 days?",
+  type: 'text',
+  placeholder: 'Share your vision...',
+  field: 'success_vision'
+},
+{
+  id: 7,
+  agent: "And finally — what's the best email address to reach you on?",
+  type: 'text',
+  placeholder: 'you@example.com',
+  field: 'email'
+}
 ];
 
 let currentQ = 0;
@@ -391,21 +398,19 @@ async function finishApplication() {
     scrollToBottom();
   }, 500);
 
-  // Submit to Formspree
-  const emailMatch = (answers.success_and_email || '').match(/[^\s@]+@[^\s@]+\.[^\s@]+/);
-  const replyTo = emailMatch ? emailMatch[0] : '';
-
   const payload = {
-    _subject: `New Practice Application Srav Health`,
-    _replyto: replyTo,
-    name_and_modality:       answers.name_and_modality       || '',
-    location:                answers.location                || '',
-    experience_and_clients:  answers.experience_and_clients  || '',
-    practice_focus:          answers.practice_focus          || '',
-    biggest_challenge:       answers.biggest_challenge       || '',
-    growth_goal:             answers.growth_goal             || '',
-    success_and_email:       answers.success_and_email       || '',
-    submitted_at:            new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' }) + ' SGT'
+  _subject: `New Practice Application Srav Health`,
+  _replyto: answers.email || '',
+  name_and_modality:      answers.name_and_modality      || '',
+  location:               answers.location               || '',
+  experience_and_clients: answers.experience_and_clients || '',
+  practice_focus:         answers.practice_focus         || '',
+  biggest_challenge:      answers.biggest_challenge      || '',
+  growth_goal:            answers.growth_goal            || '',
+  success_vision:         answers.success_vision         || '',
+  email:                  answers.email                  || '',
+  submitted_at:           new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' }) + ' SGT'
+};
   };
 
   try {
