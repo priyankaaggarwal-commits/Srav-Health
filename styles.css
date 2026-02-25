@@ -209,14 +209,14 @@ a { text-decoration: none; color: inherit; }
 .who-col.bad { background: rgba(0,0,0,0.1); border: 1px solid rgba(245,240,232,0.06); }
 .who-col h3 { font-family: var(--font-serif); font-size: 22px; font-weight: 400; margin-bottom: 24px; }
 .who-col.good h3 { color: var(--gold); }
-.who-col.bad h3 { color: var(--text-mid); }
+.who-col.bad h3 { color: rgba(245,240,232,0.6); }
 .who-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 .who-col ul li { font-size: 14px; line-height: 1.7; padding-left: 20px; position: relative; }
 .who-col ul li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; }
 .who-col.good ul li { color: rgba(245,240,232,0.75); }
 .who-col.good ul li::before { background: var(--gold); opacity: 0.6; }
-.who-col.bad ul li { color: var(--text-mid); }
-.who-col.bad ul li::before { background: var(--text-light); opacity: 0.4; }
+.who-col.bad ul li { color: rgba(245,240,232,0.65);  }
+.who-col.bad ul li::before { background: rgba(245,240,232,0.35); opacity: 1; }
 
 .growth-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 48px; }
 .growth-mode { background: rgba(245,240,232,0.04); border: 1px solid rgba(196,163,90,0.15); padding: 32px 28px; }
