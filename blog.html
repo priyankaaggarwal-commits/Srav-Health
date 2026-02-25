@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Srav Health</title>
+<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" class="active" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="section-label">Knowledge Base</div>
+    <h1>Resources for<br>Integrative Practitioners</h1>
+    <p>Practical guidance on building, positioning, and scaling your practice — written by practitioners of brand growth who understand integrative medicine.</p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-label" style="margin-bottom:40px">All Articles</div>
+    <div class="blog-grid">
+
+      <a href="how-to-build-ayurveda-practice.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Practice Building</span>
+          <h3>How to Build an Ayurveda Practice in the US</h3>
+          <p>The complete guide to positioning, channels, and client acquisition for Ayurvedic practitioners in the Western market — from first client to full calendar.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="which-channels-for-your-stage.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Marketing Strategy</span>
+          <h3>Which Channels to Use Depending on Your Stage</h3>
+          <p>Not every channel is right for every practitioner. Here's how to match your marketing investment to where you actually are in your practice growth journey.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="selecting-your-positioning.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Positioning</span>
+          <h3>Selecting Your Positioning as an Integrative Practitioner</h3>
+          <p>Why "I help women heal holistically" is killing your conversion — and how to replace it with positioning that stops the right person mid-scroll.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="virtual-vs-in-person.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Practice Model</span>
+          <h3>Virtual vs. In-Person: How to Decide — and Build for Both</h3>
+          <p>The shift to virtual care opened up a huge opportunity for integrative practitioners. Here's how to think about the model that's right for your practice — and how to market each effectively.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="group-programs-for-practitioners.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Revenue Strategy</span>
+          <h3>Why Group Programs Are the Smartest Move for Integrative Practitioners</h3>
+          <p>Group programs let you multiply your impact without multiplying your hours. Here's how to design, price, and fill your first program — from concept to cohort.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+
+      <a href="retention-and-continuity.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Client Retention</span>
+          <h3>Why Clients Drop Off — and How to Build Continuity of Care Into Your Practice</h3>
+          <p>The single biggest revenue leak in integrative practices is clients who see results then disappear. Here's how behavioral design and structured follow-up change that.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Ready to apply these ideas<br>to your practice?</h2>
+    <p class="cta-sub">Apply to work with us and we'll build the system together — positioning, content, channels, and the infrastructure to scale.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+<script src="../main.js"></script>
+</body>
+</html>
