@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Srav Health — Integrative Practitioner Growth</title>
+<title>Srav Health — Scale Your Integrative Practice</title>
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 </head>
@@ -12,20 +12,47 @@
 <!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <svg class="nav-ear" width="28" height="34" viewBox="0 0 56 68" fill="none">
-      <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.75)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37" stroke="rgba(245,240,232,0.3)" stroke-width="1" stroke-linecap="round" fill="none"/>
-      <circle cx="28" cy="30" r="3.5" fill="#C4A35A"/>
-      <circle cx="28" cy="30" r="1.5" fill="#E8C878"/>
-    </svg>
+    <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
     <div class="nav-logo-text">
       <span class="nav-wordmark">SRAV HEALTH</span>
-      <span class="nav-tagline">Integrative Practitioner Growth</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
     </div>
   </a>
   <div class="nav-links">
-    <a href="ayurveda.html">Ayurveda</a>
+    <a href="index.html" class="active">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="ayurveda.html">
+          Ayurveda
+          <span class="dd-sub">Women's Health · Active</span>
+        </a>
+        <a href="functional-medicine.html">
+          Functional Medicine
+          <span class="dd-badge">Coming Soon</span>
+        </a>
+        <a href="tcm.html">
+          Traditional Chinese Medicine
+          <span class="dd-badge">Coming Soon</span>
+        </a>
+      </div>
+    </div>
     <a href="how-we-work.html">How We Work</a>
+    <a href="blog/index.html">Blog</a>
     <a href="apply.html" class="nav-cta">Apply Now</a>
   </div>
   <button class="nav-hamburger" onclick="toggleMenu()">
@@ -34,8 +61,13 @@
 </nav>
 
 <div class="nav-mobile" id="mobileMenu">
-  <a href="ayurveda.html" onclick="toggleMenu()">Ayurveda</a>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
   <a href="how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="blog/index.html" onclick="toggleMenu()">Blog</a>
   <a href="apply.html" onclick="toggleMenu()">Apply Now</a>
 </div>
 
@@ -44,8 +76,8 @@
   <div class="hero-grain"></div>
   <div class="hero-content">
     <p class="hero-eyebrow fade-up">For Integrative Women's Health Practitioners</p>
-    <h1 class="hero-headline fade-up delay-1">Your practice deserves<br><em>to be found.</em></h1>
-    <p class="hero-sub fade-up delay-2">Health is no longer the absence of disease — it is a whole mind-body integrative journey. We help you build the trust layer that turns your expertise into a thriving practice. Right positioning. Qualified leads. Clients who stay.</p>
+    <h1 class="hero-headline fade-up delay-1">Scale Your<br><em>Integrative Practice.</em></h1>
+    <p class="hero-sub fade-up delay-2">Women are done with being dismissed by conventional medicine. They're actively seeking integrative care — and the practitioners who win their trust are the ones who communicate clearly, show up consistently, and back their expertise with a system. We build that system for you.</p>
     <div class="hero-actions fade-up delay-3">
       <a href="apply.html" class="btn-primary">Apply to Work With Us</a>
       <a href="how-we-work.html" class="btn-ghost">See How It Works</a>
@@ -75,8 +107,43 @@
   </div>
   <div class="stat-divider"></div>
   <div class="stat">
-    <span class="stat-num">9 in 10</span>
-    <span class="stat-label">women are silently suffering without the right care</span>
+    <span class="stat-num">Virtual &amp; In-Person</span>
+    <span class="stat-label">We build practices for both online and clinic-based practitioners</span>
+  </div>
+</section>
+
+<!-- FROM → TO -->
+<section class="section" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-label">The Shift We Create</div>
+    <h2 class="section-title">From invisible to <em style="font-style:italic;color:var(--green)">undeniable.</em></h2>
+    <div class="transform-grid">
+      <div class="transform-col from-col">
+        <div class="transform-label">Before Srav Health</div>
+        <div class="transform-items">
+          <div class="transform-item">Mushy, generic language: "I help women heal holistically"</div>
+          <div class="transform-item">Potential clients don't understand what you actually do</div>
+          <div class="transform-item">Word of mouth only — unpredictable client flow</div>
+          <div class="transform-item">Spending hours on content that doesn't convert</div>
+          <div class="transform-item">No system for retaining or upselling existing clients</div>
+          <div class="transform-item">Practice plateaued — can't scale without burning out</div>
+        </div>
+      </div>
+      <div class="transform-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="transform-col to-col">
+        <div class="transform-label">After Srav Health</div>
+        <div class="transform-items">
+          <div class="transform-item">Clear, evidence-informed language clients immediately connect with</div>
+          <div class="transform-item">Clients arrive pre-educated on your methodology and ready to commit</div>
+          <div class="transform-item">Systematic lead generation across SEO, social, referrals, and events</div>
+          <div class="transform-item">Content engine built and managed for you — we handle execution</div>
+          <div class="transform-item">Client tracking, behavioral plans, and continuity-of-care tools built in</div>
+          <div class="transform-item">Scale to high-value, group programs, or virtual — without adding hours</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -91,28 +158,28 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <h3>Inconsistent client flow</h3>
-        <p>Word of mouth only goes so far. Without a systematic approach to lead generation, growth stays unpredictable — feast or famine every month.</p>
+        <p>Word of mouth only goes so far. Without a systematic approach to lead generation, growth stays unpredictable — feast or famine every month. You deserve a practice that fills on your terms.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Positioning that doesn't convert</h3>
-        <p>You know your methodology deeply. But translating ancient wisdom into language that resonates with modern health-conscious clients is a different skill entirely.</p>
+        <p>Your methodology is deep — but translating ancient wisdom or functional protocols into clear, evidence-based language that modern women trust is a distinct skill. We've spent years mastering it.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Marketing that takes you away from practice</h3>
-        <p>Every hour spent on content, social media, and funnels is an hour not spent with clients. You became a practitioner to heal — not to be a marketer.</p>
+        <h3>No done-for-you marketing support</h3>
+        <p>Every hour spent on content, websites, social, and funnels is an hour not spent with clients. Most marketing agencies don't understand integrative medicine. We do — and we handle the execution.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <h3>Clients who don't understand your value</h3>
-        <p>Integrative health requires educated clients who commit to the journey. Attracting the wrong-fit clients leads to poor outcomes, poor reviews, and high churn.</p>
+        <h3>Low retention and poor continuity of care</h3>
+        <p>Clients fall off between visits because there's no system to keep them engaged. We integrate behavioral plans and personalized follow-up flows directly into your offer — improving outcomes and revenue.</p>
       </div>
     </div>
   </div>
@@ -121,114 +188,320 @@
 <!-- HOW IT WORKS -->
 <section class="section how dark-section">
   <div class="section-inner">
-    <div class="section-label light">How It Works</div>
-    <h2 class="section-title light">A done-for-you growth system<br>built around your practice.</h2>
+    <div class="section-label light">What We Do — Done For You</div>
+    <h2 class="section-title light">Strategy. Execution. Outcomes.<br>We don't stop until you get there.</h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-content">
-          <h3>Deep positioning work</h3>
-          <p>We start by getting razor-clear on your niche, your ideal client, and your transformation promise. Most practitioners say "I help women with hormonal health." We'll help you say something that stops the right person mid-scroll.</p>
+          <h3>Positioning &amp; messaging</h3>
+          <p>We dig into your niche, your clients, and your methodology. Then we build razor-clear positioning — evidence-informed, medically credible language that converts skeptical women into committed clients. No more vague wellness copy.</p>
         </div>
       </div>
       <div class="step-connector"></div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-content">
-          <h3>Content system built for your voice</h3>
-          <p>We build a content engine using your expertise as the backbone — short-form content that addresses the specific pain points of your ideal client, distributed where they actually spend time.</p>
+          <h3>Website, brand &amp; content — all built for you</h3>
+          <p>We handle your website, brand identity, and content creation end-to-end. From your bio to your landing pages to your social content calendar — we build it, manage it, and optimize it. You stay focused on clients.</p>
         </div>
       </div>
       <div class="step-connector"></div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-content">
-          <h3>Qualified lead generation</h3>
-          <p>We deploy your content across the right channels, track what generates inquiry — not just engagement — and continuously refine toward leads that convert into paying, committed clients.</p>
+          <h3>Multi-channel lead generation</h3>
+          <p>We deploy across SEO, your website, all major social platforms, reviews, authority content, community events, referral loops, and care team partnerships. We match your channels to your growth stage and budget — no wasted effort.</p>
         </div>
       </div>
       <div class="step-connector"></div>
       <div class="step">
         <div class="step-num">04</div>
         <div class="step-content">
-          <h3>Conversion infrastructure</h3>
-          <p>We build the funnel from first touch to booked consultation. Every step is tracked, every drop-off point addressed. You focus on the client. We handle everything before they arrive.</p>
+          <h3>Programs, groups &amp; high-value offers</h3>
+          <p>We help you design and launch group programs, online courses, or premium packages — so you can scale your impact and revenue without adding clinical hours. Virtual or in-person, we build the infrastructure.</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Client retention system &amp; continuity of care</h3>
+          <p>We integrate behavioral follow-up plans, personalized client journeys, and between-visit engagement directly into your practice. Higher retention, better outcomes, and a care model that differentiates you.</p>
         </div>
       </div>
     </div>
-    <div class="how-cta">
-      <a href="how-we-work.html" class="btn-primary">See Full Process & Offering</a>
+
+    <!-- Channels -->
+    <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:400;color:var(--ivory);margin-top:80px;margin-bottom:8px;">Every channel, at every stage.</h3>
+    <p style="font-size:14px;color:rgba(245,240,232,0.5);margin-bottom:0;max-width:540px;">We identify which channels matter for your practice right now, and build your presence there systematically — not with spray-and-pray, but with genuine authority.</p>
+    <div class="channels-grid">
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h4>SEO &amp; Blog</h4>
+        <p>Long-term organic authority in your niche</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h4>Website</h4>
+        <p>Built and optimized to convert visitors to bookings</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        <h4>Social Media</h4>
+        <p>Instagram, LinkedIn, TikTok — tailored to your audience</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Reviews &amp; Reputation</h4>
+        <p>Systematic 5-star review generation</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5"/></svg>
+        <h4>Email &amp; Nurture</h4>
+        <p>Sequences that educate and convert leads</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h4>Referral Loops</h4>
+        <p>Care team partnerships and professional networks</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Events &amp; Community</h4>
+        <p>Local and online events that build real authority</p>
+      </div>
+      <div class="channel-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Authority Content</h4>
+        <p>Guest posts, podcasts, press, and expert features</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHO IT'S FOR -->
+<!-- WHO WE WORK WITH -->
 <section class="section who">
   <div class="section-inner">
-    <div class="section-label">Who It's For</div>
-    <h2 class="section-title">We work with a select group<br>of established practitioners.</h2>
-    <p class="section-intro">Srav Health is not for everyone. We work exclusively with mid-tier integrative women's health practitioners who are ready to scale — and who meet our quality standards.</p>
+    <div class="section-label light">Who We Work With</div>
+    <h2 class="section-title light">Not just established practices.<br>Practices ready to grow — in any direction.</h2>
+    <p class="section-intro" style="color:rgba(245,240,232,0.6)">We work with practitioners at different stages of growth. What matters is not how big you are today — it's where you want to go and whether you have the clinical proof points to get there.</p>
+
+    <div class="growth-modes">
+      <div class="growth-mode">
+        <div class="growth-mode-num">PATH 01</div>
+        <h4>Scale Client Volume</h4>
+        <p>You have strong clinical outcomes and want to consistently fill your calendar. We build the systems to generate qualified inquiries every month, reliably.</p>
+      </div>
+      <div class="growth-mode">
+        <div class="growth-mode-num">PATH 02</div>
+        <h4>Increase Value of Offering</h4>
+        <p>You want to move upmarket — premium packages, high-touch programs, longer engagements. We reposition your brand and messaging to attract clients who invest deeply.</p>
+      </div>
+      <div class="growth-mode">
+        <div class="growth-mode-num">PATH 03</div>
+        <h4>Launch Group Programs</h4>
+        <p>You want to serve more people without adding clinical hours. We help you design, position, and launch group programs or online courses — virtually or in-person.</p>
+      </div>
+    </div>
+
     <div class="who-grid">
       <div class="who-col good">
         <h3>You're a fit if you —</h3>
         <ul>
           <li>Practice Ayurveda, Functional Medicine, or TCM with a women's health focus</li>
-          <li>Have an established practice with existing clients and real testimonials</li>
-          <li>Are based in or serving clients in the US, particularly SF or Austin</li>
-          <li>Are frustrated with inconsistent client flow despite strong clinical outcomes</li>
+          <li>Have an active client base (even small) and real outcomes to point to</li>
+          <li>Serve women virtually, in-person, or both — anywhere in the US</li>
+          <li>Experience a spike in demand for women's health in your modality</li>
+          <li>Are frustrated with inconsistent client flow despite strong clinical results</li>
           <li>Are ready to invest in systematic growth — not looking for quick fixes</li>
-          <li>Can commit to a 90-day engagement</li>
         </ul>
       </div>
       <div class="who-col bad">
         <h3>We're not the right fit if you —</h3>
         <ul>
-          <li>Are just starting out and don't yet have client proof points</li>
-          <li>Want to stay general and serve all health conditions</li>
-          <li>Are looking for a cheap marketing service</li>
-          <li>Are not willing to invest time in the positioning process</li>
-          <li>Expect results without collaboration</li>
+          <li>Are just starting out with zero client proof points</li>
+          <li>Want to stay completely general — no niche, no focus</li>
+          <li>Are looking for a cheap marketing service or one-off content</li>
+          <li>Are not willing to invest 2–3 hours/week in the process</li>
+          <li>Expect outcomes without collaboration or feedback</li>
         </ul>
       </div>
     </div>
+
     <div class="modalities">
       <p class="modality-label">Current Modalities</p>
       <div class="modality-tags">
         <a href="ayurveda.html" class="modality-tag active">Ayurveda</a>
-        <span class="modality-tag coming">Functional Medicine <em>Coming Soon</em></span>
-        <span class="modality-tag coming">Traditional Chinese Medicine <em>Coming Soon</em></span>
+        <a href="functional-medicine.html" class="modality-tag coming">Functional Medicine <em>Coming Soon</em></a>
+        <a href="tcm.html" class="modality-tag coming">Traditional Chinese Medicine <em>Coming Soon</em></a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CASE STUDY -->
+<div class="case-study-block">
+  <div class="case-study-inner">
+    <div class="section-label" style="color:rgba(196,163,90,0.7);margin-bottom:32px">Client Story</div>
+    <div class="case-study-card">
+      <div class="cs-left">
+        <div class="cs-label">Case Study</div>
+        <h3>From 8 clients to a waitlist — in 90 days</h3>
+        <p>Dr. Meera P. had been practicing Ayurveda in San Francisco for four years. Strong clinical outcomes. Zero online presence. Every client came from a single yoga studio referral that had started to dry up.</p>
+        <p>She had the outcomes. She had the testimonials. She just had no system to convert them into visibility — and no language that resonated with the health-literate SF women she wanted to serve.</p>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Modality</strong> Ayurveda — Women's hormonal &amp; gut health</div>
+          <div class="cs-meta-item"><strong>Location</strong> San Francisco, CA (in-person + virtual)</div>
+          <div class="cs-meta-item"><strong>Timeline</strong> 90-day engagement</div>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-challenge">
+          <h4>The Challenge</h4>
+          <p>Meera's messaging was practitioner-centric — heavy on Sanskrit terminology and methodology. Her potential clients had no frame of reference. Conversion rate on her booking page: under 3%. Instagram following of 180, mostly family.</p>
+        </div>
+        <div class="cs-challenge">
+          <h4>What We Did</h4>
+          <p>We rebuilt her positioning around the lived symptoms her clients described: fatigue, irregular cycles, bloating, hormonal anxiety. We translated her Ayurvedic approach into clear, outcome-led language, redesigned her website, and built a 12-week Instagram content calendar with evidence-bridging posts. We established her in two SF women's health Facebook communities and set up a referral loop with two local OB/GYNs.</p>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result">
+            <div class="cs-result-num">6×</div>
+            <div class="cs-result-label">Increase in qualified inquiries per month</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-num">Waitlist</div>
+            <div class="cs-result-label">Fully booked by day 73 with 9-person waitlist</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-num">2 Programs</div>
+            <div class="cs-result-label">Group hormone reset program launched — $3,400 avg revenue per cohort</div>
+          </div>
+          <div class="cs-result">
+            <div class="cs-result-num">4.9★</div>
+            <div class="cs-result-label">Google rating from 3 reviews to 27 in 90 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SYSTEM -->
+<section class="section" style="background:var(--ivory)">
+  <div class="section-inner">
+    <div class="section-label">The Platform We Build With You</div>
+    <h2 class="section-title">A full-stack practice system.<br>Not just marketing.</h2>
+    <p class="section-intro">We don't hand you a strategy deck and disappear. We build the infrastructure — and stay with you through execution until you hit your outcomes.</p>
+    <div class="system-grid">
+      <div class="system-card">
+        <div class="system-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Website &amp; Brand — Fully Built</h3>
+        <p>We design and build your website from scratch, or overhaul what you have. SEO-optimized, conversion-focused, and designed to establish authority — not just look pretty.</p>
+        <ul>
+          <li>Custom copywriting in your voice</li>
+          <li>SEO-optimized page structure</li>
+          <li>Booking and lead capture integration</li>
+        </ul>
+      </div>
+      <div class="system-card">
+        <div class="system-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Content Engine — Managed Monthly</h3>
+        <p>We create all your content and manage its distribution. You review and approve — we do the rest. Consistently, every month.</p>
+        <ul>
+          <li>Social content (all platforms you need)</li>
+          <li>Blog posts and long-form authority pieces</li>
+          <li>Email sequences and newsletter</li>
+        </ul>
+      </div>
+      <div class="system-card">
+        <div class="system-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Client Program Hosting</h3>
+        <p>We set up the infrastructure for you to host group programs, online courses, or membership communities — so you can serve more clients without adding clinical hours.</p>
+        <ul>
+          <li>Group program structure and content</li>
+          <li>Client portal and course delivery setup</li>
+          <li>Cohort marketing and enrollment</li>
+        </ul>
+      </div>
+      <div class="system-card">
+        <div class="system-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Client Retention &amp; Continuity of Care</h3>
+        <p>We help you build behavioral follow-up plans and personalized client journeys that keep clients engaged between visits — improving outcomes and dramatically improving retention.</p>
+        <ul>
+          <li>Between-visit check-in flows</li>
+          <li>Personalized behavioral nudge sequences</li>
+          <li>Progress tracking and re-engagement triggers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE-BASED CARE -->
+<div class="vbc-strip">
+  <div class="vbc-inner">
+    <div class="vbc-left">
+      <h3>Built on value-based care principles.</h3>
+      <p>We don't just help you attract clients. We help you build a practice model where outcomes drive everything — pricing, retention, and referrals.</p>
+    </div>
+    <div class="vbc-items">
+      <div class="vbc-item">
+        <h4>Outcome-Linked Offers</h4>
+        <p>Packages designed around measurable health milestones, not just session counts.</p>
+      </div>
+      <div class="vbc-item">
+        <h4>Longitudinal Care Design</h4>
+        <p>Client journeys built for 6–12 month outcomes, not 4-session drop-offs.</p>
+      </div>
+      <div class="vbc-item">
+        <h4>Referral-Ready Positioning</h4>
+        <p>Language that builds trust with MDs and care teams who can send you clients.</p>
+      </div>
+      <div class="vbc-item">
+        <h4>Program-Led Revenue</h4>
+        <p>Group programs and structured protocols that scale impact and income together.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PROOF -->
 <section class="section proof dark-section">
   <div class="section-inner">
     <div class="section-label light">Why It Works</div>
-    <h2 class="section-title light">Built by someone who has done this<br>at scale — in health, across markets.</h2>
+    <h2 class="section-title light">Built by someone who knows both sides —<br>the clinic and the boardroom.</h2>
     <div class="proof-grid">
       <div class="proof-card">
         <div class="proof-quote">"</div>
-        <p>The women's health market is not waiting to be convinced. It is waiting for practitioners it can trust, find, and afford. We build that bridge.</p>
+        <p>My karma is to connect the practitioner to the women who need them. I've spent my career building brands that reach millions. Now I'm using that same engine — for the healers who deserve to be found.</p>
         <div class="proof-attr">— Priyanka Aggarwal, Founder</div>
       </div>
       <div class="proof-stats">
         <div class="proof-stat">
-          <span class="ps-num">10+</span>
-          <span class="ps-label">Countries served through Aura Fem Health platform</span>
+          <span class="ps-num">CS + GTM</span>
+          <span class="ps-label">Computer Science foundation combined with sales, marketing, and go-to-market expertise across global consumer brands</span>
         </div>
         <div class="proof-stat">
           <span class="ps-num">Fortune 50</span>
-          <span class="ps-label">Clients advised at McKinsey across healthcare and consumer</span>
+          <span class="ps-label">Brand growth strategy at McKinsey across healthcare, consumer goods, and retail</span>
         </div>
         <div class="proof-stat">
-          <span class="ps-num">Wharton</span>
-          <span class="ps-label">Joseph Wharton Scholar — Marketing, Strategy, Entrepreneurship</span>
+          <span class="ps-num">Heineken · KC</span>
+          <span class="ps-label">Head of Marketing — brand building and growth at global scale, millions of consumers reached</span>
         </div>
         <div class="proof-stat">
-          <span class="ps-num">Heineken</span>
-          <span class="ps-label">Head of Marketing — brand building at global scale</span>
+          <span class="ps-num">10+ Countries</span>
+          <span class="ps-label">Built and scaled Aura Fem Health platform across international markets</span>
         </div>
       </div>
     </div>
@@ -240,17 +513,12 @@
   <div class="section-inner about-inner">
     <div class="about-image-col">
       <div class="about-image-frame">
-        <div class="priyanka.png">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity="0.2">
-            <circle cx="40" cy="30" r="18" stroke="#2D5A3D" stroke-width="1.5"/>
-            <path d="M10 72 C10 55 23 44 40 44 C57 44 70 55 70 72" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <p style="font-size:11px;color:#aaa;margin-top:8px;font-family:'DM Sans',sans-serif">Add photo here</p>
-        </div>
+        <img src="priyanka.png" alt="Priyanka Aggarwal, Founder of Srav Health">
       </div>
       <div class="about-credentials">
+        <span>Computer Science</span>
         <span>Wharton MBA</span>
-        <span>McKinsey & Co.</span>
+        <span>McKinsey &amp; Co.</span>
         <span>Heineken</span>
         <span>Kimberly-Clark</span>
       </div>
@@ -258,29 +526,72 @@
     <div class="about-text-col">
       <div class="section-label">The Founder</div>
       <h2 class="section-title">Priyanka Aggarwal</h2>
-      <p class="about-p">I built Srav Health because I lived the gap firsthand. In my late 30s, climbing the corporate ladder at McKinsey and Heineken, my body started pushing back. Shrinking cycles. Fatigue. PMS that no doctor took seriously. I discovered integrative medicine — and it changed everything.</p>
-      <p class="about-p">What I also discovered: the practitioners who had changed my life were struggling to find the clients who needed them. Brilliant clinicians, invisible online. Powerful methodologies, communicated in ways that didn't convert.</p>
-      <p class="about-p">I spent 15 years building brands and driving growth for some of the world's largest companies. I know what it takes to reach the right person with the right message at the right moment. Srav Health is that capability — built specifically for integrative women's health practitioners who are ready to scale.</p>
+      <p class="about-p">I started my career in computer science — building systems, thinking in structures, obsessed with what makes things scale. Then I moved into sales and marketing at some of the world's largest consumer brands: PepsiCo, McKinsey, Kimberly-Clark, Heineken. Fifteen years of building go-to-market engines that reach millions of people.</p>
+      <p class="about-p">My karma is different. When conventional medicine failed me during a critical period in my own health, integrative medicine changed everything. And I found myself furious that the practitioners who had helped me most were virtually invisible — brilliant clinicians with no system to reach the women who desperately needed them.</p>
+      <p class="about-p">Srav Health is that system. It's everything I learned in a decade and a half of brand growth — applied specifically to integrative women's health practitioners who are ready to scale. Both virtual and in-person. Both solo practitioners and those building programs. We handle the execution. You deliver the outcomes.</p>
       <div class="about-detail">
         <div class="ad-item">
           <span class="ad-label">Background</span>
-          <span class="ad-val">Computer Science → PepsiCo → Wharton → McKinsey → Kimberly-Clark → Heineken → Founder</span>
+          <span class="ad-val">Computer Science → PepsiCo → Wharton → McKinsey → Kimberly-Clark → Heineken → Founder, Srav Health</span>
         </div>
         <div class="ad-item">
           <span class="ad-label">Focus</span>
-          <span class="ad-val">Women's health, integrative medicine, practitioner growth systems</span>
+          <span class="ad-val">Integrative women's health, go-to-market strategy, brand building, practitioner growth systems</span>
         </div>
         <div class="ad-item">
           <span class="ad-label">Based</span>
-          <span class="ad-val">Singapore · Serving US practitioners in SF and Austin</span>
+          <span class="ad-val">Singapore · Serving US practitioners (SF, Austin, and virtual-first practices nationwide)</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- BLOG PREVIEW -->
+<section class="section" style="background:var(--ivory)">
+  <div class="section-inner">
+    <div class="section-label">Resources</div>
+    <h2 class="section-title">Built for practitioners<br>who want to grow with knowledge.</h2>
+    <div class="blog-grid">
+      <a href="blog/how-to-build-ayurveda-practice.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Practice Building</span>
+          <h3>How to Build an Ayurveda Practice in the US</h3>
+          <p>The complete guide to positioning, channels, and client acquisition for Ayurvedic practitioners in the Western market — from first client to full calendar.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+      <a href="blog/which-channels-for-your-stage.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Marketing Strategy</span>
+          <h3>Which Channels to Use Depending on Your Stage</h3>
+          <p>Not every channel is right for every practitioner. Here's how to match your marketing investment to where you actually are in your practice growth.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+      <a href="blog/selecting-your-positioning.html" class="blog-card">
+        <div class="blog-card-body">
+          <span class="blog-tag">Positioning</span>
+          <h3>Selecting Your Positioning as an Integrative Practitioner</h3>
+          <p>Why "I help women heal holistically" is killing your conversion — and how to replace it with positioning that stops the right person mid-scroll.</p>
+        </div>
+        <div class="blog-card-footer">
+          <span class="blog-read-link">Read Article →</span>
+        </div>
+      </a>
+    </div>
+    <div style="margin-top:40px">
+      <a href="blog/index.html" class="btn-ghost" style="color:var(--green);border-color:rgba(45,90,61,0.3)">View All Articles →</a>
+    </div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
-<section class="section cta-section dark-section">
+<section class="section cta-section dark-section" style="background:var(--navy)">
   <div class="section-inner cta-inner">
     <div class="cta-ear">
       <svg width="64" height="78" viewBox="0 0 56 68" fill="none">
@@ -290,8 +601,8 @@
         <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
       </svg>
     </div>
-    <h2 class="cta-title">Ready to build the practice<br>you trained for?</h2>
-    <p class="cta-sub">We work with a small cohort of practitioners at a time to ensure depth of focus. If you are an established Ayurvedic practitioner in the US ready to scale — we want to hear from you.</p>
+    <h2 class="cta-title">Ready to scale the practice<br>you trained for?</h2>
+    <p class="cta-sub">We work with a small cohort of practitioners at a time to ensure depth of focus. If you are ready to grow — whether that means more clients, higher-value offers, or launching programs — we want to hear from you.</p>
     <a href="apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
     <p class="cta-note">Applications reviewed within 5 business days. We'll reach out to schedule a discovery conversation.</p>
   </div>
@@ -301,15 +612,20 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo">
-      <svg width="20" height="24" viewBox="0 0 56 68" fill="none">
-        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-        <circle cx="28" cy="30" r="3" fill="#C4A35A" opacity="0.7"/>
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
       </svg>
       <span>SRAV HEALTH</span>
     </div>
     <div class="footer-links">
+      <a href="index.html">Home</a>
       <a href="ayurveda.html">Ayurveda</a>
+      <a href="functional-medicine.html">Functional Medicine</a>
+      <a href="tcm.html">TCM</a>
       <a href="how-we-work.html">How We Work</a>
+      <a href="blog/index.html">Blog</a>
       <a href="apply.html">Apply</a>
     </div>
     <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>

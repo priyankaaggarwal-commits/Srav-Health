@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Channels to Use Depending on Your Stage — Srav Health</title>
+<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  .stage-card { background: var(--ivory); padding: 40px; margin-bottom: 2px; }
+  .stage-card h3 { font-family: var(--font-serif); font-size: 26px; color: var(--navy); margin-bottom: 8px; }
+  .stage-card .stage-desc { font-size: 14px; color: var(--text-light); margin-bottom: 24px; font-weight: 300; }
+  .stage-channels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .sc-item { background: var(--white); padding: 20px; border-top: 2px solid var(--gold); }
+  .sc-item h4 { font-family: var(--font-serif); font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .sc-item p { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+  .sc-priority { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  @media(max-width:700px) { .stage-channels { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<div class="blog-post-header">
+  <div class="blog-post-header-inner">
+    <div class="section-label">Marketing Strategy</div>
+    <h1>Which Channels to Use<br>Depending on Your Stage</h1>
+    <div class="post-meta">Srav Health · February 2026 · 10 min read</div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>One of the most common mistakes integrative practitioners make is comparing their marketing to someone who's at a completely different stage. You're 2 years into practice, still building your reputation — and you're trying to replicate the content strategy of someone with a 10-year following and a team behind them. It doesn't work. And it burns you out.</p>
+
+  <p>The channels that matter — and the way you use them — should change as your practice grows. Here's how to think about it across four stages.</p>
+
+  <div class="callout">
+    <p>The question isn't "which channels are best?" It's "which channels are best for where I am right now?" The answer changes at every stage — and using the wrong channels at the wrong time is expensive in both time and money.</p>
+  </div>
+
+</div>
+
+<!-- STAGE CARDS -->
+<div style="max-width:800px;margin:0 auto;padding:0 48px 80px;">
+
+  <div class="stage-card">
+    <h3>Stage 1 — Building Proof</h3>
+    <div class="stage-desc">0–15 active clients. You're establishing your methodology, gathering testimonials, and learning what resonates. Marketing budget is limited.</div>
+    <div class="stage-channels">
+      <div class="sc-item">
+        <div class="sc-priority">Priority 1</div>
+        <h4>Word of Mouth + Referrals</h4>
+        <p>At this stage, the fastest path to new clients is personal introductions. Systematize your referral asks — every satisfied client should know exactly how to refer someone to you.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 2</div>
+        <h4>Google Business Profile</h4>
+        <p>Free, high-intent, and often overlooked. A complete, keyword-rich Google Business Profile with even 5–10 reviews will outperform most paid advertising at this stage.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 3</div>
+        <h4>One Social Platform</h4>
+        <p>Choose one — Instagram or LinkedIn depending on your audience — and post consistently 3x per week. Depth over breadth. Quality over quantity.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <h3>Stage 2 — Building Visibility</h3>
+    <div class="stage-desc">15–40 active clients. You have proof points, some testimonials, and a clear niche. You're ready to build systematic lead generation.</div>
+    <div class="stage-channels">
+      <div class="sc-item">
+        <div class="sc-priority">Priority 1</div>
+        <h4>Website + SEO</h4>
+        <p>Now's the time to invest in a proper website with optimized pages for your specific conditions. A well-written blog post can drive qualified leads for years — the best long-term ROI channel.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 2</div>
+        <h4>Email List</h4>
+        <p>Start building your email list with a lead magnet — a guide, a quiz, a checklist that solves a specific problem for your ideal client. Email converts better than social at this stage.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 3</div>
+        <h4>Community Presence</h4>
+        <p>Identify 2–3 online communities (Facebook groups, Substack communities, local forums) where your ideal clients spend time. Show up as an expert — answer questions, share value, don't pitch.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <h3>Stage 3 — Scaling Volume or Value</h3>
+    <div class="stage-desc">40+ clients, established reputation, consistent referrals. You want to either fill a waitlist, raise your rates, or launch a group program.</div>
+    <div class="stage-channels">
+      <div class="sc-item">
+        <div class="sc-priority">Priority 1</div>
+        <h4>Authority Content</h4>
+        <p>Podcast appearances, guest articles, local press, and partnerships with aligned brands. This is the tier that shifts perception from "good practitioner" to "the practitioner everyone recommends."</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 2</div>
+        <h4>Care Team Referral Network</h4>
+        <p>Build formal relationships with OB/GYNs, integrative MDs, therapists, and women's health physios who share your client profile. One strong referral relationship can fill your calendar indefinitely.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 3</div>
+        <h4>Group Program Launch</h4>
+        <p>If you want to scale revenue without adding hours, a well-designed group program is the answer. The marketing for this is a targeted campaign — email list, social, and partner promotions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-card">
+    <h3>Stage 4 — Building a Brand</h3>
+    <div class="stage-desc">You're the known practitioner in your niche. You're expanding to virtual, building a team, or creating a signature program or course.</div>
+    <div class="stage-channels">
+      <div class="sc-item">
+        <div class="sc-priority">Priority 1</div>
+        <h4>Multi-Channel Content Engine</h4>
+        <p>You can now invest in full-stack content: YouTube, podcast, long-form articles, cross-platform social. At this stage you need a team or agency to manage the output.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 2</div>
+        <h4>Paid Acquisition</h4>
+        <p>With a proven offer and strong conversion rate, paid channels (Meta ads, Google ads) become viable. Don't run paid ads until you have a high-converting landing page and clear offer.</p>
+      </div>
+      <div class="sc-item">
+        <div class="sc-priority">Priority 3</div>
+        <h4>Partnerships &amp; Licensing</h4>
+        <p>Your methodology can be licensed to other practitioners, or packaged into a corporate wellness program. This is how the highest-impact practitioners reach thousands instead of hundreds.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="blog-post-body" style="padding-top:0">
+  <h2>The rule that cuts through all of this</h2>
+  <p>Before you add any new channel, ask: do I have proof that my current clients are satisfied? If yes, do I have a system to generate referrals from them? If yes, do I have a website that converts the traffic I'm sending to it?</p>
+  <p>If the answer to any of those is no, don't add a new channel. Fix the foundation. Every channel will underperform if your positioning is unclear, your website doesn't convert, or your client experience doesn't generate testimonials naturally.</p>
+  <p>The channel is the amplifier. It amplifies what's already there — good or bad.</p>
+</div>
+
+<div class="blog-post-nav">
+  <a href="how-to-build-ayurveda-practice.html">← How to Build an Ayurveda Practice</a>
+  <a href="selecting-your-positioning.html">Selecting Your Positioning →</a>
+</div>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Not sure which stage you're at?</h2>
+    <p class="cta-sub">Apply to work with us and we'll assess your practice, identify the highest-leverage opportunities, and build a channel strategy tailored to where you are.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+<script src="../main.js"></script>
+</body>
+</html>
