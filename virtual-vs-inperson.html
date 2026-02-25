@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual vs. In-Person: How to Decide and Build for Both — Srav Health</title>
+<link rel="stylesheet" href="../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  .compare-block { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+  .compare-col { padding: 28px 32px; }
+  .compare-col.bad-col { background: var(--ivory-dark); }
+  .compare-col.good-col { background: var(--green); }
+  .compare-col-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+  .bad-col .compare-col-label { color: var(--text-light); }
+  .good-col .compare-col-label { color: var(--gold); opacity: 0.8; }
+  .compare-col p { font-size: 15px; line-height: 1.7; font-style: italic; }
+  .bad-col p { color: var(--text-mid); }
+  .good-col p { color: rgba(245,240,232,0.85); }
+  @media(max-width:700px) { .compare-block { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<div class="blog-post-header">
+  <div class="blog-post-header-inner">
+    <div class="section-label">Practice Model</div>
+    <h1>Virtual vs. In-Person: How to<br>Decide and Build for Both</h1>
+    <div class="post-meta">Srav Health · February 2026 · 10 min read</div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>The shift to virtual care was supposed to be temporary. It wasn't. For integrative practitioners, it turned out to be one of the most significant structural opportunities in decades — and most practitioners still haven't figured out how to use it strategically.</p>
+
+  <p>The question is no longer "should I offer virtual?" The question is which model best serves your clients, your practice economics, and your ability to scale — and how you market each one differently to the women who need them.</p>
+
+  <h2>Why the virtual vs. in-person decision is actually a positioning decision</h2>
+
+  <p>Most practitioners approach this as a logistics question. It isn't. It's a positioning question. The type of client you attract, the depth of relationship you build, the price point you can command, and the way you structure your programs all depend on which model you're leading with — or whether you're running both intentionally.</p>
+
+  <p>Running both without a clear strategy is one of the most common sources of practitioner burnout. You end up with two different client experiences, two different marketing messages, and twice the operational complexity — with neither model optimized.</p>
+
+  <h2>The case for virtual-first</h2>
+
+  <p>Virtual care removes geography as a constraint entirely. If you're an Ayurvedic practitioner in Austin, you no longer compete only with the other Ayurvedic practitioners in Austin — you compete nationally. That sounds like a threat. It's actually an advantage if your positioning is sharp, because the total addressable market for your specific niche expands from a city to a country.</p>
+
+  <p>Virtual-first also enables program-based delivery at scale. Group programs, membership models, digital protocols — all of these are significantly easier to build and deliver virtually. And they are, without exception, the highest-leverage revenue structures available to an integrative practitioner.</p>
+
+  <p>The practitioners who've scaled most effectively in the last three years have almost all done it through virtual-first or virtual-led models. The ceiling on in-person, one-to-one care is hours in the day. The ceiling on a well-designed virtual program is essentially the size of your niche.</p>
+
+  <h2>The case for in-person</h2>
+
+  <p>There are modalities where in-person is not optional — Panchakarma, acupuncture, certain bodywork-adjacent protocols. But even here, the question isn't only about what's clinically required. It's about what your client expects, what she'll pay a premium for, and what creates the depth of relationship that drives long-term retention.</p>
+
+  <p>In-person care commands a different kind of trust. The physical presence of a practitioner, the clinic environment, the ritual of showing up — these are not trivial. For a certain type of client, especially one who has tried and failed with virtual-only solutions, in-person is what finally makes her commit.</p>
+
+  <p>In-person also anchors your brand locally in a way that virtual cannot. Referral networks, local media, community presence — these are all in-person advantages that compound over time.</p>
+
+  <h2>How to think about running both</h2>
+
+  <p>The practitioners who do this well treat virtual and in-person as distinct tracks with distinct positioning — not as the same service delivered through different screens. Here's the framework we use:</p>
+
+  <div class="callout">
+    <p><strong>In-person track:</strong> Higher price point, longer relationship, deeper clinical work, local referral network. Market on local SEO, community presence, and word of mouth. <br><br><strong>Virtual track:</strong> Broader reach, program-based delivery, scalable content, national SEO. Market on content, social proof, and searchable symptom-based positioning.</p>
+  </div>
+
+  <p>The mistake is trying to market both with the same message. A woman searching Google at 11pm for help with her hormones is not in the same decision-making frame as a woman who was referred by her neighbour and is ready to book an in-person consultation. They need different language, different entry points, and different journeys.</p>
+
+  <h2>The hybrid model that actually works</h2>
+
+  <p>The most effective model we've seen for scaling integrative practices combines both tracks with a clear client journey. It looks something like this: virtual content and digital presence attract a broad audience nationally. A free or low-cost entry point — a webinar, a guide, a short consultation — converts interest into relationship. High-value virtual programs deliver the core protocol. In-person intensives or retreats serve as premium upsells for the subset of clients who want that depth.</p>
+
+  <p>This model doesn't require a clinic. It doesn't require being in a major city. It requires a sharp positioning, a well-built content engine, and a clear client journey — all of which can be designed and systematized.</p>
+
+  <h2>How to market each model effectively</h2>
+
+  <p>Virtual clients find you through search, social, and content. They are looking for answers to specific symptoms and they discover you because you've written clearly about the exact problem they're experiencing. SEO, long-form content, and symptom-specific positioning are your primary acquisition channels.</p>
+
+  <p>In-person clients find you through proximity and referral. Local SEO matters here — your Google Business Profile, local directory listings, and reviews. So do partnerships with aligned practitioners, local wellness communities, and word-of-mouth systems that make it easy for existing clients to refer.</p>
+
+  <p>The single biggest marketing mistake practitioners make is applying in-person marketing tactics to virtual acquisition, or vice versa. They don't work the same way because the client's decision-making process is fundamentally different.</p>
+
+</div>
+
+<div class="blog-post-nav">
+  <a href="selecting-your-positioning.html">← Selecting Your Positioning</a>
+  <a href="group-programs-integrative-practitioners.html">Group Programs →</a>
+</div>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Ready to build your practice model?</h2>
+    <p class="cta-sub">Whether you're virtual-first, in-person, or building both — we design the system that fits your model and scales it. Apply and we'll map it out together.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+<script src="../main.js"></script>
+</body>
+</html>
