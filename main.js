@@ -33,7 +33,6 @@ document.head.appendChild(style);
 // Scroll-triggered fade-in — batch style writes to avoid forced reflow
 const fadeEls = document.querySelectorAll('.problem-card, .step, .who-col, .proof-stat, .inc-card, .q-card, .pillar, .pt-item');
 
-// Write all styles in one batch before any reads
 fadeEls.forEach(el => {
   el.style.cssText += 'opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;';
 });
@@ -54,11 +53,28 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeEls.forEach(el => observer.observe(el));
 
-// Trigger visible elements on load — use IntersectionObserver instead of getBoundingClientRect
 document.addEventListener('DOMContentLoaded', () => {
-  // Re-observe after DOM ready to catch anything already in viewport
-  // IntersectionObserver handles this natively — no getBoundingClientRect needed
   fadeEls.forEach(el => observer.observe(el));
+
+  // Dropdown — click-based toggle (replaces fragile CSS hover)
+  const trigger = document.querySelector('.nav-dropdown-trigger');
+  const menu = document.querySelector('.nav-dropdown-menu');
+
+  if (trigger && menu) {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = menu.style.display === 'block';
+      menu.style.display = isOpen ? 'none' : 'block';
+    });
+
+    // Close when clicking anywhere else on the page
+    document.addEventListener('click', () => {
+      menu.style.display = 'none';
+    });
+
+    // Prevent menu clicks from closing it
+    menu.addEventListener('click', (e) => e.stopPropagation());
+  }
 });
 
 // FAQ toggle (how-we-work page)
