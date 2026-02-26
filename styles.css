@@ -101,7 +101,6 @@ a { text-decoration: none; color: inherit; }
   transform: translateX(-50%); background: var(--green-dark);
   border: 1px solid rgba(245,240,232,0.1); min-width: 260px; padding: 8px 0; z-index: 200;
 }
-.nav-dropdown:hover .nav-dropdown-menu { display: block; }
 
 .nav-dropdown-menu a {
   display: flex; flex-direction: column; padding: 14px 24px;
