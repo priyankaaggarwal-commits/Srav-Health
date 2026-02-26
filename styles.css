@@ -97,11 +97,9 @@ a { text-decoration: none; color: inherit; }
 .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
 
 .nav-dropdown-menu {
-  display: none; position: absolute; top: calc(100% + 16px); left: 50%;
+  display: none; position: absolute; top: calc(100% + 4px); left: 50%;
   transform: translateX(-50%); background: var(--green-dark);
   border: 1px solid rgba(245,240,232,0.1); min-width: 260px; padding: 8px 0; z-index: 200;
-   padding-top: 8px; /* adds invisible bridge above the menu */
-  margin-top: -8px; /* pulls it up so visual position stays the same */
 }
 .nav-dropdown:hover .nav-dropdown-menu { display: block; }
 
