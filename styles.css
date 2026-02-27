@@ -436,3 +436,6 @@ a { text-decoration: none; color: inherit; }
 .blog-post-body a:hover {
   color: var(--green-mid);
 }
+.cs-result-box .r-label {
+  color: rgba(245,240,232,0.55);
+}
