@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSA, FSA & Insurance for Ayurvedic Practitioners — What You and Your Clients Need to Know | Srav Health</title>
+<meta name="description" content="Can clients use HSA or FSA for Ayurveda? A complete guide for Ayurvedic practitioners on insurance coverage, Letters of Medical Necessity, superbills, Truemed, and state-by-state variation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="../styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYrEPjuw.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"></noscript>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://sravhealth.com/blog/hsa-fsa-insurance-ayurvedic-practitioners.html">
+<style>
+  .state-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+  .state-col { padding: 28px 32px; }
+  .state-col.protected { background: var(--green); }
+  .state-col.unclear { background: var(--ivory-dark); }
+  .state-col-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+  .protected .state-col-label { color: var(--gold); }
+  .unclear .state-col-label { color: var(--text-light); }
+  .state-col h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; margin-bottom: 12px; }
+  .protected h4 { color: var(--ivory); }
+  .unclear h4 { color: var(--navy); }
+  .state-col p { font-size: 13px; line-height: 1.7; margin-bottom: 12px; }
+  .protected p { color: rgba(245,240,232,0.75); }
+  .unclear p { color: var(--text-mid); }
+  .state-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .state-list li { font-size: 11px; letter-spacing: 1px; padding: 4px 10px; border-radius: 2px; }
+  .protected .state-list li { background: rgba(245,240,232,0.1); color: rgba(245,240,232,0.8); }
+  .unclear .state-list li { background: rgba(45,90,61,0.08); color: var(--text-mid); }
+
+  .superbill-block { background: var(--navy); padding: 36px 40px; margin: 32px 0; }
+  .superbill-block h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--gold); margin-bottom: 16px; }
+  .superbill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .superbill-col p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 10px; }
+  .superbill-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .superbill-col ul li { font-size: 13px; color: rgba(245,240,232,0.75); padding-left: 16px; position: relative; line-height: 1.6; }
+  .superbill-col ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; font-size: 11px; }
+
+  .step-flow { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .step-flow-item { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .step-flow-item:last-child { border-bottom: none; }
+  .step-flow-num { font-family: var(--font-display); font-size: 12px; letter-spacing: 2px; color: var(--gold); padding-top: 3px; }
+  .step-flow-content h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
+  .step-flow-content p { font-size: 13px; line-height: 1.75; color: var(--text-mid); }
+
+  .platform-card { background: var(--ivory); padding: 28px 32px; margin: 16px 0; border-left: 3px solid var(--gold); }
+  .platform-card h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--navy); margin-bottom: 8px; }
+  .platform-card p { font-size: 13px; line-height: 1.75; color: var(--text-mid); margin-bottom: 8px; }
+  .platform-card p:last-child { margin-bottom: 0; }
+
+  .consent-block { background: #FFF8EC; border: 1px solid rgba(196,163,90,0.3); padding: 32px 36px; margin: 32px 0; }
+  .consent-block h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 16px; }
+  .consent-block ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .consent-block ul li { font-size: 13px; color: var(--text-mid); padding-left: 20px; position: relative; line-height: 1.7; }
+  .consent-block ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; }
+
+  @media(max-width: 700px) {
+    .state-grid { grid-template-columns: 1fr; }
+    .superbill-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger" aria-label="Modalities menu">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<!-- HEADER -->
+<div class="blog-post-header">
+  <div class="blog-post-header-inner">
+    <div class="section-label">Practice Building</div>
+    <h1>HSA, FSA & Insurance for<br>Ayurvedic Practitioners —<br>What You and Your Clients Need to Know</h1>
+    <div class="post-meta">Srav Health · February 2026 · 16 min read</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="blog-post-body">
+
+  <p>One of the most common reasons potential clients hesitate before booking an Ayurvedic consultation is cost. Not because they do not value the care — but because they are paying out of pocket for something their insurance will not touch, often right alongside conventional medical bills that are partially covered. The financial friction is real, and if you are not actively helping clients navigate it, you are losing bookings you could otherwise convert.</p>
+
+  <p>The good news is that the picture is better than most practitioners realise. Clients can often use pre-tax HSA and FSA funds for Ayurvedic consultations, herbal formulas, and treatments — provided the right documentation is in place. Understanding this system, and being able to explain it clearly to prospective clients, is a genuine competitive advantage.</p>
+
+  <p>This post covers the full landscape: insurance reality, HSA and FSA eligibility, Letters of Medical Necessity, superbills, billing codes, third-party platforms, referral network strategy, and the state-by-state variation that affects how you practise. It also covers the informed consent documentation every Ayurvedic practitioner should have in place regardless of payment method.</p>
+
+  <div class="callout">
+    <p><strong>Disclaimer:</strong> This post is for educational purposes only and does not constitute legal, tax, or financial advice. HSA and FSA eligibility rules can change, and individual circumstances vary. Always encourage clients to verify eligibility with their plan administrator, and consult a qualified tax or legal professional for their specific situation.</p>
+  </div>
+
+  <h2>The insurance reality — and why it is actually an opportunity</h2>
+
+  <p>Standard US health insurance does not cover Ayurvedic consultations. The reason is straightforward: insurance coverage is generally limited to treatments classified as "medically necessary" by the carrier, delivered by licensed medical professionals, in accredited facilities. Ayurveda meets none of these criteria under current US regulatory frameworks — it is classified as "alternative" or "complementary" medicine, not allopathic medicine.</p>
+
+  <p>This is unlikely to change in the near term. Unlike acupuncture, which has gained partial insurance coverage in some states due to lobbying and clinical evidence recognition, Ayurveda does not yet have the regulatory infrastructure or medical billing framework to support widespread insurance reimbursement in the US.</p>
+
+  <p>The opportunity, however, is this: most practitioners do not help their clients understand what <em>is</em> available to them. Clients who understand that they can use pre-tax HSA or FSA funds — effectively reducing the cost of their care by their marginal tax rate — are meaningfully more likely to commit. A $300 consultation that costs $210 after tax savings feels different. Building this into your intake process and your website is a straightforward conversion lever most practitioners are not using.</p>
+
+  <h2>HSA and FSA eligibility — what qualifies and what does not</h2>
+
+  <p>Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) are pre-tax accounts that allow individuals to set aside money for qualified medical expenses. The IRS defines what qualifies — and the definition is broader than most people assume.</p>
+
+  <p>Ayurvedic consultations, herbal formulas, and treatments <em>can</em> qualify for HSA and FSA reimbursement — but not automatically. The key requirement is that the expense must be related to the treatment, mitigation, or prevention of a specific medical condition, not "general wellness." This distinction matters enormously, and it is where the Letter of Medical Necessity comes in.</p>
+
+  <p>General wellness expenses — yoga classes, meditation apps, general health supplements — do not qualify. But an Ayurvedic consultation specifically addressing a diagnosed or diagnosable condition — hormonal imbalance, gut dysfunction, chronic fatigue — can qualify with proper documentation. The line between the two is drawn by the IRS, enforced by plan administrators, and documented through the LMN process. For the most current IRS guidance, refer to <a href="https://www.irs.gov/publications/p502" target="_blank" rel="noopener noreferrer">IRS Publication 502</a>, updated annually.</p>
+
+  <h2>The Letter of Medical Necessity — how it works</h2>
+
+  <p>A Letter of Medical Necessity (LMN) is a document signed by a licensed medical provider — typically an MD, DO, or Nurse Practitioner — stating that a specific service or product is medically necessary for the treatment or prevention of a diagnosed condition. For HSA and FSA purposes, the LMN converts an otherwise ineligible "wellness" expense into a qualifying medical expense.</p>
+
+  <p>As an Ayurvedic practitioner, you cannot write your own LMN — you are not a licensed medical provider. The LMN must come from a licensed clinician in your client's care team. This is one of the most concrete reasons why building relationships with MDs, DOs, and NPs is not just good for referrals — it is good for your clients' ability to afford your care.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="step-flow">
+    <div class="step-flow-item">
+      <div class="step-flow-num">01</div>
+      <div class="step-flow-content">
+        <h4>Client identifies a specific medical condition</h4>
+        <p>Hormonal imbalance, irritable bowel, chronic fatigue, perimenopause symptoms — a condition their MD or NP has acknowledged or documented. "General wellness" is not sufficient.</p>
+      </div>
+    </div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">02</div>
+      <div class="step-flow-content">
+        <h4>Client requests an LMN from their licensed provider</h4>
+        <p>Their MD, DO, or NP writes a letter stating that Ayurvedic consultation and/or herbal supplementation is medically necessary for the management of their specific condition. The letter should include the provider's name, credentials, signature, the diagnosis or condition, and a description of the recommended service.</p>
+      </div>
+    </div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">03</div>
+      <div class="step-flow-content">
+        <h4>You provide a detailed receipt or superbill</h4>
+        <p>Your documentation must show the date of service, your name and credentials, a description of the service provided, and the amount charged. This is what the client submits to their HSA or FSA plan administrator alongside the LMN.</p>
+      </div>
+    </div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">04</div>
+      <div class="step-flow-content">
+        <h4>Client submits to plan administrator for reimbursement</h4>
+        <p>Plan administrators vary in their processes. Some require pre-approval; others reimburse after submission. Always advise clients to verify eligibility with their specific plan before booking.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>The superbill — what it is and what to include</h2>
+
+  <p>A superbill is a detailed itemised receipt containing all information required for insurance reimbursement or HSA/FSA submission. It is not an insurance claim — it is the documentation that enables your client to seek reimbursement directly from their plan. In the context of Ayurvedic practice, where you cannot bill insurance directly, the superbill is one of the most practical tools you have for reducing the financial friction of working with you.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="superbill-block">
+    <h4>What a superbill must include</h4>
+    <div class="superbill-grid">
+      <div class="superbill-col">
+        <p>Your information</p>
+        <ul>
+          <li>Your full legal name</li>
+          <li>Your credential and NAMA level</li>
+          <li>Your practice address</li>
+          <li>Your NPI number (if applicable)</li>
+          <li>Your contact details</li>
+        </ul>
+      </div>
+      <div class="superbill-col">
+        <p>Client & service information</p>
+        <ul>
+          <li>Client full name and date of birth</li>
+          <li>Date of service</li>
+          <li>Description of service provided</li>
+          <li>Duration of consultation</li>
+          <li>Fee charged and amount paid</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>Billing codes — who can use them and which ones apply</h2>
+
+  <p>Standard medical billing uses CPT (Current Procedural Terminology) codes to classify services. Because Ayurvedic practitioners are not licensed medical providers, most cannot use CPT codes directly to bill insurance. However, if you hold a dual licence — as a Registered Dietitian, Registered Nurse, or other licensed healthcare provider — you may be able to use certain codes for services within that licensed scope.</p>
+
+  <p>The codes most commonly referenced in integrative and nutrition-adjacent contexts include:</p>
+
+  <ul>
+    <li><strong>97802</strong> — Medical Nutrition Therapy, initial assessment (requires RD or licensed nutrition provider)</li>
+    <li><strong>97803</strong> — Medical Nutrition Therapy, re-assessment and intervention (requires RD or licensed nutrition provider)</li>
+    <li><strong>99401–99404</strong> — Preventive medicine counselling (requires licensed medical provider)</li>
+    <li><strong>Z codes</strong> — ICD-10 codes for lifestyle-related health concerns, sometimes used in wellness contexts by licensed providers</li>
+  </ul>
+
+  <p>If you do not hold a dual medical licence, do not use CPT codes on your superbill. Doing so without the appropriate licence constitutes fraudulent billing. Your superbill should describe the service in plain language — "Initial Ayurvedic health consultation, 75 minutes" — rather than attempting to map to medical codes you are not licensed to use.</p>
+
+  <p>The <a href="https://www.ayurvedanama.org" target="_blank" rel="noopener noreferrer">National Ayurvedic Medical Association (NAMA)</a> is actively working on establishing Ayurveda-specific coding frameworks. Check their website for the most current guidance on billing documentation and any updates to recognised codes.</p>
+
+  <h2>Truemed and third-party HSA/FSA platforms</h2>
+
+  <p>One of the most practical recent developments for integrative practitioners is the emergence of platforms that automate the LMN process for HSA and FSA payments. Truemed is the most widely used of these in the wellness and integrative health space.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="platform-card">
+    <h4>Truemed</h4>
+    <p><a href="https://www.truemed.com" target="_blank" rel="noopener noreferrer">Truemed</a> connects practitioners and wellness businesses with a network of licensed medical providers who can issue LMNs for qualifying clients. The process is largely automated — clients complete a brief intake, a licensed clinician reviews it and issues the LMN if appropriate, and the client can then use their HSA or FSA card to pay directly.</p>
+    <p>For Ayurvedic practitioners, Truemed removes the biggest barrier in the LMN process: finding a licensed provider willing to sign one. It is particularly useful if you do not yet have an established referral network of MDs or NPs who can provide LMNs for your clients.</p>
+    <p>Note that Truemed charges a fee, either to the practitioner or the client depending on the integration model. Review their current pricing and terms before recommending it to clients.</p>
+  </div>
+
+  <div class="platform-card">
+    <h4>Other platforms to be aware of</h4>
+    <p>The HSA/FSA-for-wellness space is evolving quickly. Other platforms including <strong>Flex</strong>, <strong>Forma</strong>, and various employer benefits administrators are expanding their qualified expense lists. Some employers now offer broader wellness stipends through platforms that do not require an LMN. It is worth asking prospective clients whether their employer offers any such benefit — many do not realise they have access to it.</p>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>Building your referral network for LMN support</h2>
+
+  <p>The most sustainable long-term solution to the LMN requirement is not a third-party platform — it is a referral relationship with one or two licensed medical providers who understand your work and are willing to support your mutual clients. This relationship benefits both parties: you send them clients who need medical oversight; they send you clients who need root-cause integrative support.</p>
+
+  <p>The providers most likely to support this relationship are integrative MDs, osteopaths (DOs), naturopathic doctors (NDs where licensed), and functional medicine practitioners. These clinicians already operate within an integrative framework and understand the value of Ayurvedic care alongside conventional medicine.</p>
+
+  <p>When approaching a potential referral partner, lead with the client benefit — not the business arrangement. Explain what your clients typically present with, what your assessment process involves, and how your work complements their clinical care. Offer to share anonymised case notes or outcome data where appropriate. The relationship builds over time through shared clients and mutual trust.</p>
+
+  <h2>State-by-state variation — what you need to know</h2>
+
+  <p>The legal framework for non-licensed complementary health practitioners varies significantly by state. Understanding where you practise — and where your virtual clients are located — is essential. For virtual practices serving clients across multiple states, you are generally subject to the laws of the state where your client is located, not just where you are based.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="state-grid">
+    <div class="state-col protected">
+      <div class="state-col-label">Health Freedom States</div>
+      <h4>Stronger practitioner protections</h4>
+      <p>Eleven states have "Health Freedom" laws that explicitly protect non-licensed complementary health practitioners, provided they disclose their non-licensed status and do not represent themselves as medical professionals.</p>
+      <ul class="state-list">
+        <li>California</li>
+        <li>Minnesota</li>
+        <li>Rhode Island</li>
+        <li>Louisiana</li>
+        <li>Oklahoma</li>
+        <li>Idaho</li>
+        <li>New Mexico</li>
+        <li>Arkansas</li>
+        <li>North Dakota</li>
+        <li>Utah</li>
+        <li>Colorado</li>
+      </ul>
+    </div>
+    <div class="state-col unclear">
+      <div class="state-col-label">All Other States</div>
+      <h4>Less defined — more caution required</h4>
+      <p>In most states, there is no explicit legal framework protecting non-licensed complementary practitioners. Practice is not necessarily prohibited — but the legal risk is less clearly defined.</p>
+      <p>State medical boards have been known to take action against practitioners who stray into licensed medical territory. If you are practising in a state not listed, consulting a healthcare attorney familiar with complementary medicine regulation is a worthwhile investment.</p>
+      <p>Always verify current regulations in your specific state. Laws change, and NAMA's website maintains updated state-by-state guidance for members.</p>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>Informed consent — what it must say and why it protects you</h2>
+
+  <p>Regardless of your credential level, state, or payment structure, every Ayurvedic practitioner in the US should have clients sign a written informed consent document before the first session. A verbal agreement is not sufficient. The informed consent is both a legal protection and an ethical obligation — it ensures your client understands exactly what she is engaging with.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="consent-block">
+    <h4>What your informed consent document must include</h4>
+    <ul>
+      <li>A clear statement that you are not a licensed physician, nurse, or other regulated medical professional</li>
+      <li>A statement that Ayurvedic services are complementary and educational in nature — not a replacement for medical diagnosis or treatment</li>
+      <li>Clarification that you do not diagnose Western medical conditions and do not prescribe pharmaceutical drugs</li>
+      <li>A statement that the client is encouraged to continue working with their licensed healthcare providers and to disclose any Ayurvedic care to those providers</li>
+      <li>A description of what the service involves and what it does not involve</li>
+      <li>A statement that herbal supplements are not regulated as drugs by the FDA and that the client assumes responsibility for supplementation decisions</li>
+      <li>The client's signature and date, confirming they have read and understood the document</li>
+    </ul>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>Your informed consent is also directly relevant to HSA and FSA documentation. If your service description in the consent form is consistent with the service description in your superbill, and both are consistent with the LMN, you create a coherent paper trail that supports your client's reimbursement claim and protects you from any suggestion of misrepresentation.</p>
+
+  <h2>Turning financial clarity into a marketing advantage</h2>
+
+  <p>Most Ayurvedic practitioners either do not know this information or know it but do not communicate it. That is a missed opportunity. Adding a simple "Payment & Insurance" section to your website — explaining that clients may be able to use HSA or FSA funds with appropriate documentation, and that you provide detailed superbills to support reimbursement — signals professionalism, reduces financial objections, and differentiates you from practitioners who leave clients to figure it out themselves.</p>
+
+  <p>You do not need to become a billing expert. You need to understand the framework well enough to answer "can I use my HSA for this?" with a clear, helpful answer — and to have the documentation in place when the answer is yes. That clarity is part of what builds the trust that fills your practice.</p>
+
+  <p>For more on building that trust through positioning and communication, read our post on <a href="selecting-your-positioning.html">selecting your positioning as an integrative practitioner</a> and our guide on <a href="types-of-ayurvedic-practitioners.html">Ayurvedic credentials and what they signal to clients</a>.</p>
+
+</div>
+
+<div class="blog-post-nav">
+  <a href="types-of-ayurvedic-practitioners.html">← Types of Ayurvedic Practitioners</a>
+  <a href="index.html">All Articles →</a>
+</div>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Ready to build a practice<br>that converts and retains?</h2>
+    <p class="cta-sub">The financial and legal groundwork is one piece. The marketing system that brings clients to your door consistently is another. We build both — done for you.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "HSA, FSA & Insurance for Ayurvedic Practitioners — What You and Your Clients Need to Know",
+  "description": "A complete guide for Ayurvedic practitioners on insurance coverage, HSA and FSA eligibility, Letters of Medical Necessity, superbills, Truemed, and state-by-state variation.",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanka Aggarwal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Srav Health",
+    "url": "https://sravhealth.com"
+  },
+  "datePublished": "2026-02-26",
+  "mainEntityOfPage": "https://sravhealth.com/blog/hsa-fsa-insurance-ayurvedic-practitioners.html",
+  "keywords": ["Ayurveda HSA FSA", "can you use HSA for Ayurveda", "Ayurvedic practitioner superbill", "Letter of Medical Necessity Ayurveda", "Truemed Ayurveda", "Ayurveda insurance billing", "HSA FSA integrative medicine"]
+}
+</script>
+
+<script src="../main.js" defer></script>
+</body>
+</html>
