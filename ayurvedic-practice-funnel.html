@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ayurvedic Practice Funnel — How to Build It, Track It, and Know What Good Looks Like | Srav Health</title>
+<meta name="description" content="A practical guide to building and tracking a client funnel for Ayurvedic practitioners. Includes benchmark conversion rates, what good looks like at each stage, tool recommendations, and a real-world case study.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="../styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYrEPjuw.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"></noscript>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://sravhealth.com/blog/ayurvedic-practice-funnel.html">
+<style>
+  /* Funnel stages */
+  .funnel-wrap { margin: 40px 0; display: flex; flex-direction: column; gap: 2px; }
+  .funnel-stage { display: grid; grid-template-columns: 220px 1fr 180px; gap: 0; }
+  .funnel-stage-label { padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; }
+  .funnel-stage-label .fs-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .funnel-stage-label h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; margin: 0; line-height: 1.2; }
+  .funnel-stage.awareness .funnel-stage-label { background: var(--green); }
+  .funnel-stage.awareness .funnel-stage-label h4 { color: var(--ivory); }
+  .funnel-stage.consideration .funnel-stage-label { background: var(--green-mid, #3a6b4e); }
+  .funnel-stage.consideration .funnel-stage-label h4 { color: var(--ivory); }
+  .funnel-stage.conversion .funnel-stage-label { background: var(--navy-mid, #243657); }
+  .funnel-stage.conversion .funnel-stage-label h4 { color: var(--ivory); }
+  .funnel-stage.loyalty .funnel-stage-label { background: var(--navy); }
+  .funnel-stage.loyalty .funnel-stage-label h4 { color: var(--ivory); }
+  .funnel-stage-body { background: var(--ivory); padding: 24px 28px; }
+  .funnel-stage-body p { font-size: 12px; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .funnel-stage-body ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .funnel-stage-body ul li { font-size: 13px; color: var(--text-mid); padding-left: 14px; position: relative; line-height: 1.6; }
+  .funnel-stage-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; font-size: 10px; }
+  .funnel-stage-metric { background: var(--white); padding: 24px 20px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--border); }
+  .funnel-stage-metric .m-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+  .funnel-stage-metric .m-num { font-family: var(--font-serif); font-size: 26px; color: var(--navy); margin-bottom: 4px; }
+  .funnel-stage-metric .m-sub { font-size: 11px; color: var(--text-light); line-height: 1.5; }
+
+  /* Benchmark table */
+  .benchmark-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 12px; }
+  .benchmark-table th { background: var(--navy); color: var(--ivory); padding: 10px 16px; text-align: left; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400; }
+  .benchmark-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-mid); line-height: 1.6; vertical-align: top; }
+  .benchmark-table tr:nth-child(even) td { background: var(--ivory); }
+  .good { color: #2D5A3D; font-weight: 500; }
+  .ok { color: #8B6914; font-weight: 500; }
+  .low { color: #B94040; font-weight: 500; }
+
+  /* Leak blocks */
+  .leak-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 32px 0; }
+  .leak-card { padding: 28px 24px; background: var(--ivory); }
+  .leak-num { font-family: var(--font-display); font-size: 10px; letter-spacing: 3px; color: var(--gold); margin-bottom: 8px; }
+  .leak-card h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--navy); margin-bottom: 10px; }
+  .leak-card p { font-size: 13px; color: var(--text-mid); line-height: 1.75; margin-bottom: 8px; }
+  .leak-card p:last-child { margin-bottom: 0; }
+
+  /* Tools */
+  .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+  .tool-col { background: var(--ivory); padding: 28px 32px; }
+  .tool-col h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--navy); margin-bottom: 16px; }
+  .tool-row { display: flex; flex-direction: column; gap: 12px; }
+  .tool-item { padding: 12px 16px; background: var(--white); }
+  .tool-item-name { font-size: 12px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .tool-item-desc { font-size: 11px; color: var(--text-light); line-height: 1.5; }
+
+  /* Case study */
+  .case-study-funnel { background: var(--navy); padding: 40px; margin: 40px 0; }
+  .case-study-funnel .cs-header { margin-bottom: 32px; }
+  .case-study-funnel .cs-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .case-study-funnel h3 { font-family: var(--font-serif); font-size: 28px; font-weight: 400; color: var(--ivory); }
+  .case-study-funnel .cs-meta { display: flex; gap: 32px; margin-top: 16px; flex-wrap: wrap; }
+  .case-study-funnel .cs-meta-item { font-size: 12px; color: rgba(245,240,232,0.5); }
+  .case-study-funnel .cs-meta-item strong { color: var(--gold); display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; font-weight: 400; }
+  .funnel-journey { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+  .journey-step { display: grid; grid-template-columns: 32px 1fr; gap: 16px; align-items: start; }
+  .journey-arrow { color: var(--gold); font-size: 18px; padding-top: 2px; text-align: center; }
+  .journey-content h5 { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--ivory); margin-bottom: 4px; }
+  .journey-content p { font-size: 12px; color: rgba(245,240,232,0.65); line-height: 1.7; }
+  .journey-content .j-num { font-size: 11px; color: var(--gold); margin-top: 4px; }
+  .cs-results-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 28px; }
+  .cs-result-box { background: rgba(245,240,232,0.05); padding: 20px 16px; text-align: center; }
+  .cs-result-box .r-num { font-family: var(--font-serif); font-size: 28px; color: var(--gold); margin-bottom: 4px; }
+  .cs-result-box .r-label { font-size: 11px; color: rgba(245,240,232,0.5); line-height: 1.5; }
+
+  /* Build sequence */
+  .sequence { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .sequence-step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .sequence-step:last-child { border-bottom: none; }
+  .seq-num { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; color: var(--gold); padding-top: 3px; }
+  .seq-content h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
+  .seq-content p { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+
+  @media(max-width: 800px) {
+    .funnel-stage { grid-template-columns: 1fr; }
+    .funnel-stage-metric { border-left: none; border-top: 1px solid var(--border); }
+    .leak-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .cs-results-row { grid-template-columns: 1fr 1fr; }
+  }
+  @media(max-width: 500px) {
+    .cs-results-row { grid-template-columns: 1fr 1fr; }
+    .case-study-funnel { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger" aria-label="Modalities menu">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<!-- HEADER -->
+<div class="blog-post-header">
+  <div class="blog-post-header-inner">
+    <div class="section-label">Marketing Strategy</div>
+    <h1>The Ayurvedic Practice Funnel —<br>How to Build It, Track It,<br>and Know What Good Looks Like</h1>
+    <div class="post-meta">Srav Health · February 2026 · 16 min read</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="blog-post-body">
+
+  <p>A funnel is not a complicated thing. It is simply the path a person takes from first hearing about you to becoming a long-term client — and the system you have in place to guide her along that path without losing her at each step. For an Ayurvedic practitioner, that path is longer than in most health businesses, because the trust threshold is higher. Your potential client has likely never tried Ayurveda. She may be sceptical of anything that sounds too alternative. And she is making a health decision, not buying a product.</p>
+
+  <p>This means your funnel has to do more work than a typical service business funnel. It has to educate before it converts. It has to build trust before it asks for a booking. And it has to stay in touch with people who are interested but not yet ready — because the woman who downloads your lead magnet in January may be your best client in April, if you have stayed visible and credible in between.</p>
+
+  <p>This post covers the four stages of a funnel built for Ayurvedic practice, how to know what is actually happening at each stage, what good conversion rates look like, where most funnels leak, and the tools that make it manageable for a solo practitioner. It closes with a case study of how one practitioner in California built and tuned her funnel over six months.</p>
+
+  <h2>The four stages — and what belongs in each one</h2>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="funnel-wrap">
+
+    <div class="funnel-stage awareness">
+      <div class="funnel-stage-label">
+        <div class="fs-tag">Stage 01</div>
+        <h4>Awareness</h4>
+      </div>
+      <div class="funnel-stage-body">
+        <p>Assets that work here</p>
+        <ul>
+          <li>Blog posts targeting search queries ("Ayurveda for hormonal fatigue")</li>
+          <li>Instagram and TikTok educational content on symptoms</li>
+          <li>Google Business Profile — local search and reviews</li>
+          <li>Podcast appearances or guest articles</li>
+          <li>Referrals from MDs, yoga studios, therapists</li>
+        </ul>
+      </div>
+      <div class="funnel-stage-metric">
+        <div class="m-label">Track this</div>
+        <div class="m-num">Website visits</div>
+        <div class="m-sub">Profile views, blog page views, Google search impressions</div>
+      </div>
+    </div>
+
+    <div class="funnel-stage consideration">
+      <div class="funnel-stage-label">
+        <div class="fs-tag">Stage 02</div>
+        <h4>Consideration</h4>
+      </div>
+      <div class="funnel-stage-body">
+        <p>Assets that work here</p>
+        <ul>
+          <li>Lead magnet — Prakriti quiz, free guide, or short video series</li>
+          <li>Email welcome sequence (3–5 emails over 10 days)</li>
+          <li>Client testimonials and case stories on your website</li>
+          <li>FAQ content addressing common objections</li>
+          <li>Retargeting — staying visible to people who visited but did not book</li>
+        </ul>
+      </div>
+      <div class="funnel-stage-metric">
+        <div class="m-label">Track this</div>
+        <div class="m-num">Email sign-ups</div>
+        <div class="m-sub">Lead magnet downloads, email open rates, return website visits</div>
+      </div>
+    </div>
+
+    <div class="funnel-stage conversion">
+      <div class="funnel-stage-label">
+        <div class="fs-tag">Stage 03</div>
+        <h4>Conversion</h4>
+      </div>
+      <div class="funnel-stage-body">
+        <p>Assets that work here</p>
+        <ul>
+          <li>Free 20-minute discovery call — removes risk from first step</li>
+          <li>Clear, simple booking page with minimal friction</li>
+          <li>Introductory package or first consultation offer</li>
+          <li>Automated reminder emails after someone visits booking page</li>
+          <li>Social proof on booking page — reviews, outcome stats</li>
+        </ul>
+      </div>
+      <div class="funnel-stage-metric">
+        <div class="m-label">Track this</div>
+        <div class="m-num">Bookings</div>
+        <div class="m-sub">Discovery calls booked, first consultations completed, conversion rate</div>
+      </div>
+    </div>
+
+    <div class="funnel-stage loyalty">
+      <div class="funnel-stage-label">
+        <div class="fs-tag">Stage 04</div>
+        <h4>Loyalty & Advocacy</h4>
+      </div>
+      <div class="funnel-stage-body">
+        <p>Assets that work here</p>
+        <ul>
+          <li>Monthly wellness newsletter with seasonal content</li>
+          <li>Automated between-visit check-in messages</li>
+          <li>Seasonal detox or group program invitations</li>
+          <li>Review request 2–3 weeks after first consultation</li>
+          <li>Referral ask — "know someone who would benefit?"</li>
+        </ul>
+      </div>
+      <div class="funnel-stage-metric">
+        <div class="m-label">Track this</div>
+        <div class="m-num">Retention</div>
+        <div class="m-sub">Rebooking rate, reviews generated, referrals received</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>How to actually know the numbers at each stage</h2>
+
+  <p>The first question most practitioners ask is: where do I even find these numbers? The answer is simpler than it sounds — you probably already have access to most of what you need. You just have not set it up to read it clearly yet.</p>
+
+  <p><strong>Awareness numbers</strong> come from <a href="https://analytics.google.com" target="_blank" rel="noopener noreferrer">Google Analytics</a> (free, takes 15 minutes to install on your website) and from the native insights in Instagram and LinkedIn. Look at monthly website visitors, which blog posts drive the most traffic, and which search terms people use to find you in Google Search Console (also free).</p>
+
+  <p><strong>Consideration numbers</strong> come from your email platform — open rate, click rate, and how many people downloaded your lead magnet. If you do not have an email list yet, this is the first thing to build. Even 50 engaged subscribers is a meaningful funnel asset.</p>
+
+  <p><strong>Conversion numbers</strong> come from your booking tool — Calendly, Acuity, or whatever you use. How many people booked a discovery call this month? Of those, how many became paying clients? That ratio is your discovery-call conversion rate and it is one of the most important numbers in your practice.</p>
+
+  <p><strong>Retention numbers</strong> come from your own records. How many of your clients from last quarter are still active? How many rebooked within 30 days of their first session? How many reviews have you received this month? These are simple counts — you do not need a CRM to track them at first. A spreadsheet updated monthly is sufficient.</p>
+
+  <h2>What good looks like — benchmarks by stage</h2>
+
+  <p>These benchmarks are based on typical performance ranges for solo integrative health practitioners. They are not targets to hit immediately — they are reference points that help you diagnose where your funnel needs attention. A practitioner with strong awareness but weak conversion has a different problem than one with strong conversion but weak awareness.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <table class="benchmark-table">
+    <thead>
+      <tr>
+        <th>Stage & Metric</th>
+        <th>Starting Out</th>
+        <th>Developing</th>
+        <th>Strong</th>
+        <th>What it means if you're low</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Monthly website visitors</strong></td>
+        <td class="low">Under 200</td>
+        <td class="ok">200–800</td>
+        <td class="good">800+</td>
+        <td>Awareness problem — content volume, SEO, or referral network needs investment</td>
+      </tr>
+      <tr>
+        <td><strong>Lead magnet conversion</strong><br><span style="font-size:11px;color:var(--text-light)">Visitors who sign up</span></td>
+        <td class="low">Under 2%</td>
+        <td class="ok">2–5%</td>
+        <td class="good">5–10%</td>
+        <td>Lead magnet is not compelling enough, or landing page is unclear</td>
+      </tr>
+      <tr>
+        <td><strong>Email open rate</strong></td>
+        <td class="low">Under 20%</td>
+        <td class="ok">20–35%</td>
+        <td class="good">35–50%</td>
+        <td>Subject lines, send frequency, or list quality needs review</td>
+      </tr>
+      <tr>
+        <td><strong>Discovery call booking rate</strong><br><span style="font-size:11px;color:var(--text-light)">Email subscribers who book</span></td>
+        <td class="low">Under 3%</td>
+        <td class="ok">3–8%</td>
+        <td class="good">8–15%</td>
+        <td>Nurture sequence not building enough trust, or booking process has friction</td>
+      </tr>
+      <tr>
+        <td><strong>Discovery call to client</strong><br><span style="font-size:11px;color:var(--text-light)">Calls that convert to paid</span></td>
+        <td class="low">Under 30%</td>
+        <td class="ok">30–50%</td>
+        <td class="good">50–70%</td>
+        <td>Positioning on the call, offer clarity, or fit of leads coming in</td>
+      </tr>
+      <tr>
+        <td><strong>Client rebooking rate</strong><br><span style="font-size:11px;color:var(--text-light)">Clients who book a second session</span></td>
+        <td class="low">Under 40%</td>
+        <td class="ok">40–65%</td>
+        <td class="good">65–85%</td>
+        <td>Follow-up system, continuity of care, or first session experience needs work</td>
+      </tr>
+      <tr>
+        <td><strong>Referral rate</strong><br><span style="font-size:11px;color:var(--text-light)">Clients who refer someone</span></td>
+        <td class="low">Under 10%</td>
+        <td class="ok">10–25%</td>
+        <td class="good">25%+</td>
+        <td>Outcomes need to be stronger, or you are not making it easy to refer</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>Where Ayurvedic practice funnels most commonly leak</h2>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="leak-grid">
+    <div class="leak-card">
+      <div class="leak-num">LEAK 01</div>
+      <h4>People visit once and never come back</h4>
+      <p>Someone finds your Instagram or your blog, reads one post, and leaves. You never see them again. This is the most common leak — and the most fixable. The solution is a compelling reason to stay in touch: a lead magnet that captures their email, or retargeting that keeps you visible after they leave your site.</p>
+      <p>Retargeting works by showing a small reminder ad to people who visited your website but did not book. It does not need to be expensive — even a modest budget on Instagram or Google keeps you front of mind for people who were interested but not yet ready. This is one of the highest-return uses of a small marketing budget for a solo practitioner.</p>
+    </div>
+    <div class="leak-card">
+      <div class="leak-num">LEAK 02</div>
+      <h4>Leads go cold between interest and booking</h4>
+      <p>Someone downloads your lead magnet or follows you on Instagram, and then six weeks pass with no contact. They forget you exist. By the time they are ready to book, they have found someone else who stayed visible.</p>
+      <p>The fix is a simple automated email sequence — three to five emails over ten days after someone joins your list. Not promotional emails. Educational, useful, trust-building emails that demonstrate your expertise and remind her why she came to you in the first place. Set it up once; it runs forever.</p>
+    </div>
+    <div class="leak-card">
+      <div class="leak-num">LEAK 03</div>
+      <h4>Clients do not rebook after the first session</h4>
+      <p>The first session goes well, but there is no clear next step communicated, no follow-up message, no between-visit check-in. The client drifts. She meant to rebook but life got busy. Three months later she has not come back.</p>
+      <p>The fix is a simple post-session flow: a follow-up message 48 hours after the session, a check-in at two weeks, and a reminder at four weeks if she has not rebooked. This is not pushy — it is good clinical care. Clients who feel followed up on feel cared for. That is the relationship that drives retention and referrals.</p>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>A note on retargeting — staying visible without being intrusive</h2>
+
+  <p>Retargeting deserves its own mention because it is the most underused tool in a solo practitioner's marketing toolkit. The concept is simple: when someone visits your website, a small piece of code (a pixel) notes the visit. You can then show that person a reminder post or ad on Instagram or Google for the next 30–60 days — keeping you visible while she decides.</p>
+
+  <p>For a solo practitioner, you do not need a complicated setup. Installing the Meta Pixel on your website (free, takes 20 minutes with a guide) and running a small retargeting audience on Instagram is enough to meaningfully reduce the rate at which interested visitors disappear. Combined with your email sequence, it creates two parallel channels keeping you top of mind — one for people who gave you their email, one for people who did not.</p>
+
+  <p>Managing this kind of integrated system — where your website, email, retargeting, and booking flow all work together without gaps — is exactly the kind of infrastructure that takes time to build but runs largely on its own once it is in place. It is also one of the core things we build for practitioners at Srav Health, so if the technical side feels like too much to manage alongside clinical work, <a href="../how-we-work.html">it does not have to be your problem to solve alone</a>.</p>
+
+  <h2>Tools — what to use and when</h2>
+
+  <p>The right tools depend on where you are. Starting out, the priority is simplicity — one tool that does enough, not five tools that create complexity. As your practice grows, you can layer in more capability. Below are the tools worth knowing about, organised by what they do.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="tools-grid">
+    <div class="tool-col">
+      <h4>Starting out — keep it simple</h4>
+      <div class="tool-row">
+        <div class="tool-item">
+          <div class="tool-item-name">ConvertKit (now Kit)</div>
+          <div class="tool-item-desc">Email list, lead magnet delivery, and simple automation sequences. Free up to 1,000 subscribers. The easiest starting point for email.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-item-name">Calendly or Acuity Scheduling</div>
+          <div class="tool-item-desc">Booking page with intake forms and automated reminders. Acuity has slightly more customisation; Calendly is simpler. Either works.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-item-name">Google Analytics + Search Console</div>
+          <div class="tool-item-desc">Free website traffic tracking. Install both on day one — you will need the historical data later even if you do not look at it now.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-item-name">Google Business Profile</div>
+          <div class="tool-item-desc">Free local presence tool. Critical for in-person practices in SF, Austin, or any city market. Set it up and keep it updated.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tool-col">
+      <h4>As you grow — add capability</h4>
+      <div class="tool-row">
+        <div class="tool-item">
+          <div class="tool-item-name">ActiveCampaign</div>
+          <div class="tool-item-desc">More advanced email automation and CRM. Worth upgrading to when your list passes 500 and you want more sophisticated sequences and tagging.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-item-name">Systeme.io</div>
+          <div class="tool-item-desc">Budget-friendly all-in-one: landing pages, email, course hosting, and basic funnels. Good option if you want one platform before committing to a full stack.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-item-name">Kajabi</div>
+          <div class="tool-item-desc">Best for practitioners launching group programs or online courses alongside consultations. Handles course delivery, email, and community in one place.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-item-name">AyurGrid or VaidyaManager</div>
+          <div class="tool-item-desc">Ayurveda-specific practice management tools. Useful for clinical documentation, Dosha-based protocols, and client records as your practice scales.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>Case study — Sarah Mitchell, Ayurvedic Practitioner, Bay Area, California</h2>
+
+  <p style="font-size:12px;color:var(--text-light);font-style:italic;">This is an illustrative case study based on real funnel patterns from Ayurvedic practices in urban US markets. Names and specific details are representative, not drawn from a single individual.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="case-study-funnel">
+    <div class="cs-header">
+      <div class="cs-tag">Case Study</div>
+      <h3>From inconsistent inquiries to a predictable client pipeline in 5 months</h3>
+      <div class="cs-meta">
+        <div class="cs-meta-item"><strong>Practitioner</strong>Sarah Mitchell, AP (NAMA Level II)</div>
+        <div class="cs-meta-item"><strong>Location</strong>Oakland, California (in-person + virtual)</div>
+        <div class="cs-meta-item"><strong>Focus</strong>Women's hormonal health, perimenopause</div>
+        <div class="cs-meta-item"><strong>Starting point</strong>12 active clients, no email list, no lead magnet</div>
+      </div>
+    </div>
+
+    <div class="funnel-journey">
+
+      <div class="journey-step">
+        <div class="journey-arrow">→</div>
+        <div class="journey-content">
+          <h5>Month 1 — Awareness foundation</h5>
+          <p>Sarah had been posting on Instagram sporadically for two years with no clear theme. The first step was narrowing her content to one topic: perimenopause through an Ayurvedic lens. She published two blog posts optimised for search ("Ayurveda for perimenopause symptoms" and "why Vata increases in your 40s") and updated her Google Business Profile with a clear description of her specialisation. She installed Google Analytics for the first time.</p>
+          <div class="j-num">Result: website visitors up from ~60/month to 190/month by end of month 1</div>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-arrow">→</div>
+        <div class="journey-content">
+          <h5>Month 2 — Consideration layer</h5>
+          <p>Sarah created a simple lead magnet: a two-page PDF called "The Perimenopause & Vata Guide — 5 Ayurvedic practices for the transition years." She set up a free ConvertKit account, added a sign-up form to her website, and wrote a three-email welcome sequence that went out over ten days. The emails covered what Ayurveda actually is, what a first consultation looks like, and a client story (anonymised). She also installed the Meta Pixel on her website to enable retargeting later.</p>
+          <div class="j-num">Result: 34 email sign-ups in the first 6 weeks. Open rate on welcome sequence: 48%</div>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-arrow">→</div>
+        <div class="journey-content">
+          <h5>Month 3 — Conversion clarity</h5>
+          <p>Sarah's booking page had been a paragraph of text with a Calendly link buried at the bottom. She rewrote it around the discovery call — what it involves, what to expect, and three short client quotes. She moved the booking button to the top and added a FAQ addressing the two most common objections she heard ("Is this covered by insurance?" and "I've never tried Ayurveda — is this right for me?"). She also set up a simple retargeting campaign on Instagram targeting website visitors who had not booked, with a budget of $5 per day.</p>
+          <div class="j-num">Result: Discovery calls booked per month went from 2–3 to 7–9. Retargeting drove approximately 30% of those bookings.</div>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="journey-arrow">→</div>
+        <div class="journey-content">
+          <h5>Months 4–5 — Retention and referral</h5>
+          <p>Sarah added two simple automated messages to her post-session flow: a check-in email 48 hours after each consultation ("How are you feeling after your session? Here is your protocol summary") and a rebooking reminder at three weeks if the client had not yet scheduled a follow-up. At the six-week mark after a client's first session, she sent a one-line message asking if they knew anyone who might benefit. She also asked clients for Google reviews at the right moment — after they mentioned a positive change, not at a fixed time interval.</p>
+          <div class="j-num">Result: Rebooking rate improved from 38% to 67%. Google reviews went from 4 to 19 over 8 weeks.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cs-results-row">
+      <div class="cs-result-box">
+        <div class="r-num">12→26</div>
+        <div class="r-label">Active clients over 5 months</div>
+      </div>
+      <div class="cs-result-box">
+        <div class="r-num">67%</div>
+        <div class="r-label">Rebooking rate (up from 38%)</div>
+      </div>
+      <div class="cs-result-box">
+        <div class="r-num">340+</div>
+        <div class="r-label">Email subscribers by month 5</div>
+      </div>
+      <div class="cs-result-box">
+        <div class="r-num">4.9★</div>
+        <div class="r-label">Google rating, 19 reviews</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>The thing to notice about Sarah's journey is that none of the individual steps were complicated. A lead magnet PDF. A three-email welcome sequence. A rewritten booking page. A small retargeting budget. Post-session check-in emails. The power was not in any single piece — it was in having all four stages of the funnel covered, so that interested people stopped falling out of the system at every turn.</p>
+
+  <h2>Your funnel build sequence — what to do first</h2>
+
+  <p>If you are starting from scratch, do not try to build everything at once. Build in this sequence, completing each step before moving to the next. The whole foundation can be in place within six to eight weeks if you allocate two to three hours per week to it.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="sequence">
+    <div class="sequence-step">
+      <div class="seq-num">FIRST</div>
+      <div class="seq-content">
+        <h4>Install Google Analytics and Search Console</h4>
+        <p>Free, takes one afternoon, gives you baseline data you will need in three months to see what is working. Do this before anything else — you cannot measure what you did not track from the start.</p>
+      </div>
+    </div>
+    <div class="sequence-step">
+      <div class="seq-num">SECOND</div>
+      <div class="seq-content">
+        <h4>Create one lead magnet and set up an email list</h4>
+        <p>A single well-chosen PDF or quiz — something genuinely useful to your ideal client — and a free ConvertKit account. Write three welcome emails. This is your consideration layer and the asset that turns visitors into people you can stay in touch with.</p>
+      </div>
+    </div>
+    <div class="sequence-step">
+      <div class="seq-num">THIRD</div>
+      <div class="seq-content">
+        <h4>Rewrite your booking page</h4>
+        <p>Make the discovery call the first step. Move the booking button to the top. Add two or three client quotes. Answer the two most common objections your ideal client has. This is the highest-leverage single page on your website — it deserves more attention than most practitioners give it.</p>
+      </div>
+    </div>
+    <div class="sequence-step">
+      <div class="seq-num">FOURTH</div>
+      <div class="seq-content">
+        <h4>Set up post-session follow-up messages</h4>
+        <p>A 48-hour check-in and a three-week rebooking reminder. Two emails, set up once in your email platform, triggered automatically after each session. This single step typically improves rebooking rates by 20–30 percentage points.</p>
+      </div>
+    </div>
+    <div class="sequence-step">
+      <div class="seq-num">FIFTH</div>
+      <div class="seq-content">
+        <h4>Install the Meta Pixel and start a small retargeting campaign</h4>
+        <p>Once you have 100+ monthly website visitors, retargeting is worth adding. A small daily budget on Instagram keeps you visible to people who have already shown interest. Combined with your email sequence, it closes the most common leak in the awareness-to-consideration stage.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>Review your funnel numbers every four weeks. Not every day — that leads to reactive decisions based on too little data. At four weeks you have enough signal to see what is working and where to focus next. For a structured approach to that review, read our post on <a href="content-strategy-ayurvedic-practitioners.html">content strategy and the monthly metrics review</a> — the content and funnel reviews work best when done together.</p>
+
+  <p>The funnel is not a set-and-forget system. It is a living structure that improves as you learn more about where your best clients come from and what makes them commit. Start simple, stay consistent, and measure the right things. The compound effect of a well-maintained funnel over twelve months is the difference between a practice that grows and one that stays stuck.</p>
+
+  <p>For more on the positioning that makes every stage of your funnel more effective, read our post on <a href="selecting-your-positioning.html">selecting your positioning as an integrative practitioner</a> — a clear positioning statement is the foundation that makes your lead magnet compelling, your emails trusted, and your discovery call conversion high.</p>
+
+</div>
+
+<div class="blog-post-nav">
+  <a href="content-strategy-ayurvedic-practitioners.html">← Content Strategy</a>
+  <a href="index.html">All Articles →</a>
+</div>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Want the funnel built for you?</h2>
+    <p class="cta-sub">Lead magnet, email sequences, booking page, retargeting, post-session follow-up — we build the whole system and manage it alongside your content. You stay focused on clients.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Ayurvedic Practice Funnel — How to Build It, Track It, and Know What Good Looks Like",
+  "description": "A practical guide to building and tracking a client funnel for Ayurvedic practitioners. Includes benchmark conversion rates, what good looks like at each stage, tool recommendations, and a case study.",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanka Aggarwal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Srav Health",
+    "url": "https://sravhealth.com"
+  },
+  "datePublished": "2026-02-27",
+  "mainEntityOfPage": "https://sravhealth.com/blog/ayurvedic-practice-funnel.html",
+  "keywords": ["Ayurvedic practice marketing funnel", "how to get more Ayurveda clients", "wellness practice client funnel", "integrative health lead generation", "Ayurveda email marketing", "holistic health practice conversion rate"]
+}
+</script>
+
+<script src="../main.js" defer></script>
+</body>
+</html>
