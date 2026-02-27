@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Strategy for Ayurvedic Practitioners — How to Build a Voice, Own a Topic, and Fill Your Practice | Srav Health</title>
+<meta name="description" content="A complete content strategy framework for Ayurvedic and integrative practitioners. Build difference first, then meaning, then authority, then salience. Includes a content calendar, EEAT guide, and 4-week metrics review.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="../styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYrEPjuw.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"></noscript>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://sravhealth.com/blog/content-strategy-ayurvedic-practitioners.html">
+<style>
+  /* Framework stages */
+  .framework-stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin: 40px 0; }
+  .framework-stage { padding: 28px 24px; text-align: center; }
+  .framework-stage.s1 { background: var(--green); }
+  .framework-stage.s2 { background: var(--green-mid); }
+  .framework-stage.s3 { background: var(--navy-mid); }
+  .framework-stage.s4 { background: var(--navy); }
+  .stage-num { font-family: var(--font-display); font-size: 10px; letter-spacing: 3px; color: var(--gold); margin-bottom: 10px; }
+  .stage-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--ivory); margin-bottom: 8px; line-height: 1.2; }
+  .stage-sub { font-size: 11px; color: rgba(245,240,232,0.6); line-height: 1.6; }
+
+  /* Voice homework */
+  .homework-block { background: var(--ivory); padding: 36px 40px; margin: 32px 0; }
+  .homework-block h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 20px; }
+  .homework-q { display: flex; flex-direction: column; gap: 20px; }
+  .homework-item { padding: 20px 24px; background: var(--white); border-left: 3px solid var(--gold); }
+  .homework-item p { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 6px; line-height: 1.5; }
+  .homework-item span { font-size: 12px; color: var(--text-light); line-height: 1.6; font-style: italic; }
+
+  /* EEAT table */
+  .eeat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin: 32px 0; }
+  .eeat-col { padding: 24px 20px; background: var(--ivory); }
+  .eeat-letter { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-bottom: 4px; }
+  .eeat-word { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 12px; }
+  .eeat-col h4 { font-family: var(--font-serif); font-size: 16px; font-weight: 400; color: var(--navy); margin-bottom: 10px; }
+  .eeat-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .eeat-col ul li { font-size: 12px; color: var(--text-mid); padding-left: 14px; position: relative; line-height: 1.5; }
+  .eeat-col ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; font-size: 10px; }
+
+  /* Calendar */
+  .calendar-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 12px; }
+  .calendar-table th { background: var(--navy); color: var(--ivory); padding: 10px 14px; text-align: left; font-family: var(--font-sans); font-weight: 400; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .calendar-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-mid); vertical-align: top; line-height: 1.6; }
+  .calendar-table tr:nth-child(even) td { background: var(--ivory); }
+  .calendar-table .week-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; color: var(--gold); white-space: nowrap; }
+  .tag { display: inline-block; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; margin-right: 4px; }
+  .tag-e { background: rgba(45,90,61,0.1); color: var(--green); }
+  .tag-a { background: rgba(27,42,74,0.1); color: var(--navy); }
+  .tag-t { background: rgba(196,163,90,0.15); color: #8B6914; }
+
+  /* Six principles */
+  .principles { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .principle { display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .principle:last-child { border-bottom: none; }
+  .principle-num { font-family: var(--font-display); font-size: 28px; color: var(--gold); opacity: 0.5; line-height: 1; padding-top: 4px; }
+  .principle-content h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 8px; }
+  .principle-content p { font-size: 13px; line-height: 1.8; color: var(--text-mid); }
+
+  /* Metrics */
+  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+  .metrics-col { padding: 28px 32px; background: var(--ivory); }
+  .metrics-col h4 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--navy); margin-bottom: 16px; }
+  .metrics-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .metrics-col ul li { font-size: 13px; color: var(--text-mid); padding-left: 20px; position: relative; line-height: 1.6; }
+  .metrics-col ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 11px; top: 1px; }
+
+  @media(max-width: 700px) {
+    .framework-stages { grid-template-columns: 1fr 1fr; }
+    .eeat-grid { grid-template-columns: 1fr 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .calendar-table { font-size: 11px; }
+    .calendar-table th, .calendar-table td { padding: 8px 10px; }
+  }
+  @media(max-width: 480px) {
+    .framework-stages { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger" aria-label="Modalities menu">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<!-- HEADER -->
+<div class="blog-post-header">
+  <div class="blog-post-header-inner">
+    <div class="section-label">Marketing Strategy</div>
+    <h1>Content Strategy for<br>Ayurvedic Practitioners —<br>Build a Voice, Own a Topic,<br>Fill Your Practice</h1>
+    <div class="post-meta">Srav Health · February 2026 · 18 min read</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="blog-post-body">
+
+  <p>Most Ayurvedic practitioners who struggle with content are not struggling because they have nothing to say. They are struggling because they are doing the steps in the wrong order. They open Instagram, think "what should I post today," reach for a trending sound or a generic tip about warm water and lemon, and wonder why three months of posting has not moved the needle on inquiries.</p>
+
+  <p>The problem is not effort. The problem is sequence. Content that converts — content that actually brings the right woman to your door and makes her feel certain that you are the right practitioner for her — requires four things to be built in a specific order. Build them out of order and you are burning time on content that looks busy but does nothing.</p>
+
+  <p>This post walks through that sequence, gives you the homework to find your voice before you write a single post, explains what EEAT means for your practice and how to use it, gives you a working content calendar framework, and closes with the six principles that sit underneath all of it. We will cover funnel tracking and metrics management in a separate post — but we will introduce what to measure and when at the end of this one.</p>
+
+  <h2>The framework — four stages, in order</h2>
+
+  <p>Before channels. Before calendars. Before posting frequency. These four stages, built in sequence, are what separate practitioners whose content compounds over time from those who post for six months and give up.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="framework-stages">
+    <div class="framework-stage s1">
+      <div class="stage-num">STAGE 01</div>
+      <div class="stage-title">Build Difference</div>
+      <div class="stage-sub">Your unique voice and point of view on a specific topic. This is what makes you worth following.</div>
+    </div>
+    <div class="framework-stage s2">
+      <div class="stage-num">STAGE 02</div>
+      <div class="stage-title">Build Meaning</div>
+      <div class="stage-sub">Connect your voice to a specific audience's specific pain. Difference without meaning is interesting but not useful.</div>
+    </div>
+    <div class="framework-stage s3">
+      <div class="stage-num">STAGE 03</div>
+      <div class="stage-title">Build Authority</div>
+      <div class="stage-sub">Evidence, proof points, borrowed credibility. Now your voice is both differentiated and trustworthy.</div>
+    </div>
+    <div class="framework-stage s4">
+      <div class="stage-num">STAGE 04</div>
+      <div class="stage-title">Build Salience</div>
+      <div class="stage-sub">Now add channels and volume. Salience is the result of stages one through three — not the starting point.</div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>Most practitioners skip to Stage 4 immediately. They add channels — Instagram, a newsletter, maybe TikTok — before they have established difference, meaning, or authority. The result is high volume, low impact content. Posting more of nothing faster does not build a practice.</p>
+
+  <p>Difference is the most important stage and the one most practitioners rush past. It is also the hardest — because it requires you to know what you actually think, not just what your tradition says. Your tradition is your foundation. Your point of view is what makes you worth following within it.</p>
+
+  <h2>Stage 1 — Building difference: finding your unique voice</h2>
+
+  <p>Your voice is not your branding. It is not your colour palette or your font choice or whether you use Sans or Serif. Your voice is your specific perspective on a specific topic — the thing you would say in a room full of Ayurvedic practitioners that would make some of them nod vigorously and others shift uncomfortably. That tension is the signal. That is where your difference lives.</p>
+
+  <p>Finding it requires homework. Not keyword research — not yet. Personal homework first. The keyword research comes later and sharpens the positioning, but it cannot create the perspective. Only you can do that.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="homework-block">
+    <h4>The voice homework — four questions to answer before you post anything</h4>
+    <div class="homework-q">
+      <div class="homework-item">
+        <p>Why did you start this practice? Not the polished version — the real one.</p>
+        <span>Were you failed by conventional medicine yourself? Did you watch someone you love suffer unnecessarily? Did you discover Ayurveda at a specific moment and feel something shift? The real answer to this question contains the emotional core of your brand. It is what makes you human and memorable rather than credential-forward and forgettable.</span>
+      </div>
+      <div class="homework-item">
+        <p>Who would you serve first if you could choose anyone — one specific person?</p>
+        <span>Not a demographic. A person. She is 38, she has been to four doctors in two years, she has been told her labs are normal but she wakes up exhausted and goes to bed anxious, and she is starting to wonder if this is just what her life is now. The more specifically you can see her, the more precisely you can speak to her. Write her down.</span>
+      </div>
+      <div class="homework-item">
+        <p>What do you believe about your field that most practitioners in it wouldn't say publicly?</p>
+        <span>This is the hardest question and the most important one. It might be that the wellness industry has commodified Ayurveda into something unrecognisable. It might be that most practitioners are hiding behind Sanskrit because they are afraid to make specific claims. It might be that the Western obsession with gut health is actually an Ayurvedic conversation that nobody has named yet. Find the thing you believe that creates productive friction. That is your point of view.</span>
+      </div>
+      <div class="homework-item">
+        <p>What is the one transformation your best clients describe after working with you?</p>
+        <span>Not what you did clinically — what they experienced. "I stopped waking up at 3am." "I finally understand why I feel the way I feel." "I have energy again for the first time in years." This language, in their words, is the most powerful content brief you will ever have.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>Once you have answered these four questions, you have the raw material for your voice. Now marry it with data. Use <a href="https://ads.google.com/home/tools/keyword-planner/" target="_blank" rel="noopener noreferrer">Google Keyword Planner</a> to find the high-volume, low-competition search terms in your niche — not to tell you what to say, but to tell you which version of what you already want to say has the most people searching for it. "Ayurveda for hormonal fatigue" and "Ayurveda for perimenopause" might both be authentic to your practice — the keyword data helps you decide which one to lead with.</p>
+
+  <h2>Stage 2 — Building meaning: connecting voice to audience pain</h2>
+
+  <p>Difference without meaning is interesting but not actionable. A practitioner who has a sharp, distinctive point of view about Ayurvedic care but never connects it to what her ideal client is actually experiencing will attract followers but not clients. Meaning is the bridge between your perspective and her problem.</p>
+
+  <p>Building meaning means consistently answering one implicit question in your content: "what does this mean for me?" Every post, every article, every video should make the answer to that question obvious. You are not posting about Vata imbalance — you are posting about why she cannot sleep, why she is cold all the time, why her anxiety spikes in autumn. The Ayurvedic framework is the answer. Her lived experience is the question. Always start with the question.</p>
+
+  <h2>Stage 3 — Building authority: EEAT and borrowed credibility</h2>
+
+  <p>Google's framework for evaluating content quality is called EEAT — Experience, Expertise, Authoritativeness, and Trustworthiness. It was designed for search ranking, but it is a useful framework for thinking about practitioner content more broadly, because it maps almost exactly to what a prospective client is assessing when she decides whether to trust you.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="eeat-grid">
+    <div class="eeat-col">
+      <div class="eeat-letter">E</div>
+      <div class="eeat-word">Experience</div>
+      <h4>What you have lived and done</h4>
+      <ul>
+        <li>Client case studies and outcomes</li>
+        <li>Your own health journey</li>
+        <li>Years in clinical practice</li>
+        <li>"In my practice, I see..." content</li>
+        <li>Before/after client stories (with consent)</li>
+      </ul>
+    </div>
+    <div class="eeat-col">
+      <div class="eeat-letter">E</div>
+      <div class="eeat-word">Expertise</div>
+      <h4>What you have trained in</h4>
+      <ul>
+        <li>Your NAMA credential level</li>
+        <li>Specific clinical training areas</li>
+        <li>Continuing education and specialisations</li>
+        <li>Deep-dive posts on your methodology</li>
+        <li>Translating clinical knowledge accessibly</li>
+      </ul>
+    </div>
+    <div class="eeat-col">
+      <div class="eeat-letter">A</div>
+      <div class="eeat-word">Authoritativeness</div>
+      <h4>What others say about you</h4>
+      <ul>
+        <li>Client testimonials and reviews</li>
+        <li>Mentions in publications or podcasts</li>
+        <li>Referrals from MDs or other clinicians</li>
+        <li>Guest posts on authority sites</li>
+        <li>Citing published research in your content</li>
+      </ul>
+    </div>
+    <div class="eeat-col">
+      <div class="eeat-letter">T</div>
+      <div class="eeat-word">Trustworthiness</div>
+      <h4>What makes you safe to trust</h4>
+      <ul>
+        <li>Transparency about your credentials</li>
+        <li>Clear scope of practice language</li>
+        <li>Honest about what Ayurveda can and cannot do</li>
+        <li>Consistent, verifiable information</li>
+        <li>Privacy and consent practices</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>You do not need to build all four dimensions simultaneously. In the early stages of your content practice, focus on Experience and Trustworthiness — these are the most immediately accessible and the most conversion-relevant. Authoritativeness builds over time as you accumulate testimonials, referrals, and media mentions. Expertise is demonstrated through the depth and specificity of your content.</p>
+
+  <p>One important note on borrowing credibility legitimately: citing published research, referencing peer-reviewed studies, or linking to authoritative sources like <a href="https://www.ncbi.nlm.nih.gov/pubmed/" target="_blank" rel="noopener noreferrer">PubMed</a> or <a href="https://www.ayurvedanama.org" target="_blank" rel="noopener noreferrer">NAMA</a> in your content signals that your perspective is grounded in evidence, not just tradition. This is particularly important for the health-literate, science-informed women who are your best-fit clients. They are not sceptical of Ayurveda — but they want to know you take evidence seriously.</p>
+
+  <h2>Stage 4 — Building salience: now add channels</h2>
+
+  <p>Salience is the quality of being present in someone's mind when they are ready to make a decision. It is built through repetition across multiple touchpoints over time. It is not built through a single viral post or a well-timed reel. It accumulates — and it can only accumulate if what you are repeating is differentiated, meaningful, and authoritative. This is why salience is Stage 4, not Stage 1.</p>
+
+  <p>Once you have your voice, your audience clarity, and your authority markers in place, the question of channels becomes much simpler. You are not asking "should I be on TikTok?" You are asking "where does the specific woman I described in my voice homework spend her time, and what format of content serves her best in that space?" The answer to that question points directly to the channels worth investing in — and just as importantly, the ones worth ignoring for now.</p>
+
+  <h2>The repetition principle — you will tire of your content long before your audience does</h2>
+
+  <p>This is one of the most important things to internalise before you start building your calendar. The content you are sick of — the post you have written three different versions of, the theme you feel like you have covered — is almost certainly the content your audience most needs to hear again. Not because they are not paying attention. Because content does not work the way we think it does.</p>
+
+  <p>A person needs to encounter an idea multiple times, in multiple formats, across multiple contexts before it becomes actionable for them. The first time they see your post about hormonal fatigue and Vata imbalance, they scroll past. The second time, they slow down. The third time, they save it. The fourth time, they send it to a friend. The fifth time, they book a consultation.</p>
+
+  <p>Your job is not to keep creating new ideas. Your job is to keep finding new angles, new formats, and new entry points into the same core ideas — the ones that are true to your voice and meaningful to your audience. The calendar structure below is built around this principle.</p>
+
+  <h2>The content calendar framework</h2>
+
+  <p>A good content calendar for an Ayurvedic practitioner organises three things: content type (what kind of content it is), topic or theme (what it is about), and channel (where it lives). Below is a four-week example calendar built around a practitioner specialising in women's hormonal health. Adapt it to your niche, your credential level, and the channels you have committed to.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <table class="calendar-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Content Type & EEAT</th>
+        <th>Topic / Theme</th>
+        <th>Format</th>
+        <th>Channel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="week-label" rowspan="3">WEEK 1<br><span style="font-size:9px;opacity:0.5;letter-spacing:0">Difference</span></td>
+        <td><span class="tag tag-e">Experience</span> Point of view</td>
+        <td>Why your clients are exhausted — the Vata explanation most doctors miss</td>
+        <td>Long-form post or article</td>
+        <td>Blog + LinkedIn</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">Trust</span> Credential</td>
+        <td>What it actually means to be a NAMA-certified Ayurvedic Practitioner</td>
+        <td>Short-form carousel</td>
+        <td>Instagram</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-e">Experience</span> Case story</td>
+        <td>Client outcome: from 3am wake-ups to sleeping through the night (anonymised)</td>
+        <td>Story post with image</td>
+        <td>Instagram + email</td>
+      </tr>
+      <tr>
+        <td class="week-label" rowspan="3">WEEK 2<br><span style="font-size:9px;opacity:0.5;letter-spacing:0">Meaning</span></td>
+        <td><span class="tag tag-e">Expertise</span> Education</td>
+        <td>The three most common hormonal imbalances I see in women in their late 30s — and what Ayurveda does about each</td>
+        <td>Blog post</td>
+        <td>Blog + Pinterest</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">Trust</span> Evidence bridge</td>
+        <td>What the research says about Ashwagandha and cortisol — with a link to the study</td>
+        <td>Short-form post with citation</td>
+        <td>Instagram + LinkedIn</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-e">Experience</span> FAQ</td>
+        <td>"Can I use my HSA for Ayurvedic consultations?" — yes, and here's how</td>
+        <td>Story / Q&A post</td>
+        <td>Instagram Stories</td>
+      </tr>
+      <tr>
+        <td class="week-label" rowspan="3">WEEK 3<br><span style="font-size:9px;opacity:0.5;letter-spacing:0">Authority</span></td>
+        <td><span class="tag tag-a">Authority</span> Testimonial</td>
+        <td>In her words: what shifted after 12 weeks of Ayurvedic care (client quote with permission)</td>
+        <td>Quote graphic + caption</td>
+        <td>Instagram + Google Business</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-e">Expertise</span> Deep dive</td>
+        <td>Perimenopause through an Ayurvedic lens — what the transition really means and why it's not just hormones</td>
+        <td>Long-form article</td>
+        <td>Blog + email newsletter</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">Trust</span> Behind the practice</td>
+        <td>Why I became an Ayurvedic practitioner — the real story</td>
+        <td>Personal post or short video</td>
+        <td>Instagram + LinkedIn</td>
+      </tr>
+      <tr>
+        <td class="week-label" rowspan="3">WEEK 4<br><span style="font-size:9px;opacity:0.5;letter-spacing:0">Salience</span></td>
+        <td><span class="tag tag-e">Experience</span> Repurpose</td>
+        <td>The Week 1 article — broken into three short-form posts for a different entry point</td>
+        <td>Three micro-posts</td>
+        <td>Instagram + TikTok</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-a">Authority</span> Referral signal</td>
+        <td>What to ask your OB/GYN about complementary care — a practical guide for patients</td>
+        <td>Shareable guide</td>
+        <td>Blog + email</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">Trust</span> CTA</td>
+        <td>How working together looks — the 90-day process explained simply</td>
+        <td>Carousel or video</td>
+        <td>Instagram + website</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="blog-post-body">
+
+  <p>A few things to notice about this calendar. First, it covers the same core topic — women's hormonal health — from twelve different angles across four weeks. The practitioner is not generating twelve different ideas. She is finding twelve different entry points into one idea. Second, every piece of content maps to at least one EEAT dimension. Third, each channel is used intentionally — not every piece goes everywhere. Fourth, Week 4 deliberately repurposes Week 1, because the repetition principle requires it.</p>
+
+  <h2>Content basics — authenticity and authority</h2>
+
+  <p>There are two things that destroy practitioner content faster than anything else. The first is AI copy-paste. The second is borrowed authority used incorrectly.</p>
+
+  <p>On AI-generated content: your potential client knows. She is a health-literate woman who reads widely and has developed a finely tuned sense for what is real and what is generated. Generic, perfectly structured, mildly inspiring content with no specific point of view reads as machine-produced — because it usually is. The tell is not the grammar or the vocabulary. The tell is the absence of a specific, lived perspective. AI can generate information. It cannot generate your point of view. That is the only thing worth putting into the world.</p>
+
+  <p>This does not mean AI has no role. Use it to structure your thinking, to research, to draft frameworks, to check grammar. But the ideas, the perspective, the specific examples from your clinical experience — those must be yours. The content your audience will share and remember is always the piece where they feel that a real person with a specific perspective sat down and wrote it for them.</p>
+
+  <p>On borrowing authority: citing published research, linking to peer-reviewed studies, referencing <a href="https://www.ncbi.nlm.nih.gov" target="_blank" rel="noopener noreferrer">PubMed</a> or clinical guidelines, sharing client testimonials with consent — these are legitimate ways to build credibility that you have not yet accumulated through your own name recognition. They work because they embed your perspective within a larger evidential context that your audience already trusts. What does not work is copying another practitioner's content, paraphrasing published articles without attribution, or implying credentials you do not hold. Borrowed authority must be transparent to be credible.</p>
+
+  <h2>The six principles — how to keep going</h2>
+
+  <p>Content strategy is not a sprint. It is a compounding investment. The practitioners who see results are the ones who stay consistent across six to twelve months, not the ones who post intensively for six weeks and burn out. These six principles are designed to keep you oriented when the motivation fades — because it will.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-num">01</div>
+      <div class="principle-content">
+        <h4>Difference first, always</h4>
+        <p>Building your differentiated voice and point of view is the most important investment you will make in your content practice. It is also the slowest to build and the most durable once established. Before you optimise anything else, sharpen your perspective. Everything downstream depends on it.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">02</div>
+      <div class="principle-content">
+        <h4>Meaning before salience</h4>
+        <p>Your content must matter to a specific person before you distribute it widely. Reach without resonance is noise. Build the connection to your audience's lived experience first. Then scale. Meaningfulness and difference together create the conditions for salience — it is not the other way around.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">03</div>
+      <div class="principle-content">
+        <h4>Stay with your positioning — it takes time</h4>
+        <p>The single most common mistake practitioners make is changing their positioning before it has had time to work. Positioning requires repetition to build recognition. If you have been consistent for three months and the needle has not moved, the answer is almost never to change what you are saying. It is usually to say it more clearly, to more of the right people, through more of the right channels.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">04</div>
+      <div class="principle-content">
+        <h4>Approach your topic from multiple angles</h4>
+        <p>Your core topic — the intersection of your methodology and your ideal client's problem — is not a single post. It is a universe of entry points. Seasonal angles. Life stage angles. Symptom-specific angles. Research-backed angles. Client story angles. The same core truth, approached from twelve directions, serves twelve different versions of the same person at twelve different moments of readiness.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">05</div>
+      <div class="principle-content">
+        <h4>Leverage content across channels</h4>
+        <p>One well-researched, deeply considered piece of content should not live on one platform. A long-form blog post becomes three short-form posts, one email, two Instagram slides, and a LinkedIn article. You are not creating more content — you are distributing one idea into the spaces where different versions of your audience encounter it. This is how small content operations punch above their weight.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">06</div>
+      <div class="principle-content">
+        <h4>Organise your marketing and track your metrics</h4>
+        <p>Content without measurement is a creative exercise, not a business strategy. Review your metrics every four weeks — not every day, which leads to reactive decision-making based on noise rather than signal. At the four-week mark you have enough data to see patterns. What content drove the most profile visits? Which posts generated saves rather than likes? What was your inquiry volume this month versus last? These questions, answered consistently, tell you where to invest next.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>What to measure — your 4-week metrics review</h2>
+
+  <p>The purpose of a monthly metrics review is not to judge your content — it is to learn from it. You are looking for patterns across four weeks of data, not reacting to individual post performance. The metrics that matter most for a practitioner building a client pipeline fall into two categories: reach and engagement metrics that indicate content quality, and conversion metrics that indicate whether content is driving business outcomes.</p>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="metrics-grid">
+    <div class="metrics-col">
+      <h4>Content quality metrics</h4>
+      <ul>
+        <li>Profile visits from content (Instagram, LinkedIn)</li>
+        <li>Saves and shares — stronger signal than likes</li>
+        <li>Blog page views and average time on page</li>
+        <li>Email open rate and click-through rate</li>
+        <li>Follower growth rate — trend, not total</li>
+        <li>Which topics generated the most saves</li>
+        <li>Which formats performed best (carousel vs single image vs video)</li>
+      </ul>
+    </div>
+    <div class="metrics-col">
+      <h4>Business outcome metrics</h4>
+      <ul>
+        <li>Number of inquiries received this month</li>
+        <li>Source of each inquiry (Instagram, referral, Google, email)</li>
+        <li>Inquiry-to-discovery call conversion rate</li>
+        <li>Discovery call to client conversion rate</li>
+        <li>New clients booked this month</li>
+        <li>Which content piece was cited most in client conversations</li>
+        <li>Revenue attributed to content-driven inquiries</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>At the end of each four-week review, you should be able to answer three questions: What is working and should be doubled down on? What is generating reach but not converting and needs to be examined? What is missing entirely from my content that my audience's questions suggest they need? The answers to those three questions are your brief for the next four weeks.</p>
+
+  <div class="callout">
+    <p>We will cover funnel structure and management in depth in a separate post — including how to map your content to each stage of the client journey from first awareness through to booked consultation and referral. The metrics framework above is the foundation. The funnel post will show you how to organise those metrics into a system you can actually manage.</p>
+  </div>
+
+  <p>Content strategy is not glamorous work. It is the patient, consistent application of a clear framework across enough time for the compounding to show. The practitioners who build practices through content are not the ones who post the most or have the most followers. They are the ones who know exactly who they are for, say it clearly and repeatedly across the right channels, and stay consistent long enough for the right people to find them.</p>
+
+  <p>For more on the foundations of this approach, read our post on <a href="selecting-your-positioning.html">selecting your positioning as an integrative practitioner</a> — positioning and content strategy are inseparable, and the voice homework in this post builds directly on the positioning work covered there.</p>
+
+</div>
+
+<div class="blog-post-nav">
+  <a href="hsa-fsa-insurance-ayurvedic-practitioners.html">← HSA, FSA & Insurance</a>
+  <a href="index.html">All Articles →</a>
+</div>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Want us to build and manage<br>your content strategy?</h2>
+    <p class="cta-sub">The framework is here. The execution — research, writing, calendar management, distribution, and monthly reporting — is what we do for you. Apply and we will build the system together.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Content Strategy for Ayurvedic Practitioners — Build a Voice, Own a Topic, Fill Your Practice",
+  "description": "A complete content strategy framework for Ayurvedic and integrative practitioners. Build difference first, then meaning, then authority, then salience. Includes EEAT guide, content calendar, and 4-week metrics review.",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanka Aggarwal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Srav Health",
+    "url": "https://sravhealth.com"
+  },
+  "datePublished": "2026-02-26",
+  "mainEntityOfPage": "https://sravhealth.com/blog/content-strategy-ayurvedic-practitioners.html",
+  "keywords": ["content strategy Ayurvedic practitioners", "Ayurveda content marketing", "EEAT integrative health", "content calendar wellness practitioner", "holistic health practitioner social media", "Ayurvedic practitioner marketing strategy"]
+}
+</script>
+
+<script src="../main.js" defer></script>
+</body>
+</html>
