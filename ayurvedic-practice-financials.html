@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Financial Reality of an Ayurvedic Practice — How to Price, Plan, and Build a Sustainable Business | Srav Health</title>
+<meta name="description" content="How much can an Ayurvedic practitioner make? A practical guide to pricing, practice economics, retention value, and a real P&L for a California-based virtual Ayurvedic practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="../styles.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNuHLi8bLeY9MK7whWMhyjYrEPjuw.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"></noscript>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://sravhealth.com/blog/ayurvedic-practice-financials.html">
+<style>
+
+  /* Four quadrant grid */
+  .quadrant-wrap { margin: 40px 0; }
+  .quadrant-label-top { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .quadrant-label-top span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); text-align: center; padding: 6px 0; }
+  .quadrant-grid { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 2px; }
+  .quadrant-row-label { display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; }
+  .quadrant-row-label span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); writing-mode: vertical-rl; transform: rotate(180deg); }
+  .quadrant { padding: 28px 24px; min-height: 160px; display: flex; flex-direction: column; justify-content: space-between; }
+  .quadrant.q1 { background: var(--ivory); }
+  .quadrant.q2 { background: #FFF3CD; }
+  .quadrant.q3 { background: #FDDCDC; }
+  .quadrant.q4 { background: var(--green); }
+  .quadrant-title { font-family: var(--font-serif); font-size: 17px; font-weight: 400; margin-bottom: 8px; }
+  .q4 .quadrant-title { color: var(--ivory); }
+  .q1 .quadrant-title, .q2 .quadrant-title, .q3 .quadrant-title { color: var(--navy); }
+  .quadrant p { font-size: 12px; line-height: 1.65; }
+  .q4 p { color: rgba(245,240,232,0.75); }
+  .q1 p, .q2 p, .q3 p { color: var(--text-mid); }
+  .quadrant-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; margin-top: 12px; align-self: flex-start; }
+  .q4 .quadrant-badge { background: var(--gold); color: var(--navy); }
+  .q1 .quadrant-badge { background: rgba(45,90,61,0.1); color: var(--green); }
+  .q2 .quadrant-badge { background: rgba(196,163,90,0.2); color: #8B6914; }
+  .q3 .quadrant-badge { background: rgba(185,64,64,0.1); color: #B94040; }
+  .quadrant-axis-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); text-align: center; margin-top: 10px; }
+
+  /* Vision calculator */
+  .vision-block { background: var(--navy); padding: 40px; margin: 40px 0; }
+  .vision-block h4 { font-family: var(--font-serif); font-size: 24px; font-weight: 400; color: var(--ivory); margin-bottom: 8px; }
+  .vision-block > p { font-size: 13px; color: rgba(245,240,232,0.55); margin-bottom: 28px; line-height: 1.7; }
+  .vision-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
+  .vision-cell { background: rgba(245,240,232,0.05); padding: 20px 22px; }
+  .vision-cell.highlight { background: rgba(196,163,90,0.12); }
+  .vision-cell-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 6px; }
+  .vision-cell-num { font-family: var(--font-serif); font-size: 28px; color: var(--ivory); margin-bottom: 4px; }
+  .vision-cell-sub { font-size: 11px; color: rgba(245,240,232,0.45); line-height: 1.5; }
+  .vision-arrow { display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 20px; padding: 8px 0; }
+
+  /* Cost buckets */
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+  .cost-col { padding: 28px 32px; }
+  .cost-col.one-time { background: var(--ivory); }
+  .cost-col.recurring { background: var(--ivory-dark, #EDE8DF); }
+  .cost-col h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
+  .cost-col .cost-sub { font-size: 11px; color: var(--text-light); margin-bottom: 18px; letter-spacing: 0.5px; }
+  .cost-item { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid rgba(45,90,61,0.08); }
+  .cost-item:last-child { border-bottom: none; }
+  .cost-item-name { font-size: 13px; color: var(--text-mid); }
+  .cost-item-range { font-size: 12px; color: var(--navy); font-weight: 500; white-space: nowrap; margin-left: 12px; }
+  .cost-total { display: flex; justify-content: space-between; padding: 12px 0 0 0; margin-top: 8px; border-top: 2px solid var(--navy); }
+  .cost-total span { font-size: 13px; font-weight: 500; color: var(--navy); }
+
+  /* Retention formula */
+  .retention-block { background: var(--green); padding: 40px; margin: 40px 0; }
+  .retention-block h4 { font-family: var(--font-serif); font-size: 24px; font-weight: 400; color: var(--ivory); margin-bottom: 8px; }
+  .retention-block > p { font-size: 13px; color: rgba(245,240,232,0.65); margin-bottom: 32px; line-height: 1.7; max-width: 580px; }
+  .retention-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 28px; }
+  .retention-col { padding: 24px 28px; }
+  .retention-col.low { background: rgba(245,240,232,0.06); }
+  .retention-col.high { background: rgba(245,240,232,0.12); }
+  .retention-col-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 12px; }
+  .retention-col h5 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; color: var(--ivory); margin-bottom: 16px; }
+  .retention-metric { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(245,240,232,0.08); }
+  .retention-metric:last-child { border-bottom: none; }
+  .retention-metric-name { font-size: 12px; color: rgba(245,240,232,0.6); }
+  .retention-metric-val { font-size: 12px; color: var(--ivory); font-weight: 500; }
+  .retention-metric-val.positive { color: #7EC8A0; }
+  .retention-metric-val.negative { color: #F0A0A0; }
+  .retention-insight { background: rgba(196,163,90,0.15); padding: 20px 24px; border-left: 3px solid var(--gold); }
+  .retention-insight p { font-size: 13px; color: rgba(245,240,232,0.8); line-height: 1.75; margin: 0; }
+
+  /* P&L table */
+  .pnl-wrap { margin: 40px 0; overflow-x: auto; }
+  .pnl-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 700px; }
+  .pnl-table th { background: var(--navy); color: var(--ivory); padding: 10px 14px; text-align: right; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 400; }
+  .pnl-table th:first-child { text-align: left; }
+  .pnl-table td { padding: 9px 14px; text-align: right; border-bottom: 1px solid var(--border); color: var(--text-mid); }
+  .pnl-table td:first-child { text-align: left; color: var(--navy); }
+  .pnl-table tr:nth-child(even) td { background: var(--ivory); }
+  .pnl-section-header td { background: rgba(45,90,61,0.06) !important; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light) !important; font-weight: 500; padding: 6px 14px; }
+  .pnl-total td { background: var(--navy) !important; color: var(--ivory) !important; font-weight: 500; font-size: 13px; }
+  .pnl-subtotal td { background: var(--ivory-dark, #EDE8DF) !important; color: var(--navy) !important; font-weight: 500; }
+  .positive-num { color: #2D5A3D !important; font-weight: 600 !important; }
+  .negative-num { color: #B94040 !important; }
+  .phase-header { background: var(--gold) !important; }
+  .phase-header td { background: var(--gold) !important; color: var(--navy) !important; font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600 !important; text-align: center !important; }
+
+  /* Five principles */
+  .five-principles { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .fp-item { display: grid; grid-template-columns: 56px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .fp-item:last-child { border-bottom: none; }
+  .fp-num { font-family: var(--font-display); font-size: 28px; color: var(--gold); opacity: 0.5; line-height: 1; padding-top: 4px; }
+  .fp-content h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 8px; }
+  .fp-content p { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+
+  /* Srav section */
+  .srav-role { background: var(--ivory); border-left: 3px solid var(--gold); padding: 28px 32px; margin: 32px 0; }
+  .srav-role-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .srav-role h4 { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 12px; }
+  .srav-role p { font-size: 13px; color: var(--text-mid); line-height: 1.8; margin-bottom: 10px; }
+  .srav-role p:last-child { margin-bottom: 0; }
+
+  @media(max-width: 700px) {
+    .quadrant-label-top, .quadrant-grid { grid-template-columns: 40px 1fr 1fr; }
+    .vision-row { grid-template-columns: 1fr; }
+    .cost-grid { grid-template-columns: 1fr; }
+    .retention-compare { grid-template-columns: 1fr; }
+    .fp-item { grid-template-columns: 40px 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="36" height="44" viewBox="0 0 56 68" fill="none">
+        <ellipse cx="28" cy="34" rx="26" ry="30" stroke="rgba(196,163,90,0.12)" stroke-width="1"/>
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39"
+              stroke="rgba(245,240,232,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M28 20 C24 20 22 24 22 28 C22 32 24 36 28 37"
+              stroke="rgba(245,240,232,0.22)" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="4" fill="#C4A35A"/>
+        <circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+      </svg>
+    </div>
+    <div class="nav-logo-divider"></div>
+    <div class="nav-logo-text">
+      <span class="nav-wordmark">SRAV HEALTH</span>
+      <span class="nav-tagline">Scale Your Integrative Practice</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger" aria-label="Modalities menu">
+        Modalities
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../ayurveda.html">Ayurveda <span class="dd-sub">Women's Health · Active</span></a>
+        <a href="../functional-medicine.html">Functional Medicine <span class="dd-badge">Coming Soon</span></a>
+        <a href="../tcm.html">Traditional Chinese Medicine <span class="dd-badge">Coming Soon</span></a>
+      </div>
+    </div>
+    <a href="../how-we-work.html">How We Work</a>
+    <a href="index.html" style="color:var(--ivory)">Blog</a>
+    <a href="../apply.html" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html" onclick="toggleMenu()">Home</a>
+  <div class="nav-mobile-group-label">Modalities</div>
+  <a href="../ayurveda.html" class="nav-mobile-sub" onclick="toggleMenu()">Ayurveda</a>
+  <a href="../functional-medicine.html" class="nav-mobile-sub" onclick="toggleMenu()">Functional Medicine</a>
+  <a href="../tcm.html" class="nav-mobile-sub" onclick="toggleMenu()">Traditional Chinese Medicine</a>
+  <a href="../how-we-work.html" onclick="toggleMenu()">How We Work</a>
+  <a href="index.html" onclick="toggleMenu()">Blog</a>
+  <a href="../apply.html" onclick="toggleMenu()">Apply Now</a>
+</div>
+
+<!-- HEADER -->
+<div class="blog-post-header">
+  <div class="blog-post-header-inner">
+    <div class="section-label">Practice Building</div>
+    <h1>The Financial Reality of an<br>Ayurvedic Practice — How to<br>Price, Plan, and Build a<br>Sustainable Business</h1>
+    <div class="post-meta">Srav Health · February 2026 · 20 min read</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="blog-post-body">
+
+  <p>Most Ayurvedic practitioners are deeply skilled clinicians who became reluctant business owners by default. The training programmes that shaped your clinical expertise did not cover pricing strategy, cost structures, or what a sustainable P&L looks like for a solo practice. So you set a rate that felt reasonable, hoped word of mouth would fill the calendar, and quietly avoided thinking too hard about whether the numbers actually worked.</p>
+
+  <p>This post is the one nobody wrote for you. It covers how to think about the economics of your practice — not in theory, but in the specific numbers that determine whether you burn out at year two or build something that compounds. It includes a four-quadrant model for practice positioning, a framework for working backwards from your life goals to your pricing, an honest look at costs, the financial case for retention over acquisition, and a real P&L for a California-based virtual practice across four phases of growth.</p>
+
+  <p>It is long. It is meant to be. Read it once, then return to the specific sections as your practice evolves.</p>
+
+  <h2>The four-quadrant model — where does your practice want to live?</h2>
+
+  <p>Every Ayurvedic practice sits somewhere on two axes: how many clients you see (volume) and how much each client pays (price). The quadrant you occupy determines not just your revenue, but your operational complexity, your marketing requirements, and — critically — your likelihood of burnout.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="quadrant-wrap">
+    <div class="quadrant-label-top">
+      <span></span>
+      <span>Low Price</span>
+      <span>High Price</span>
+    </div>
+    <div class="quadrant-grid">
+      <div class="quadrant-row-label"><span>High Volume</span></div>
+      <div class="quadrant q1">
+        <div>
+          <div class="quadrant-title">High Volume · Low Price</div>
+          <p>Many clients at low rates. Revenue requires constant new client acquisition. High clinical hours, high admin burden, high burnout risk. Difficult to sustain as a solo practitioner without support staff.</p>
+        </div>
+        <div class="quadrant-badge">Unsustainable solo</div>
+      </div>
+      <div class="quadrant q2">
+        <div>
+          <div class="quadrant-title">High Volume · High Price</div>
+          <p>Maximum revenue but maximum operational complexity. Works for established multi-practitioner clinics, not solo practitioners. The marketing, admin, and clinical hours required are beyond one person.</p>
+        </div>
+        <div class="quadrant-badge">Clinic model only</div>
+      </div>
+
+      <div class="quadrant-row-label"><span>Low Volume</span></div>
+      <div class="quadrant q3">
+        <div>
+          <div class="quadrant-title">Low Volume · Low Price</div>
+          <p>The most common starting point and the most dangerous place to stay. Revenue insufficient to cover costs and pay yourself. Often where practitioners are when they say "Ayurveda doesn't pay."</p>
+        </div>
+        <div class="quadrant-badge">Starting point only</div>
+      </div>
+      <div class="quadrant q4">
+        <div>
+          <div class="quadrant-title">Medium-Low Volume · High Price</div>
+          <p>The target quadrant for a sustainable solo Ayurvedic practice. 15–25 active clients at premium rates, with group programs adding revenue without adding proportional clinical hours. Manageable, profitable, and designed to last.</p>
+        </div>
+        <div class="quadrant-badge">Target quadrant ✓</div>
+      </div>
+    </div>
+    <div class="quadrant-axis-label">← Low Volume &nbsp;&nbsp;&nbsp;&nbsp; Volume axis &nbsp;&nbsp;&nbsp;&nbsp; High Volume →</div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>The target quadrant — medium-low volume, high price — is not about excluding clients who cannot afford premium rates. It is about building a practice that is financially sustainable and clinically excellent. A practitioner who is seeing 40 clients per week at $80 per session is neither. She is exhausted, under-resourced, and unable to give each client the depth of care that Ayurveda requires. A practitioner seeing 18 clients per week at $220 per session, with two group programs running alongside, is something entirely different.</p>
+
+  <p>The path from your current quadrant to the target quadrant is a pricing and positioning journey, not a volume journey. More on that shortly.</p>
+
+  <h2>Start with your practice vision — work backwards from life to numbers</h2>
+
+  <p>Before you can set a price or build a marketing budget, you need to know what you are building towards. Not in abstract terms — in specific numbers. The following framework works backwards from your desired life to the practice structure required to support it.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="vision-block">
+    <h4>The backwards planning framework</h4>
+    <p>An example for a California-based virtual Ayurvedic practitioner targeting a sustainable solo practice in year two.</p>
+
+    <div class="vision-row">
+      <div class="vision-cell">
+        <div class="vision-cell-label">Your target salary</div>
+        <div class="vision-cell-num">$85,000</div>
+        <div class="vision-cell-sub">Annual take-home after taxes. Set this first — it is non-negotiable.</div>
+      </div>
+      <div class="vision-cell">
+        <div class="vision-cell-label">Add operating costs</div>
+        <div class="vision-cell-num">$24,000</div>
+        <div class="vision-cell-sub">Platform, marketing, admin, software — annualised. Detail below.</div>
+      </div>
+      <div class="vision-cell highlight">
+        <div class="vision-cell-label">Revenue needed</div>
+        <div class="vision-cell-num">$109,000</div>
+        <div class="vision-cell-sub">This is your minimum annual revenue target before tax.</div>
+      </div>
+    </div>
+
+    <div class="vision-arrow">↓</div>
+
+    <div class="vision-row">
+      <div class="vision-cell">
+        <div class="vision-cell-label">1:1 consultation revenue</div>
+        <div class="vision-cell-num">$75,000</div>
+        <div class="vision-cell-sub">20 active clients × $250/session × avg 3 sessions/month × 10 months</div>
+      </div>
+      <div class="vision-cell">
+        <div class="vision-cell-label">Group program revenue</div>
+        <div class="vision-cell-num">$22,000</div>
+        <div class="vision-cell-sub">2 cohorts × 10 clients × $1,100 per program</div>
+      </div>
+      <div class="vision-cell highlight">
+        <div class="vision-cell-label">Total projected revenue</div>
+        <div class="vision-cell-num">$97,000</div>
+        <div class="vision-cell-sub">Year 1 target (conservative). Year 2 adds a third cohort and price increase.</div>
+      </div>
+    </div>
+
+    <div class="vision-arrow">↓</div>
+
+    <div class="vision-row">
+      <div class="vision-cell">
+        <div class="vision-cell-label">Active 1:1 clients needed</div>
+        <div class="vision-cell-num">20</div>
+        <div class="vision-cell-sub">At 70% rebooking rate, you need ~6 new clients per month to maintain this.</div>
+      </div>
+      <div class="vision-cell">
+        <div class="vision-cell-label">New clients needed monthly</div>
+        <div class="vision-cell-num">6</div>
+        <div class="vision-cell-sub">This is what your marketing funnel needs to reliably deliver.</div>
+      </div>
+      <div class="vision-cell highlight">
+        <div class="vision-cell-label">Clinical hours per week</div>
+        <div class="vision-cell-num">~18 hrs</div>
+        <div class="vision-cell-sub">Manageable. Leaves capacity for admin, content, and group program delivery.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>The number that most practitioners skip is their salary. They think about revenue and forget that revenue is not income — it is income minus costs. Setting your desired salary first, then working forwards to the revenue required to support it, forces clarity about pricing that "what feels reasonable to charge" never does.</p>
+
+  <p>Notice also that the framework above arrives at 6 new clients per month as the marketing target — not "more clients" or "a full calendar." A specific, achievable number that your funnel is designed to deliver. This is the shift from hoping the practice grows to engineering it to.</p>
+
+  <h2>The cost structure — what you are actually spending</h2>
+
+  <p>Practitioners tend to either underestimate their costs (and underprice) or avoid spending on growth (and stay stuck). Both patterns come from not having a clear picture of what the cost structure of a well-run solo Ayurvedic practice actually looks like. Below is a realistic breakdown for a virtual practice.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="cost-grid">
+    <div class="cost-col one-time">
+      <h4>One-time investment</h4>
+      <div class="cost-sub">Paid once to build the foundation — website, brand, initial content</div>
+      <div class="cost-item"><span class="cost-item-name">Website design and build</span><span class="cost-item-range">$2,500–5,000</span></div>
+      <div class="cost-item"><span class="cost-item-name">Brand identity (logo, guidelines)</span><span class="cost-item-range">$800–2,000</span></div>
+      <div class="cost-item"><span class="cost-item-name">Initial SEO and content setup</span><span class="cost-item-range">$1,000–2,500</span></div>
+      <div class="cost-item"><span class="cost-item-name">Lead magnet creation</span><span class="cost-item-range">$200–600</span></div>
+      <div class="cost-item"><span class="cost-item-name">Email sequence setup</span><span class="cost-item-range">$300–800</span></div>
+      <div class="cost-item"><span class="cost-item-name">Booking and intake system</span><span class="cost-item-range">$0–500</span></div>
+      <div class="cost-item"><span class="cost-item-name">Professional photography</span><span class="cost-item-range">$400–1,200</span></div>
+      <div class="cost-total">
+        <span>Realistic total range</span>
+        <span>$5,200–12,600</span>
+      </div>
+    </div>
+    <div class="cost-col recurring">
+      <h4>Recurring monthly costs</h4>
+      <div class="cost-sub">Ongoing operational and marketing expenses per month</div>
+      <div class="cost-item"><span class="cost-item-name">Practice platform (scheduling, portal)</span><span class="cost-item-range">$80–200/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">Email marketing platform</span><span class="cost-item-range">$30–80/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">Content creation and management</span><span class="cost-item-range">$400–1,200/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">SEO and blog posts</span><span class="cost-item-range">$200–600/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">Retargeting ad spend</span><span class="cost-item-range">$100–300/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">CRM and lead tracking</span><span class="cost-item-range">$50–150/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">Liability insurance</span><span class="cost-item-range">$50–100/mo</span></div>
+      <div class="cost-item"><span class="cost-item-name">Accounting / bookkeeping</span><span class="cost-item-range">$100–250/mo</span></div>
+      <div class="cost-total">
+        <span>Monthly total range</span>
+        <span>$1,010–2,880/mo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <div class="srav-role">
+    <div class="srav-role-label">Where Srav Health fits</div>
+    <h4>Setup, monthly management, or independence — your choice</h4>
+    <p>The one-time investment covers what Srav Health builds at the start of an engagement — website, brand, content foundation, email sequences, booking system, and the practitioner portal and client app. Rather than paying multiple agencies and freelancers separately, this is handled as a single integrated build.</p>
+    <p>The recurring monthly costs cover what Srav Health manages on an ongoing basis — content creation, SEO, email campaigns, CRM, and lead tracking. Some practitioners continue with monthly management indefinitely. Others choose to take over execution themselves after 6–9 months once the system is established. Both paths are supported. The goal is a practice that works — not a dependency.</p>
+  </div>
+
+  <h2>The power of retention — the number most practitioners ignore</h2>
+
+  <p>Acquiring a new client costs significantly more than retaining an existing one. In a typical Ayurvedic practice, the cost to acquire a new client — factoring in marketing spend, time, and the discovery call that does not convert — ranges from $80 to $250. The cost to retain a client who already trusts you is close to zero beyond the effort of good clinical care and a simple follow-up system.</p>
+
+  <p>This means that improving your rebooking rate is the highest-return activity in your practice — higher than any marketing campaign, any new channel, or any pricing change. The comparison below shows what happens to a practice's annual revenue when rebooking rate improves from 40% to 70%, holding everything else constant.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="retention-block">
+    <h4>The retention comparison — same practice, different rebooking rate</h4>
+    <p>Virtual Ayurvedic practice, California. 8 new clients per month. $250 per consultation. Cost to acquire one new client: $150.</p>
+
+    <div class="retention-compare">
+      <div class="retention-col low">
+        <div class="retention-col-label">Low retention practice</div>
+        <h5>40% rebooking rate</h5>
+        <div class="retention-metric"><span class="retention-metric-name">New clients per month</span><span class="retention-metric-val">8</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Clients who rebook</span><span class="retention-metric-val negative">3.2 (40%)</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Avg active client base</span><span class="retention-metric-val negative">~14</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Monthly consultation revenue</span><span class="retention-metric-val">$5,600</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Monthly acquisition cost</span><span class="retention-metric-val negative">$1,200 (8 × $150)</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Net monthly revenue</span><span class="retention-metric-val negative">$4,400</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Annual net revenue</span><span class="retention-metric-val negative">$52,800</span></div>
+      </div>
+      <div class="retention-col high">
+        <div class="retention-col-label">High retention practice</div>
+        <h5>70% rebooking rate</h5>
+        <div class="retention-metric"><span class="retention-metric-name">New clients per month</span><span class="retention-metric-val">5</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Clients who rebook</span><span class="retention-metric-val positive">14+ (70%)</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Avg active client base</span><span class="retention-metric-val positive">~22</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Monthly consultation revenue</span><span class="retention-metric-val">$8,800</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Monthly acquisition cost</span><span class="retention-metric-val positive">$750 (5 × $150)</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Net monthly revenue</span><span class="retention-metric-val positive">$8,050</span></div>
+        <div class="retention-metric"><span class="retention-metric-name">Annual net revenue</span><span class="retention-metric-val positive">$96,600</span></div>
+      </div>
+    </div>
+
+    <div class="retention-insight">
+      <p>The high-retention practice earns <strong>$43,800 more per year</strong> while acquiring <strong>3 fewer new clients per month</strong>. It spends less on marketing, sees fewer new-client discovery calls, and operates with a more stable, trusting client base. Retention is not a soft metric — it is the most powerful financial lever in your practice.</p>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <h2>The dummy P&L — a California virtual Ayurvedic practice, year one to year two</h2>
+
+  <p>What follows is a realistic profit and loss projection for a solo virtual Ayurvedic practitioner based in California, building from scratch. The numbers are conservative in revenue and realistic in costs. They assume a practitioner who invests in her marketing infrastructure from the start and builds methodically across four phases.</p>
+
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div class="pnl-wrap">
+    <table class="pnl-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Line Item</th>
+          <th>Phase 1<br><span style="font-weight:300;font-size:9px;">Months 1–3</span></th>
+          <th>Phase 2<br><span style="font-weight:300;font-size:9px;">Months 4–6</span></th>
+          <th>Phase 3<br><span style="font-weight:300;font-size:9px;">Months 7–12</span></th>
+          <th>Phase 4<br><span style="font-weight:300;font-size:9px;">Year 2</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pnl-section-header"><td colspan="5">REVENUE</td></tr>
+        <tr>
+          <td>1:1 consultations</td>
+          <td>$3,200</td>
+          <td>$5,500</td>
+          <td>$8,500</td>
+          <td>$9,500</td>
+        </tr>
+        <tr>
+          <td>Group program revenue</td>
+          <td>—</td>
+          <td>—</td>
+          <td>$3,600</td>
+          <td>$7,200</td>
+        </tr>
+        <tr>
+          <td>Online course / async protocol</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>$1,800</td>
+        </tr>
+        <tr class="pnl-subtotal">
+          <td>Total monthly revenue</td>
+          <td>$3,200</td>
+          <td>$5,500</td>
+          <td>$12,100</td>
+          <td>$18,500</td>
+        </tr>
+
+        <tr class="pnl-section-header"><td colspan="5">COSTS — ONE-TIME (amortised monthly)</td></tr>
+        <tr>
+          <td>Website, brand, content setup</td>
+          <td>$800</td>
+          <td>$800</td>
+          <td>$400</td>
+          <td>—</td>
+        </tr>
+
+        <tr class="pnl-section-header"><td colspan="5">COSTS — RECURRING</td></tr>
+        <tr>
+          <td>Practice platform and portal</td>
+          <td>$150</td>
+          <td>$150</td>
+          <td>$180</td>
+          <td>$200</td>
+        </tr>
+        <tr>
+          <td>Marketing and content management</td>
+          <td>$1,200</td>
+          <td>$1,200</td>
+          <td>$1,000</td>
+          <td>$900</td>
+        </tr>
+        <tr>
+          <td>Email platform and CRM</td>
+          <td>$80</td>
+          <td>$80</td>
+          <td>$80</td>
+          <td>$100</td>
+        </tr>
+        <tr>
+          <td>Retargeting ad spend</td>
+          <td>$150</td>
+          <td>$200</td>
+          <td>$200</td>
+          <td>$250</td>
+        </tr>
+        <tr>
+          <td>Insurance and professional fees</td>
+          <td>$150</td>
+          <td>$150</td>
+          <td>$150</td>
+          <td>$150</td>
+        </tr>
+        <tr>
+          <td>Accounting / bookkeeping</td>
+          <td>$150</td>
+          <td>$150</td>
+          <td>$150</td>
+          <td>$200</td>
+        </tr>
+        <tr class="pnl-subtotal">
+          <td>Total monthly costs</td>
+          <td>$2,680</td>
+          <td>$2,730</td>
+          <td>$2,160</td>
+          <td>$1,800</td>
+        </tr>
+
+        <tr class="pnl-section-header"><td colspan="5">NET</td></tr>
+        <tr class="pnl-total">
+          <td>Monthly net (pre-tax)</td>
+          <td class="negative-num">$520</td>
+          <td class="positive-num">$2,770</td>
+          <td class="positive-num">$9,940</td>
+          <td class="positive-num">$16,700</td>
+        </tr>
+        <tr class="pnl-total">
+          <td>Annualised net (pre-tax)</td>
+          <td class="negative-num">$6,240</td>
+          <td class="positive-num">$33,240</td>
+          <td class="positive-num">$59,640</td>
+          <td class="positive-num">$200,400</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>A few things to note about this P&L. Phase 1 is intentionally lean on revenue — this is the foundation-building phase where infrastructure is being set up and the first clients are being acquired. The investment in Phase 1 is what makes Phase 3 possible. Practitioners who skip the investment in Phase 1 typically stay in Phase 1 for years.</p>
+
+  <p>Phase 3 is where the group program appears — not in Phase 1, because launching a group program before you have a clear niche and a warm audience is one of the most common expensive mistakes in this space. By Phase 3 you have the email list, the client proof points, and the positioning to fill a cohort. Before that, you do not.</p>
+
+  <p>Phase 4's annualised figure of $200,400 reflects a mature practice with two group program cohorts, a small async protocol product, and a 1:1 base that has been refined to the right clients at the right price. It is achievable — but it requires the discipline to invest in Phases 1 and 2 without expecting immediate returns.</p>
+
+  <h2>Why practitioners are too conservative — or too unstrategic — with spending</h2>
+
+  <p>There are two failure modes when it comes to practice spending. The first is the practitioner who spends nothing on marketing because it feels indulgent or uncertain — and then wonders why the practice is not growing. The second is the practitioner who spends on the wrong things: a beautiful logo before she has a clear positioning, a paid ads campaign before she has a converting landing page, a social media manager before she has a content strategy.</p>
+
+  <p>Both patterns come from the same root cause: no P&L. When you can see that $1,200 per month in marketing is expected to generate $5,500 in revenue, the spending decision becomes rational rather than emotional. When you can see that a $150 per month retargeting campaign is recovering clients who had already shown interest, the ROI is obvious. The financial model does not eliminate risk — but it replaces anxiety-driven decisions with data-driven ones.</p>
+
+  <p>The right question is not "can I afford to spend on this?" It is "what is the expected return on this specific investment, and does that return justify the cost?" For <a href="ayurvedic-practice-funnel.html">every stage of your funnel</a>, there is an answer to that question. Build the habit of asking it.</p>
+
+  <h2>Five things that make an Ayurvedic practice financially sustainable</h2>
+
+</div>
+
+<div style="max-width:800px;margin:0 auto;padding:0 48px;">
+  <div class="five-principles">
+    <div class="fp-item">
+      <div class="fp-num">01</div>
+      <div class="fp-content">
+        <h4>Price for the value you deliver, not the market average</h4>
+        <p>Most Ayurvedic practitioners set their rates by looking at what other practitioners charge — which means the entire profession undercharges together. Your rate should be set by working backwards from your salary target and cost structure, as above. A 90-minute initial consultation that changes a client's energy, sleep, and hormonal health for months is worth significantly more than the $120 most practitioners charge for it. Price accordingly, communicate the value clearly, and let the clients who are the right fit say yes.</p>
+      </div>
+    </div>
+    <div class="fp-item">
+      <div class="fp-num">02</div>
+      <div class="fp-content">
+        <h4>Build retention before you build acquisition</h4>
+        <p>As the retention comparison above shows, improving your rebooking rate from 40% to 70% is worth more than doubling your marketing budget. Before you invest in any new client acquisition channel, make sure the clients you already have are being retained. Post-session follow-ups, between-visit check-ins, and a clear pathway to the next engagement are the tools. They cost almost nothing. They compound significantly.</p>
+      </div>
+    </div>
+    <div class="fp-item">
+      <div class="fp-num">03</div>
+      <div class="fp-content">
+        <h4>Add a group program in Phase 3 — not Phase 1</h4>
+        <p>Group programs are the most powerful revenue-scaling tool available to a solo practitioner — they multiply your income without multiplying your clinical hours. But they only work when you have a warm audience to sell to, a clear niche to design around, and enough client proof points to make the promise credible. Launching too early is one of the most common expensive mistakes. Launch when you have 200+ email subscribers who know your work, and at least five strong client outcomes to anchor the programme around.</p>
+      </div>
+    </div>
+    <div class="fp-item">
+      <div class="fp-num">04</div>
+      <div class="fp-content">
+        <h4>Track your numbers monthly — all of them</h4>
+        <p>Revenue, costs, new clients, rebooking rate, acquisition cost, and net income. These six numbers, reviewed monthly, tell you everything about where your practice is healthy and where it needs attention. Most practitioners track only revenue — and miss the signals that would tell them their retention is slipping, their acquisition cost is rising, or their margins are being eroded by unexamined recurring costs. A simple spreadsheet updated once a month is sufficient. The discipline of looking at the numbers is what matters, not the sophistication of the tool.</p>
+      </div>
+    </div>
+    <div class="fp-item">
+      <div class="fp-num">05</div>
+      <div class="fp-content">
+        <h4>Invest in your marketing infrastructure before you need it to work</h4>
+        <p>The practitioners who reach Phase 3 are the ones who invested in the foundation in Phase 1 — before they had the revenue to make it feel comfortable. Website, email list, content strategy, and booking system are not luxuries for when the practice is established. They are the infrastructure that makes the practice get established. Every month you delay building the foundation is a month you stay dependent on word of mouth alone. The P&L above shows clearly what that investment produces. It is worth making early.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-post-body">
+
+  <p>The financial clarity that most practitioners lack is not complicated to build. It requires a salary target, a cost structure, a retention strategy, and a willingness to look at the numbers monthly. None of those things require an MBA or a finance background. They require the same discipline and specificity that you bring to your clinical work — applied to the business that makes that clinical work possible.</p>
+
+  <p>For the marketing system that drives the revenue in this P&L, read our post on <a href="ayurvedic-practice-funnel.html">building and tracking your Ayurvedic practice funnel</a>. For the content strategy that fills the top of that funnel, read our post on <a href="content-strategy-ayurvedic-practitioners.html">content strategy for Ayurvedic practitioners</a>. The financial model and the marketing model work together — neither is sufficient without the other.</p>
+
+</div>
+
+<div class="blog-post-nav">
+  <a href="ayurvedic-practice-funnel.html">← The Ayurvedic Practice Funnel</a>
+  <a href="index.html">All Articles →</a>
+</div>
+
+<section class="section cta-section" style="background:var(--navy)">
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title">Ready to build a practice<br>that pays you what you are worth?</h2>
+    <p class="cta-sub">We set up the infrastructure, build the marketing system, and manage the execution — so the P&L above becomes your reality, not just a projection.</p>
+    <a href="../apply.html" class="btn-primary btn-large">Apply to Work With Us</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="22" height="27" viewBox="0 0 56 68" fill="none">
+        <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <circle cx="28" cy="30" r="3.5" fill="#C4A35A" opacity="0.8"/>
+        <circle cx="28" cy="30" r="1.6" fill="#E8C878" opacity="0.9"/>
+      </svg>
+      <span>SRAV HEALTH</span>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../ayurveda.html">Ayurveda</a>
+      <a href="../how-we-work.html">How We Work</a>
+      <a href="index.html">Blog</a>
+      <a href="../apply.html">Apply</a>
+    </div>
+    <div class="footer-copy">© 2026 Srav Health. All rights reserved.</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Financial Reality of an Ayurvedic Practice — How to Price, Plan, and Build a Sustainable Business",
+  "description": "A practical guide to Ayurvedic practice economics — pricing strategy, cost structure, the power of retention, and a real P&L for a California-based virtual practice across four phases of growth.",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanka Aggarwal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Srav Health",
+    "url": "https://sravhealth.com"
+  },
+  "datePublished": "2026-02-27",
+  "mainEntityOfPage": "https://sravhealth.com/blog/ayurvedic-practice-financials.html",
+  "keywords": ["Ayurvedic practice pricing", "how much does an Ayurvedic practitioner make", "Ayurveda practice business model", "holistic health practice financials", "wellness practice pricing strategy", "how to grow Ayurveda practice revenue"]
+}
+</script>
+
+<script src="../main.js" defer></script>
+</body>
+</html>
