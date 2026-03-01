@@ -441,7 +441,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 a:not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-logo):not(.blog-card):not(.nav-links a) {
-  color: var(--green);
+  color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
