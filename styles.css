@@ -439,3 +439,9 @@ a { text-decoration: none; color: inherit; }
 .cs-result-box .r-label {
   color: rgba(245,240,232,0.55);
 }
+
+a:not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-logo):not(.blog-card):not(.nav-links a) {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
