@@ -84,3 +84,22 @@ function toggleFaq(el) {
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
 }
+
+/*
+  FAQ ACCORDION TOGGLE
+  Add this to main.js
+*/
+
+document.querySelectorAll('.faq-q').forEach(button => {
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+
+    // Close all others
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+    });
+
+    // Toggle current
+    button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  });
+});
