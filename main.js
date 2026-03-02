@@ -77,14 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// FAQ toggle (how-we-work page)
-function toggleFaq(el) {
-  const item = el.closest('.faq-item');
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
-}
-
 /*
   FAQ ACCORDION TOGGLE
   Add this to main.js
