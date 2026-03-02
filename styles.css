@@ -573,4 +573,54 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-logo):not(.blog-c
     padding: 18px 0;
   }
 }
+/* Breadcrumb */
+.breadcrumb {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 48px;
+}
 
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+}
+
+.breadcrumb-list li + li::before {
+  content: '/';
+  color: var(--border);
+  font-size: 10px;
+}
+
+.breadcrumb-list a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb-list a:hover {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.breadcrumb-list li:last-child {
+  color: var(--navy);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .breadcrumb { padding: 10px 20px; }
+}
