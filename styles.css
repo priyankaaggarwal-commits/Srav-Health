@@ -445,3 +445,132 @@ a:not(.btn-primary):not(.btn-secondary):not(.nav-cta):not(.nav-logo):not(.blog-c
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+/*
+  FAQ ACCORDION
+  Add this block to styles.css
+*/
+
+.faq-section {
+  background: var(--white);
+}
+
+.faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 48px;
+  max-width: 760px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--navy);
+  text-align: left;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.faq-q:hover {
+  color: var(--green);
+}
+
+.faq-q[aria-expanded="true"] {
+  color: var(--green);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.3s;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--navy);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.faq-icon::before {
+  width: 12px;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+  width: 1px;
+  height: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-q[aria-expanded="true"] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.faq-q[aria-expanded="true"] .faq-icon {
+  opacity: 0.8;
+}
+
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-q[aria-expanded="true"] + .faq-a {
+  grid-template-rows: 1fr;
+}
+
+.faq-a > p,
+.faq-a > div {
+  overflow: hidden;
+}
+
+.faq-a p {
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  padding-bottom: 22px;
+}
+
+.faq-a p a {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .faq-q {
+    font-size: 16px;
+    padding: 18px 0;
+  }
+}
+
