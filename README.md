@@ -8,7 +8,7 @@ Pure HTML · CSS · Vanilla JS · No build step · Deploy anywhere
 ## Pages
 | File | Purpose |
 |------|---------|
-| `index.html` | Homepage |
+| `/` | Homepage |
 | `/ayurveda` | Ayurveda modality page |
 | `/how-we-work` | Process + offering |
 | `/apply` | AI agent application |
@@ -30,7 +30,7 @@ Pure HTML · CSS · Vanilla JS · No build step · Deploy anywhere
 6. Deploy
 
 ## Add Your Photo
-In `index.html`, replace the About image placeholder div with:
+In `/`, replace the About image placeholder div with:
 ```html
 <img src="priyanka.jpg" alt="Priyanka Aggarwal" style="width:100%;height:100%;object-fit:cover;">
 ```
