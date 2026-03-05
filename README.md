@@ -9,9 +9,9 @@ Pure HTML · CSS · Vanilla JS · No build step · Deploy anywhere
 | File | Purpose |
 |------|---------|
 | `index.html` | Homepage |
-| `ayurveda.html` | Ayurveda modality page |
-| `how-we-work.html` | Process + offering |
-| `apply.html` | AI agent application |
+| `/ayurveda` | Ayurveda modality page |
+| `/how-we-work` | Process + offering |
+| `/apply` | AI agent application |
 | `styles.css` | Global styles |
 | `main.js` | Shared JS |
 
