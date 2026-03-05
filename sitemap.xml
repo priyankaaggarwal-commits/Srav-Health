@@ -46,7 +46,7 @@
 
   <!-- Blog index -->
   <url>
-    <loc>https://sravhealth.com/blog/index</loc>
+    <loc>https://sravhealth.com/blog</loc>
     <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
