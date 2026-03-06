@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srav Health — Practice Growth Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #243158;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --gold: #c9a96e;
+    --gold-light: #dfc08a;
+    --white: #fdfaf5;
+    --text-light: #8a9bb8;
+    --green-dark: #1e3d2f;
+    --green-mid: #2d5a40;
+    --sage: #e8ede6;
+  }
+
+  body {
+    background: #0f1520;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 24px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .slide-label {
+    color: #4a5568;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+  }
+
+  /* ─── SLIDE WRAPPER ─── */
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     SLIDE 1 — COVER
+  ══════════════════════════════════════ */
+  .slide-1 {
+    background: var(--navy);
+  }
+
+  .slide-1 .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.06;
+  }
+  .slide-1 .bg-circle-1 {
+    width: 700px; height: 700px;
+    background: var(--gold);
+    top: -200px; right: -200px;
+  }
+  .slide-1 .bg-circle-2 {
+    width: 400px; height: 400px;
+    background: var(--gold);
+    bottom: -100px; left: -100px;
+  }
+
+  .slide-1 .grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .slide-1 .content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 72px 80px;
+  }
+
+  .slide-1 .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-mark {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .slide-counter {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+  }
+
+  .slide-1 .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide-1 .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .slide-1 h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 86px;
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  .slide-1 h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .slide-1 .subtitle {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 560px;
+    letter-spacing: 0.01em;
+  }
+
+  .slide-1 .bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .gold-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .slide-1 .bottom-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  /* ══════════════════════════════════════
+     SLIDE 2 — STAGES GRID
+  ══════════════════════════════════════ */
+  .slide-2 {
+    background: var(--cream);
+  }
+
+  .slide-2 .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 64px 72px;
+    gap: 40px;
+  }
+
+  .slide-2 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .slide-2 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+
+  .slide-2 h2 em {
+    font-style: italic;
+    color: var(--green-dark);
+  }
+
+  .slide-2 .intro {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #4a5568;
+    line-height: 1.6;
+    max-width: 680px;
+  }
+
+  .grid-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .grid-axis-row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .grid-axis-label {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 16px;
+  }
+
+  .grid-axis-label span {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    text-align: right;
+    writing-mode: horizontal-tb;
+  }
+
+  .grid-cells {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .grid-cell {
+    padding: 24px 28px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .cell-foundation { background: #f0ebe0; border: 1px solid #ddd5c2; }
+  .cell-accelerating { background: #e8f0e8; border: 1px solid #c5d9c5; }
+  .cell-plateaued { background: #fef9ec; border: 1px solid #e8d99a; }
+  .cell-scaling { background: #e8f0e8; border: 1px solid #c5d9c5; }
+  .cell-stuck { background: #fde8e8; border: 1px solid #f0baba; }
+  .cell-authority { background: var(--green-dark); border: 1px solid var(--green-dark); }
+
+  .cell-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--navy);
+  }
+
+  .cell-authority .cell-name { color: var(--gold-light); }
+
+  .cell-stage-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  .tag-1 { background: var(--navy); color: var(--cream); }
+  .tag-2 { background: var(--green-mid); color: #e8f4e8; }
+  .tag-3 { background: var(--gold); color: var(--navy); }
+
+  .cell-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-top: 6px;
+  }
+
+  .cell-authority .cell-desc { color: #9ec4a8; }
+
+  .grid-top-labels {
+    display: flex;
+    gap: 8px;
+    padding-left: 128px;
+  }
+
+  .grid-top-label {
+    flex: 1;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    padding-bottom: 8px;
+  }
+
+  /* ══════════════════════════════════════
+     SLIDE 3 — STAGE 1
+  ══════════════════════════════════════ */
+  .slide-3 {
+    background: var(--navy);
+  }
+
+  .slide-3 .accent-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--gold);
+  }
+
+  .slide-3 .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 72px 80px 72px 96px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stage-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .slide-3 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.0;
+    margin-bottom: 12px;
+  }
+
+  .slide-3 .stage-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--gold-light);
+    margin-bottom: 48px;
+  }
+
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .check-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .check-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check-icon-must {
+    background: var(--gold);
+  }
+
+  .check-icon-must svg { color: var(--navy); }
+
+  .check-icon-should {
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    opacity: 0.7;
+  }
+
+  .check-text {
+    flex: 1;
+  }
+
+  .check-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 4px;
+    letter-spacing: 0.01em;
+  }
+
+  .check-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .priority-legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+  }
+
+  .legend-dot-must {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .legend-dot-should {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    opacity: 0.7;
+  }
+
+  /* ══════════════════════════════════════
+     SLIDE 4 — STAGE 2
+  ══════════════════════════════════════ */
+  .slide-4 {
+    background: var(--green-dark);
+  }
+
+  .slide-4 .bg-texture {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.08) 0%, transparent 60%);
+  }
+
+  .slide-4 .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 72px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-4 .stage-eyebrow {
+    color: var(--gold-light);
+  }
+
+  .slide-4 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.0;
+    margin-bottom: 12px;
+  }
+
+  .slide-4 .stage-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #9ec4a8;
+    margin-bottom: 48px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    flex: 1;
+  }
+
+  .col-block {}
+
+  .col-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+  }
+
+  .col-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .col-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .col-dash {
+    color: var(--gold);
+    font-size: 16px;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+
+  .col-item-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #c8d8cc;
+    line-height: 1.5;
+  }
+
+  .col-item-text strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .slide-4 .bottom-note {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .bottom-note-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--gold-light);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════
+     SLIDE 5 — STAGE 3
+  ══════════════════════════════════════ */
+  .slide-5 {
+    background: var(--cream);
+  }
+
+  .slide-5 .top-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+  }
+
+  .slide-5 .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 80px 72px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-5 .stage-eyebrow {
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .slide-5 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.0;
+    margin-bottom: 12px;
+  }
+
+  .slide-5 .stage-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--green-mid);
+    margin-bottom: 48px;
+  }
+
+  .three-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .pillar {
+    background: var(--white);
+    border: 1px solid #e0d8c8;
+    border-radius: 4px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--cream-dark);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .pillar-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .pillar-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .pillar-item {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #5a6a7a;
+    line-height: 1.4;
+    padding-left: 12px;
+    border-left: 2px solid var(--gold);
+  }
+
+  .slide-5 .revenue-target {
+    margin-top: 28px;
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .revenue-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .revenue-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--gold-light);
+  }
+
+  .revenue-note {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-light);
+    text-align: right;
+  }
+
+  /* ══════════════════════════════════════
+     SLIDE 6 — CTA
+  ══════════════════════════════════════ */
+  .slide-6 {
+    background: var(--navy);
+  }
+
+  .slide-6 .gold-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .slide-6 .bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .slide-6 .content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    gap: 0;
+  }
+
+  .slide-6 .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .slide-6 h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+
+  .slide-6 h2 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .slide-6 .body {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 620px;
+    margin-bottom: 56px;
+  }
+
+  .cta-box {
+    background: var(--gold);
+    padding: 22px 56px;
+    border-radius: 3px;
+    margin-bottom: 40px;
+  }
+
+  .cta-box span {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .slide-6 .url {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+  }
+
+  .slide-6 .url span {
+    color: var(--gold-light);
+  }
+
+  .slide-6 .brand-bottom {
+    position: absolute;
+    bottom: 48px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ─── SLIDE 1: COVER ─── -->
+<div class="slide-label">Slide 1 of 6 — Cover</div>
+<div class="slide slide-1">
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+  <div class="grain"></div>
+  <div class="content">
+    <div class="top-bar">
+      <div class="brand-mark">Srav Health</div>
+      <div class="slide-counter">01 / 06</div>
+    </div>
+    <div class="main">
+      <div class="eyebrow">Practice Growth</div>
+      <h1>Know your<br><em>stage.</em><br>Build<br>what's next.</h1>
+      <p class="subtitle">The stage-by-stage checklist for Ayurvedic and integrative practitioners — from first client to thriving practice.</p>
+    </div>
+    <div class="bottom">
+      <div class="gold-line"></div>
+      <div class="bottom-text">Swipe to find your stage →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SLIDE 2: STAGES GRID ─── -->
+<div class="slide-label">Slide 2 of 6 — Where are you?</div>
+<div class="slide slide-2">
+  <div class="content">
+    <div class="header">
+      <div>
+        <h2>Where does your<br>practice sit <em>today?</em></h2>
+      </div>
+      <div class="slide-counter" style="color:#94a3b8; font-size:12px; letter-spacing:0.12em;">02 / 06</div>
+    </div>
+    <p class="intro">Find your cell honestly. It's not a judgement — it's a starting point. Every cell has a path forward.</p>
+
+    <div class="grid-top-labels">
+      <div class="grid-top-label">↙ Low / Inconsistent Revenue</div>
+      <div class="grid-top-label">Growing / Strong Revenue ↗</div>
+    </div>
+
+    <div class="grid-wrap">
+      <div class="grid-axis-row">
+        <div class="grid-axis-label"><span>Early<br>0–4 yrs</span></div>
+        <div class="grid-cells">
+          <div class="grid-cell cell-foundation">
+            <div class="cell-name">Foundation</div>
+            <div class="cell-desc">Building from scratch. First clients, first proof points, learning what works.</div>
+            <div class="cell-stage-tag tag-1">→ Stage 1</div>
+          </div>
+          <div class="grid-cell cell-accelerating">
+            <div class="cell-name">Accelerating</div>
+            <div class="cell-desc">Early but growing fast. Strong positioning, early traction. Need systems now.</div>
+            <div class="cell-stage-tag tag-2">→ Stage 2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-axis-row">
+        <div class="grid-axis-label"><span>Growing<br>5–10 yrs</span></div>
+        <div class="grid-cells">
+          <div class="grid-cell cell-plateaued">
+            <div class="cell-name">Plateaued</div>
+            <div class="cell-desc">Experience is real but growth has stalled. Usually positioning or marketing — not clinical.</div>
+            <div class="cell-stage-tag tag-2">→ Stage 2</div>
+          </div>
+          <div class="grid-cell cell-scaling">
+            <div class="cell-name">Scaling</div>
+            <div class="cell-desc">Ready to add group programs and systematise so growth doesn't depend on your hours.</div>
+            <div class="cell-stage-tag tag-3">→ Stage 3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-axis-row">
+        <div class="grid-axis-label"><span>Established<br>10+ yrs</span></div>
+        <div class="grid-cells">
+          <div class="grid-cell cell-stuck">
+            <div class="cell-name">Stuck</div>
+            <div class="cell-desc">Respected by peers, but revenue hasn't matched expertise. A marketing investment problem.</div>
+            <div class="cell-stage-tag tag-2">→ Stage 2–3</div>
+          </div>
+          <div class="grid-cell cell-authority">
+            <div class="cell-name">Authority</div>
+            <div class="cell-desc">Multiple revenue streams. Focus shifts to leverage, referral systems, protecting your time.</div>
+            <div class="cell-stage-tag tag-3">→ Stage 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SLIDE 3: STAGE 1 ─── -->
+<div class="slide-label">Slide 3 of 6 — Stage 1: Foundation</div>
+<div class="slide slide-3">
+  <div class="accent-bar"></div>
+  <div class="content">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0;">
+      <div class="stage-eyebrow">Stage 01 · Foundation</div>
+      <div class="slide-counter" style="color:#4a5568; font-size:12px; letter-spacing:0.12em;">03 / 06</div>
+    </div>
+    <h2>Get up.<br>Get running.<br>Don't overbuild.</h2>
+    <div class="stage-tagline">0–15 active clients · $0–$40K gross revenue</div>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-icon check-icon-must">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-text">
+          <div class="check-title">Clear, symptom-led positioning</div>
+          <div class="check-desc">One specific client. One urgent problem she can't solve elsewhere. Written in her language, not yours.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon check-icon-must">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-text">
+          <div class="check-title">Website built for SEO from day one</div>
+          <div class="check-desc">Symptom-led headline. Single clear CTA. A blog post targeting her exact search query.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon check-icon-must">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-text">
+          <div class="check-title">One lead magnet + email list</div>
+          <div class="check-desc">A short guide or quiz. Free up to 1,000 subscribers on ConvertKit. Capture interest before it disappears.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon check-icon-must">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#1a2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-text">
+          <div class="check-title">One channel — done consistently</div>
+          <div class="check-desc">Instagram for most practitioners. LinkedIn if you're serving a professional audience. One. Not three.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon check-icon-should">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2.5 7L5.5 10L11.5 4" stroke="#c9a96e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-text">
+          <div class="check-title">Build social proof — one client at a time</div>
+          <div class="check-desc">Ask for a Google review after they mention a positive change. Not on a schedule. At the right moment.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-legend">
+      <div class="legend-item"><div class="legend-dot-must"></div> Must — non-negotiable at this stage</div>
+      <div class="legend-item"><div class="legend-dot-should"></div> Should — high value, do soon</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SLIDE 4: STAGE 2 ─── -->
+<div class="slide-label">Slide 4 of 6 — Stage 2: Growth</div>
+<div class="slide slide-4">
+  <div class="bg-texture"></div>
+  <div class="content">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div class="stage-eyebrow">Stage 02 · Growth</div>
+      <div class="slide-counter" style="color:#4a7a58; font-size:12px; letter-spacing:0.12em;">04 / 06</div>
+    </div>
+    <h2>Take stock.<br>Build systems.</h2>
+    <div class="stage-tagline">15–40 active clients · $40K–$90K gross revenue</div>
+
+    <div class="two-col">
+      <div class="col-block">
+        <div class="col-title">Audit first</div>
+        <div class="col-items">
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Is this the direction you want?</strong> Before building systems, confirm the offer is right.</div>
+          </div>
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Pull your last 10 intake forms.</strong> Use your clients' exact words to sharpen positioning.</div>
+          </div>
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Build 3 client case studies.</strong> Anonymised outcomes are your most powerful marketing asset.</div>
+          </div>
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Review your pricing.</strong> Most Stage 2 practitioners are underpriced. Check the four-quadrant model.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-block">
+        <div class="col-title">Then expand reach</div>
+        <div class="col-items">
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Email campaigns monthly.</strong> Educational, not promotional. Builds warm audience for programs.</div>
+          </div>
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Retargeting ($100–200/month).</strong> Show up to website visitors who didn't book. Highest-ROI at this stage.</div>
+          </div>
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Post-session follow-up flows.</strong> 48hr check-in. 3-week rebooking prompt. 6-week referral ask.</div>
+          </div>
+          <div class="col-item">
+            <div class="col-dash">—</div>
+            <div class="col-item-text"><strong>Design your first group program.</strong> Don't launch until you have 200+ subscribers and 5 strong outcomes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-note">
+      <div class="bottom-note-text">"What got you to Stage 2 was clinical excellence. What takes you through it is systems."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SLIDE 5: STAGE 3 ─── -->
+<div class="slide-label">Slide 5 of 6 — Stage 3: Scale</div>
+<div class="slide slide-5">
+  <div class="top-accent"></div>
+  <div class="content">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div class="stage-eyebrow" style="color:var(--navy);">Stage 03 · Scale</div>
+      <div class="slide-counter" style="color:#94a3b8; font-size:12px; letter-spacing:0.12em;">05 / 06</div>
+    </div>
+    <h2>Leverage your<br>expertise.</h2>
+    <div class="stage-tagline">40+ active clients · $90K–$200K+ gross revenue</div>
+
+    <div class="three-pillars">
+      <div class="pillar">
+        <div class="pillar-number">01</div>
+        <div class="pillar-title">Authority Content</div>
+        <div class="pillar-items">
+          <div class="pillar-item">Define your one authority topic — not Ayurveda broadly</div>
+          <div class="pillar-item">Long-form, research-backed articles monthly</div>
+          <div class="pillar-item">Guest podcasts and expert features</div>
+          <div class="pillar-item">Content that MDs and peers reference</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">02</div>
+        <div class="pillar-title">Group Programs</div>
+        <div class="pillar-items">
+          <div class="pillar-item">Two cohorts per year with full launch sequence</div>
+          <div class="pillar-item">Outcome-linked package pricing — not per session</div>
+          <div class="pillar-item">Kajabi or Systeme.io for delivery</div>
+          <div class="pillar-item">Waitlist built before each cohort opens</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">03</div>
+        <div class="pillar-title">Referral Systems</div>
+        <div class="pillar-items">
+          <div class="pillar-item">5+ licensed medical provider relationships</div>
+          <div class="pillar-item">Formalised client referral programme</div>
+          <div class="pillar-item">Full client journey automated — no manual steps</div>
+          <div class="pillar-item">CRM with full pipeline visibility</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="revenue-target">
+      <div>
+        <div class="revenue-label">Stage 3 Revenue Target</div>
+        <div class="revenue-number">$150K–$200K+</div>
+      </div>
+      <div class="revenue-note">2+ income streams<br>Growth independent<br>of your personal hours</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SLIDE 6: CTA ─── -->
+<div class="slide-label">Slide 6 of 6 — CTA</div>
+<div class="slide slide-6">
+  <div class="gold-top"></div>
+  <div class="bg-glow"></div>
+  <div class="content">
+    <div class="eyebrow">Srav Health</div>
+    <h2>Know your stage.<br>Build <em>what's next.</em></h2>
+    <p class="body">We work with Ayurvedic and integrative practitioners at Stage 1, 2, and 3 — building the infrastructure, managing the marketing, and running the systems that move you forward.</p>
+    <div class="cta-box">
+      <span>Book a Free Discovery Call</span>
+    </div>
+    <div class="url">sravhealth.com<span>/apply</span></div>
+    <div class="brand-bottom">Srav Health · Scale Your Integrative Practice</div>
+  </div>
+</div>
+
+</body>
+</html>
