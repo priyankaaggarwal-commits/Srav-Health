@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Srav Health — Website Basics Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --navy:#1a2744; --navy2:#243158; --navy3:#2d3d65;
+  --cream:#f5f0e8; --cream2:#ede5d4; --cream3:#e4dbc8;
+  --gold:#c9a96e; --gold2:#dfc08a; --gold3:#f0e4c8;
+  --white:#fdfaf5; --muted:#8a9bb8; --mid:#5a6a7a;
+  --green:#1e3d2f; --green2:#2d5a40; --sage:#9ec4a8;
+  --red:#c0392b; --red-bg:#fde8e4;
+  --amber:#d4820a; --amber-bg:#fef3e2;
+}
+body { background:#0c1018; display:flex; flex-direction:column; align-items:center; gap:20px; padding:40px 20px; font-family:'Jost',sans-serif; }
+.lbl { color:#2a3548; font-size:11px; letter-spacing:.15em; text-transform:uppercase; align-self:flex-start; margin-left:calc(50% - 540px); margin-bottom:2px; }
+.slide { width:1080px; height:1080px; position:relative; overflow:hidden; flex-shrink:0; }
+
+/* SHARED */
+.brand { font-family:'Jost',sans-serif; font-weight:500; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+.num { font-size:12px; letter-spacing:.1em; color:var(--muted); opacity:.6; }
+.top { display:flex; justify-content:space-between; align-items:center; }
+.eyebrow { font-family:'Jost',sans-serif; font-size:11px; font-weight:600; letter-spacing:.26em; text-transform:uppercase; }
+.ey-gold { color:var(--gold); }
+.ey-navy { color:var(--navy); opacity:.45; }
+.ey-sage { color:var(--sage); }
+
+/* ══ SLIDE 1 — COVER ══ */
+.s1 { background:var(--cream); }
+.s1-top-bar { position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--navy),var(--gold),var(--navy)); }
+.s1-circle { position:absolute; width:600px; height:600px; border-radius:50%; border:1px solid rgba(26,39,68,.06); }
+.s1-c1 { top:-200px; right:-200px; }
+.s1-c2 { top:-100px; right:-100px; width:400px; height:400px; border-color:rgba(201,169,110,.12); }
+.s1-c3 { bottom:-250px; left:-150px; width:500px; height:500px; }
+.s1 .inner { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; padding:72px 84px; }
+.s1 .mid { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.s1 .countdown { display:flex; gap:16px; align-items:center; margin-bottom:36px; }
+.s1 .cd-num { font-family:'Cormorant Garamond',serif; font-size:80px; font-weight:300; color:var(--gold); line-height:1; }
+.s1 .cd-line { width:1px; height:60px; background:var(--cream3); }
+.s1 .cd-txt { font-family:'Jost',sans-serif; font-size:14px; font-weight:300; color:var(--mid); line-height:1.5; max-width:200px; }
+.s1 h1 { font-family:'Cormorant Garamond',serif; font-size:86px; font-weight:400; color:var(--navy); line-height:.96; letter-spacing:-.02em; margin-bottom:32px; }
+.s1 h1 em { font-style:italic; color:var(--green2); }
+.s1 .sub { font-family:'Jost',sans-serif; font-size:18px; font-weight:300; color:var(--mid); line-height:1.65; max-width:620px; }
+.s1 .bot { display:flex; align-items:center; justify-content:space-between; }
+.brand-navy { font-family:'Jost',sans-serif; font-weight:500; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--navy); opacity:.3; }
+.swipe { display:flex; align-items:center; gap:12px; font-family:'Jost',sans-serif; font-size:12px; font-weight:400; letter-spacing:.14em; text-transform:uppercase; color:var(--mid); }
+.arr { width:40px; height:1px; background:var(--navy); position:relative; opacity:.4; }
+.arr::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-top:1px solid var(--navy); border-right:1px solid var(--navy); transform:rotate(45deg); opacity:.4; }
+
+/* ══ SLIDE 2 — 3 QUESTIONS ══ */
+.s2 { background:var(--navy); }
+.s2-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%,rgba(201,169,110,.09) 0%,transparent 55%); }
+.s2 .inner { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; padding:68px 80px; }
+.s2 .h2 { font-family:'Cormorant Garamond',serif; font-size:58px; font-weight:300; color:var(--white); line-height:1.02; margin-bottom:10px; }
+.s2 .h2 em { font-style:italic; color:var(--gold2); }
+.s2 .intro { font-family:'Jost',sans-serif; font-size:17px; font-weight:300; color:var(--muted); line-height:1.6; margin-bottom:40px; max-width:780px; }
+.q-cards { display:flex; flex-direction:column; gap:20px; flex:1; }
+.q-card { border-radius:4px; padding:26px 32px; display:flex; gap:24px; align-items:flex-start; }
+.qc-1 { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); }
+.qc-2 { background:rgba(201,169,110,.08); border:1px solid rgba(201,169,110,.18); }
+.qc-3 { background:rgba(30,61,47,.5); border:1px solid rgba(158,196,168,.15); }
+.q-icon { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; line-height:1; flex-shrink:0; width:56px; }
+.qi-1 { color:rgba(255,255,255,.2); }
+.qi-2 { color:rgba(201,169,110,.4); }
+.qi-3 { color:rgba(158,196,168,.3); }
+.q-body { flex:1; }
+.q-question { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:26px; font-weight:400; line-height:1.3; margin-bottom:8px; }
+.qq-1 { color:var(--white); }
+.qq-2 { color:var(--gold2); }
+.qq-3 { color:var(--sage); }
+.q-answer { font-family:'Jost',sans-serif; font-size:14px; font-weight:300; color:var(--muted); line-height:1.55; }
+.s2 .rule { margin-top:24px; padding:18px 24px; border-left:3px solid var(--gold); background:rgba(201,169,110,.06); }
+.rule-txt { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--gold2); line-height:1.5; }
+
+/* ══ SLIDE 3 — HEADLINE ══ */
+.s3 { background:var(--cream); }
+.s3-accent { position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--navy); }
+.s3 .inner { height:100%; display:flex; flex-direction:column; padding:68px 80px 68px 96px; }
+.s3 .h2 { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:400; color:var(--navy); line-height:.98; margin-bottom:10px; }
+.s3 .h2 em { font-style:italic; color:var(--green2); }
+.s3 .sub { font-family:'Jost',sans-serif; font-size:16px; font-weight:300; color:var(--mid); margin-bottom:36px; line-height:1.55; max-width:700px; }
+.headline-examples { display:flex; flex-direction:column; gap:14px; flex:1; }
+.he-bad { background:var(--red-bg); border:1px solid rgba(192,57,43,.15); border-radius:4px; padding:18px 22px; display:flex; gap:14px; align-items:flex-start; }
+.he-good { background:#e8f2ea; border:1px solid rgba(45,90,64,.15); border-radius:4px; padding:18px 22px; display:flex; gap:14px; align-items:flex-start; }
+.he-icon { font-size:16px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.he-bad .he-icon { color:var(--red); }
+.he-good .he-icon { color:var(--green2); }
+.he-content { flex:1; }
+.he-label { font-family:'Jost',sans-serif; font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:6px; }
+.hel-bad { color:var(--red); }
+.hel-good { color:var(--green2); }
+.he-headline { font-family:'Jost',sans-serif; font-size:16px; font-weight:600; line-height:1.4; margin-bottom:4px; }
+.heh-bad { color:#7a2020; }
+.heh-good { color:#1a3d28; }
+.he-why { font-family:'Jost',sans-serif; font-size:13px; font-weight:300; color:var(--mid); line-height:1.4; font-style:italic; }
+.s3 .rule { margin-top:16px; background:var(--navy); border-radius:4px; padding:18px 24px; }
+
+/* ══ SLIDE 4 — SOCIAL PROOF ══ */
+.s4 { background:var(--green); }
+.s4-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 90% 10%,rgba(201,169,110,.1) 0%,transparent 50%); }
+.s4 .inner { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; padding:68px 80px; }
+.s4 .h2 { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:300; color:var(--white); line-height:.98; margin-bottom:10px; }
+.s4 .h2 em { font-style:italic; color:var(--sage); }
+.s4 .sub { font-family:'Jost',sans-serif; font-size:16px; font-weight:300; color:var(--sage); line-height:1.55; margin-bottom:36px; opacity:.8; }
+.proof-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; flex:1; }
+.proof-card { border-radius:4px; padding:22px 24px; display:flex; flex-direction:column; gap:10px; }
+.pc-works { background:rgba(158,196,168,.1); border:1px solid rgba(158,196,168,.2); }
+.pc-doesnt { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); }
+.pc-label { font-family:'Jost',sans-serif; font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+.pcl-good { color:var(--sage); }
+.pcl-bad { color:var(--muted); }
+.proof-item { display:flex; gap:10px; align-items:flex-start; }
+.pi-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:6px; }
+.pid-good { background:var(--sage); }
+.pid-bad { background:rgba(255,255,255,.2); }
+.pi-text { font-family:'Jost',sans-serif; font-size:14px; font-weight:300; color:var(--sage); line-height:1.5; }
+.pi-text-muted { color:var(--muted); }
+.pi-text strong { font-weight:600; color:var(--white); }
+.s4 .rule { margin-top:20px; padding:18px 24px; border-left:3px solid var(--sage); background:rgba(158,196,168,.06); }
+
+/* ══ SLIDE 5 — ONE CTA ══ */
+.s5 { background:var(--navy); }
+.s5 .inner { height:100%; display:flex; flex-direction:column; padding:68px 80px; }
+.s5 .h2 { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:300; color:var(--white); line-height:.98; margin-bottom:10px; }
+.s5 .h2 em { font-style:italic; color:var(--gold2); }
+.s5 .sub { font-family:'Jost',sans-serif; font-size:17px; font-weight:300; color:var(--muted); line-height:1.6; margin-bottom:40px; max-width:760px; }
+.cta-compare { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.ctac-bad { background:rgba(192,57,43,.08); border:1px solid rgba(192,57,43,.2); border-radius:4px; padding:24px 26px; }
+.ctac-good { background:rgba(201,169,110,.08); border:1px solid rgba(201,169,110,.2); border-radius:4px; padding:24px 26px; }
+.ctac-title { font-family:'Jost',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid; }
+.ctt-bad { color:#e07070; border-color:rgba(192,57,43,.2); }
+.ctt-good { color:var(--gold2); border-color:rgba(201,169,110,.2); }
+.ctac-items { display:flex; flex-direction:column; gap:10px; }
+.ctac-item { display:flex; gap:10px; align-items:flex-start; }
+.ctac-icon { font-size:14px; font-weight:700; flex-shrink:0; margin-top:1px; }
+.ctac-text { font-family:'Jost',sans-serif; font-size:14px; font-weight:300; line-height:1.5; }
+.cti-bad { color:#e07070; }
+.cti-good { color:var(--gold2); }
+.s5 .big-rule { margin-top:32px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:4px; padding:28px 32px; text-align:center; }
+.big-rule-txt { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:300; color:var(--white); line-height:1.4; }
+.big-rule-txt em { font-style:italic; color:var(--gold2); }
+.s5-visual { margin-top:24px; display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; }
+.fake-btn { border-radius:3px; padding:14px 28px; font-family:'Jost',sans-serif; font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+.fb-active { background:var(--gold); color:var(--navy); }
+.fb-ghost { background:transparent; border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.3); }
+.vs-arrow { font-size:18px; color:var(--muted); }
+
+/* ══ SLIDE 6 — WHAT KILLS CONVERSIONS ══ */
+.s6 { background:var(--cream); }
+.s6-top { position:absolute; top:0; left:0; right:0; height:4px; background:var(--red); }
+.s6 .inner { height:100%; display:flex; flex-direction:column; padding:72px 80px 68px; }
+.s6 .h2 { font-family:'Cormorant Garamond',serif; font-size:60px; font-weight:400; color:var(--navy); line-height:1.0; margin-bottom:8px; }
+.s6 .h2 em { font-style:italic; color:var(--red); }
+.s6 .sub { font-family:'Jost',sans-serif; font-size:16px; font-weight:300; color:var(--mid); line-height:1.55; margin-bottom:32px; }
+.kill-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; flex:1; }
+.kill-item { background:var(--white); border:1px solid var(--cream2); border-left:4px solid var(--red); border-radius:0 4px 4px 0; padding:18px 20px; display:flex; gap:14px; align-items:flex-start; }
+.kill-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:rgba(192,57,43,.2); line-height:1; flex-shrink:0; width:32px; }
+.kill-body { flex:1; }
+.kill-title { font-family:'Jost',sans-serif; font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; line-height:1.3; }
+.kill-desc { font-family:'Jost',sans-serif; font-size:13px; font-weight:300; color:var(--mid); line-height:1.5; }
+.s6 .rule { margin-top:18px; background:var(--navy); border-radius:4px; padding:18px 24px; }
+
+/* ══ SLIDE 7 — BOOKING PAGE ══ */
+.s7 { background:var(--navy); }
+.s7-top { position:absolute; top:0; left:0; right:0; height:4px; background:var(--gold); }
+.s7-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 20% 80%,rgba(201,169,110,.07) 0%,transparent 55%); }
+.s7 .inner { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; padding:72px 80px 68px; }
+.s7 .h2 { font-family:'Cormorant Garamond',serif; font-size:60px; font-weight:300; color:var(--white); line-height:.98; margin-bottom:10px; }
+.s7 .h2 em { font-style:italic; color:var(--gold2); }
+.s7 .sub { font-family:'Jost',sans-serif; font-size:16px; font-weight:300; color:var(--muted); line-height:1.55; margin-bottom:32px; max-width:760px; }
+.booking-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; flex:1; }
+.booking-col { display:flex; flex-direction:column; gap:12px; }
+.booking-block { border-radius:4px; padding:20px 22px; display:flex; flex-direction:column; gap:8px; }
+.bb-gold { background:rgba(201,169,110,.1); border:1px solid rgba(201,169,110,.2); }
+.bb-green { background:rgba(30,61,47,.6); border:1px solid rgba(158,196,168,.15); }
+.bb-muted { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); }
+.bb-solid { background:var(--gold); }
+.bb-eyebrow { font-family:'Jost',sans-serif; font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+.bbe-gold { color:var(--gold); }
+.bbe-sage { color:var(--sage); }
+.bbe-muted { color:var(--muted); }
+.bbe-navy { color:var(--navy); }
+.bb-title { font-family:'Jost',sans-serif; font-size:15px; font-weight:600; line-height:1.3; }
+.bbt-white { color:var(--white); }
+.bbt-navy { color:var(--navy); }
+.bb-items { display:flex; flex-direction:column; gap:6px; }
+.bb-item { display:flex; gap:8px; align-items:flex-start; }
+.bb-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; margin-top:6px; }
+.bbd-gold { background:var(--gold); }
+.bbd-sage { background:var(--sage); }
+.bbd-muted { background:rgba(255,255,255,.2); }
+.bbd-navy { background:var(--navy); }
+.bb-item-text { font-family:'Jost',sans-serif; font-size:13px; font-weight:300; line-height:1.5; }
+.bbit-muted { color:var(--muted); }
+.bbit-sage { color:var(--sage); }
+.bbit-navy { color:rgba(26,39,68,.75); }
+.bbit-muted strong { color:var(--white); font-weight:500; }
+.bbit-sage strong { color:var(--white); font-weight:500; }
+.bbit-navy strong { color:var(--navy); font-weight:600; }
+
+/* ══ SLIDE 8 — CTA ══ */
+.s8 { background:var(--cream); }
+.s8-top { position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--navy),var(--gold),var(--navy)); }
+.s8-circle { position:absolute; width:700px; height:700px; border-radius:50%; border:1px solid rgba(201,169,110,.1); top:50%; left:50%; transform:translate(-50%,-50%); }
+.s8-circle2 { position:absolute; width:500px; height:500px; border-radius:50%; border:1px solid rgba(26,39,68,.05); top:50%; left:50%; transform:translate(-50%,-50%); }
+.s8 .inner { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px; text-align:center; }
+.s8 .eyebrow { margin-bottom:28px; }
+.s8 h2 { font-family:'Cormorant Garamond',serif; font-size:76px; font-weight:400; color:var(--navy); line-height:1.0; letter-spacing:-.01em; margin-bottom:24px; }
+.s8 h2 em { font-style:italic; color:var(--green2); }
+.s8 .body { font-family:'Jost',sans-serif; font-size:18px; font-weight:300; color:var(--mid); line-height:1.7; max-width:580px; margin-bottom:52px; }
+.cta-btn { background:var(--navy); padding:22px 60px; border-radius:3px; margin-bottom:28px; }
+.cta-btn span { font-family:'Jost',sans-serif; font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold2); }
+.cta-url { font-family:'Jost',sans-serif; font-size:14px; letter-spacing:.08em; color:var(--mid); opacity:.6; }
+.cta-url span { color:var(--navy); opacity:1; font-weight:500; }
+.s8-brand { position:absolute; bottom:48px; font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:rgba(26,39,68,.2); }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="lbl">Slide 1 / 8 — Cover</div>
+<div class="slide s1">
+  <div class="s1-top-bar"></div>
+  <div class="s1-circle s1-c1"></div><div class="s1-circle s1-c2"></div><div class="s1-circle s1-c3"></div>
+  <div class="inner">
+    <div class="top"><div class="brand-navy">Srav Health</div><div class="num" style="color:#94a3b8;">01 / 08</div></div>
+    <div class="mid">
+      <div class="countdown">
+        <div class="cd-num">8</div>
+        <div class="cd-line"></div>
+        <div class="cd-txt">seconds to make her feel she's in the right place</div>
+      </div>
+      <h1>Your website<br>either<br><em>keeps her<br>or loses her.</em></h1>
+      <p class="sub">The five things every Ayurvedic practitioner's website must do — and the six mistakes quietly costing you bookings every week.</p>
+    </div>
+    <div class="bot">
+      <div class="brand-navy">sravhealth.com</div>
+      <div class="swipe">Swipe to see the checklist <div class="arr"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="lbl">Slide 2 / 8 — The 3 questions she's asking</div>
+<div class="slide s2">
+  <div class="s2-bg"></div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num">02 / 08</div></div>
+    <div class="eyebrow ey-gold" style="margin-top:20px;">Before anything else</div>
+    <h2 class="h2">She arrives asking<br>three silent <em>questions.</em></h2>
+    <p class="intro">She is not reading your website carefully. She is scanning it for answers to three implicit questions. If your homepage answers all three above the fold, she stays. If not, she leaves.</p>
+    <div class="q-cards">
+      <div class="q-card qc-1">
+        <div class="q-icon qi-1">1</div>
+        <div class="q-body">
+          <div class="q-question qq-1">"Is this person for someone like me?"</div>
+          <div class="q-answer">Your headline answers this — or it doesn't. If it leads with your modality, you've lost her before she reads the second line. If it names her symptom or her situation, she leans forward.</div>
+        </div>
+      </div>
+      <div class="q-card qc-2">
+        <div class="q-icon qi-2">2</div>
+        <div class="q-body">
+          <div class="q-question qq-2">"Has this worked for people like me?"</div>
+          <div class="q-answer">A client quote, a specific outcome, a Google review. She needs to see herself in someone who has already been where she is — and come out the other side. This is the job of social proof.</div>
+        </div>
+      </div>
+      <div class="q-card qc-3">
+        <div class="q-icon qi-3">3</div>
+        <div class="q-body">
+          <div class="q-question qq-3">"What do I do next?"</div>
+          <div class="q-answer">One clear next step. Not three options. Not a newsletter sign-up competing with a booking link competing with a free guide. One CTA that removes the friction between interest and action.</div>
+        </div>
+      </div>
+    </div>
+    <div class="s2 rule"><div class="rule-txt">Answer all three in the first scroll. She should not have to look for any of them.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="lbl">Slide 3 / 8 — The headline</div>
+<div class="slide s3">
+  <div class="s3-accent"></div>
+  <div class="inner">
+    <div class="top"><div class="brand-navy">Srav Health</div><div class="num" style="color:#94a3b8;">03 / 08</div></div>
+    <div class="eyebrow ey-navy" style="margin-top:20px;">Must-have #1</div>
+    <h2 class="h2">The headline.<br><em>Your single most<br>important element.</em></h2>
+    <p class="sub">If your headline does not make the right person feel immediately understood, nothing else on the page matters. She has already left.</p>
+    <div class="headline-examples">
+      <div class="he-bad">
+        <div class="he-icon">✕</div>
+        <div class="he-content">
+          <div class="he-label hel-bad">Fails — leads with modality</div>
+          <div class="he-headline heh-bad">"Ayurvedic practitioner specialising in holistic wellness and balanced living"</div>
+          <div class="he-why">She has no idea if this is for her. "Holistic wellness" could be anyone. She has seen this sentence a hundred times.</div>
+        </div>
+      </div>
+      <div class="he-bad">
+        <div class="he-icon">✕</div>
+        <div class="he-content">
+          <div class="he-label hel-bad">Fails — credential-first</div>
+          <div class="he-headline heh-bad">"NAMA-certified Ayurvedic Practitioner serving the Bay Area and online"</div>
+          <div class="he-why">She does not know what NAMA means. Credentials build trust — but only after she already feels understood. Not before.</div>
+        </div>
+      </div>
+      <div class="he-good">
+        <div class="he-icon">✓</div>
+        <div class="he-content">
+          <div class="he-label hel-good">Works — names her situation</div>
+          <div class="he-headline heh-good">"Finally understand why you're exhausted, wired, and hormonally stuck — and build a protocol that actually sticks"</div>
+          <div class="he-why">She recognises herself in the first four words. She knows this is for her. She reads the second line.</div>
+        </div>
+      </div>
+      <div class="he-good">
+        <div class="he-icon">✓</div>
+        <div class="he-content">
+          <div class="he-label hel-good">Works — answers the failed-by-system feeling</div>
+          <div class="he-headline heh-good">"Your labs are normal. You still feel terrible. There's a reason — and an Ayurvedic answer for it."</div>
+          <div class="he-why">Mirrors the exact sentence in her head. Immediately credible because it names the gap conventional medicine left.</div>
+        </div>
+      </div>
+    </div>
+    <div class="s2 rule" style="margin-top:14px;"><div class="rule-txt">The headline is not about you. It is about the moment she is in when she finds you.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="lbl">Slide 4 / 8 — Social Proof</div>
+<div class="slide s4">
+  <div class="s4-bg"></div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num" style="color:#4a7a58;">04 / 08</div></div>
+    <div class="eyebrow ey-sage" style="margin-top:20px;">Must-have #2</div>
+    <h2 class="h2">Social proof.<br><em>Above the fold.</em><br>Always.</h2>
+    <p class="sub">She is asking "has this worked for someone like me?" before she has even scrolled. Answer that question before she has to look for it.</p>
+    <div class="proof-grid">
+      <div class="proof-card pc-works">
+        <div class="pc-label pcl-good">✓ Social proof that converts</div>
+        <div class="proof-item"><div class="pi-dot pid-good"></div><div class="pi-text"><strong>Specific outcomes</strong> — "Her cycles regulated in 12 weeks." Not "improved wellness."</div></div>
+        <div class="proof-item"><div class="pi-dot pid-good"></div><div class="pi-text"><strong>Google reviews</strong> visible on site — she trusts a third-party platform more than your own quotes</div></div>
+        <div class="proof-item"><div class="pi-dot pid-good"></div><div class="pi-text"><strong>Client stories</strong> — one paragraph that describes where someone was before and what changed. In her words.</div></div>
+        <div class="proof-item"><div class="pi-dot pid-good"></div><div class="pi-text"><strong>Number of clients served</strong> or <strong>years in practice</strong> — simple credibility signals that require no explanation</div></div>
+      </div>
+      <div class="proof-card pc-doesnt">
+        <div class="pc-label pcl-bad">✕ Social proof that doesn't land</div>
+        <div class="proof-item"><div class="pi-dot pid-bad"></div><div class="pi-text pi-text-muted">"She really helped me!" — vague, no specifics, no outcome visible</div></div>
+        <div class="proof-item"><div class="pi-dot pid-bad"></div><div class="pi-text pi-text-muted">Only your credentials listed — expertise without outcomes doesn't convert</div></div>
+        <div class="proof-item"><div class="pi-dot pid-bad"></div><div class="pi-text pi-text-muted">Testimonials buried at the bottom of the page — she never scrolls that far on a first visit</div></div>
+        <div class="proof-item"><div class="pi-dot pid-bad"></div><div class="pi-text pi-text-muted">Generic praise without a name or context — feels fabricated even when it isn't</div></div>
+      </div>
+    </div>
+    <div class="s2 rule" style="border-left-color:var(--sage); background:rgba(158,196,168,.06);"><div class="rule-txt" style="color:var(--sage);">If you have 5 Google reviews, they belong on your homepage. Not just on Google.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="lbl">Slide 5 / 8 — One CTA</div>
+<div class="slide s5">
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num">05 / 08</div></div>
+    <div class="eyebrow ey-gold" style="margin-top:20px;">Must-have #3</div>
+    <h2 class="h2">One CTA.<br><em>Not three.</em></h2>
+    <p class="sub">Every additional option on your booking page reduces the chance she takes any of them. Decision fatigue is real — and it costs you bookings every single week.</p>
+    <div class="cta-compare">
+      <div class="ctac-bad">
+        <div class="ctac-title ctt-bad">✕ What most practitioners have</div>
+        <div class="ctac-items">
+          <div class="ctac-item"><div class="ctac-icon cti-bad">✕</div><div class="ctac-text cti-bad">Book a consultation</div></div>
+          <div class="ctac-item"><div class="ctac-icon cti-bad">✕</div><div class="ctac-text cti-bad">Download the free guide</div></div>
+          <div class="ctac-item"><div class="ctac-icon cti-bad">✕</div><div class="ctac-text cti-bad">Join the newsletter</div></div>
+          <div class="ctac-item"><div class="ctac-icon cti-bad">✕</div><div class="ctac-text cti-bad">Follow on Instagram</div></div>
+          <div class="ctac-item" style="margin-top:8px;"><div class="ctac-text" style="color:rgba(255,255,255,.2); font-size:13px; font-style:italic;">She picks none. All are equal priority. None feel urgent.</div></div>
+        </div>
+      </div>
+      <div class="ctac-good">
+        <div class="ctac-title ctt-good">✓ What works</div>
+        <div class="ctac-items">
+          <div class="ctac-item"><div class="ctac-icon cti-good">✓</div><div class="ctac-text cti-good">Book a free 20-minute discovery call</div></div>
+          <div class="ctac-item" style="margin-top:8px;"><div class="ctac-text" style="color:rgba(201,169,110,.5); font-size:13px; font-style:italic;">One action. Framed as low-risk. Easy to say yes to.</div></div>
+          <div class="ctac-item" style="margin-top:16px;"><div class="ctac-text cti-good" style="font-size:13px;">The lead magnet and newsletter still exist — but as secondary conversion paths in the footer or a single pop-up. Not competing for attention on the same page.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="big-rule">
+      <div class="big-rule-txt">A confused visitor does not book. She leaves.<br><em>Clarity is more important than completeness.</em></div>
+    </div>
+    <div class="s5-visual">
+      <div class="fake-btn fb-active">Book a free call →</div>
+      <div class="vs-arrow">vs</div>
+      <div class="fake-btn fb-ghost">Book</div>
+      <div class="fake-btn fb-ghost">Download</div>
+      <div class="fake-btn fb-ghost">Subscribe</div>
+      <div class="fake-btn fb-ghost">Follow</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="lbl">Slide 6 / 8 — What kills conversions</div>
+<div class="slide s6">
+  <div class="s6-top"></div>
+  <div class="inner">
+    <div class="top"><div class="brand-navy">Srav Health</div><div class="num" style="color:#94a3b8;">06 / 08</div></div>
+    <div class="eyebrow" style="color:var(--red); margin-top:18px;">The conversion killers</div>
+    <h2 class="h2">Six things quietly<br><em>costing you bookings.</em></h2>
+    <p class="sub">Each one is fixable in under an hour. Most practitioners have three or more of these live on their site right now.</p>
+    <div class="kill-grid">
+      <div class="kill-item">
+        <div class="kill-num">01</div>
+        <div class="kill-body">
+          <div class="kill-title">Headline leads with your credential</div>
+          <div class="kill-desc">She does not know what AHC or NAMACB means. Start with her problem, not your qualification.</div>
+        </div>
+      </div>
+      <div class="kill-item">
+        <div class="kill-num">02</div>
+        <div class="kill-body">
+          <div class="kill-title">No photo or video above the fold</div>
+          <div class="kill-desc">She is making a health decision. She needs to see you before she trusts you. A professional photo builds more trust than a paragraph of credentials.</div>
+        </div>
+      </div>
+      <div class="kill-item">
+        <div class="kill-num">03</div>
+        <div class="kill-body">
+          <div class="kill-title">Booking page requires too many steps</div>
+          <div class="kill-desc">Every click between "I want to book" and "I am booked" is a drop-off point. One click to Calendly is the standard. Three clicks and a form is not.</div>
+        </div>
+      </div>
+      <div class="kill-item">
+        <div class="kill-num">04</div>
+        <div class="kill-body">
+          <div class="kill-title">No social proof visible without scrolling</div>
+          <div class="kill-desc">Most visitors on mobile never scroll past the first screen. If your reviews are at the bottom, they are invisible to the majority of your traffic.</div>
+        </div>
+      </div>
+      <div class="kill-item">
+        <div class="kill-num">05</div>
+        <div class="kill-body">
+          <div class="kill-title">Vague outcome language</div>
+          <div class="kill-desc">"Balance," "harmony," "wellness" — these words mean nothing specific. "Her energy returned in 6 weeks" means something. Be specific or be ignored.</div>
+        </div>
+      </div>
+      <div class="kill-item">
+        <div class="kill-num">06</div>
+        <div class="kill-body">
+          <div class="kill-title">Multiple CTAs competing for attention</div>
+          <div class="kill-desc">When everything is a priority, nothing is. Pick one action you want her to take. Put everything else second.</div>
+        </div>
+      </div>
+    </div>
+    <div class="s2 rule" style="margin-top:14px;"><div class="rule-txt">Fix these six. Before you spend a dollar on advertising, fix these six.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="lbl">Slide 7 / 8 — The booking page</div>
+<div class="slide s7">
+  <div class="s7-top"></div>
+  <div class="s7-bg"></div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num">07 / 08</div></div>
+    <div class="eyebrow ey-gold" style="margin-top:20px;">The highest-leverage page on your site</div>
+    <h2 class="h2">Your booking page<br>deserves more<br><em>attention than it gets.</em></h2>
+    <p class="sub">Most practitioners spend months on their homepage and 20 minutes on their booking page. That is backwards. This is where interest becomes a client.</p>
+    <div class="booking-grid">
+      <div class="booking-col">
+        <div class="booking-block bb-gold">
+          <div class="bb-eyebrow bbe-gold">Must be on the page</div>
+          <div class="bb-title bbt-white">What the page must answer</div>
+          <div class="bb-items">
+            <div class="bb-item"><div class="bb-dot bbd-gold"></div><div class="bb-item-text bbit-muted"><strong>What happens on the call</strong> — exactly. Remove the unknown.</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-gold"></div><div class="bb-item-text bbit-muted"><strong>How long</strong> — 20 minutes. Free. No obligation. Say it plainly.</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-gold"></div><div class="bb-item-text bbit-muted"><strong>Two or three client quotes</strong> — specific outcomes, not general praise</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-gold"></div><div class="bb-item-text bbit-muted"><strong>One FAQ</strong> answering the biggest objection she has — usually cost or time</div></div>
+          </div>
+        </div>
+        <div class="booking-block bb-green">
+          <div class="bb-eyebrow bbe-sage">After the call</div>
+          <div class="bb-title bbt-white">Send a summary within 2 hours</div>
+          <div class="bb-items">
+            <div class="bb-item"><div class="bb-dot bbd-sage"></div><div class="bb-item-text bbit-sage"><strong>Recap</strong> what she shared in her words</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-sage"></div><div class="bb-item-text bbit-sage"><strong>Your specific recommendation</strong> for her — not a generic offer</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-sage"></div><div class="bb-item-text bbit-sage"><strong>One link to book and pay.</strong> Nothing else competing for attention.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-col">
+        <div class="booking-block bb-muted">
+          <div class="bb-eyebrow bbe-muted">Remove friction everywhere</div>
+          <div class="bb-title bbt-white">Make it effortless to say yes</div>
+          <div class="bb-items">
+            <div class="bb-item"><div class="bb-dot bbd-muted"></div><div class="bb-item-text bbit-muted">Calendly embedded directly — no external link click</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-muted"></div><div class="bb-item-text bbit-muted">Automated reminder 24 hours before — reduces no-shows by 30–40%</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-muted"></div><div class="bb-item-text bbit-muted">If she visits but doesn't book — one automated follow-up email 48 hours later</div></div>
+            <div class="bb-item"><div class="bb-dot bbd-muted"></div><div class="bb-item-text bbit-muted">Payment link sent after call — not before. Commitment first, payment second.</div></div>
+          </div>
+        </div>
+        <div class="booking-block bb-solid">
+          <div class="bb-eyebrow bbe-navy">The booking page rule</div>
+          <div class="bb-title bbt-navy">By the time she lands here, the decision is mostly made.</div>
+          <div class="bb-items">
+            <div class="bb-item"><div class="bb-dot bbd-navy"></div><div class="bb-item-text bbit-navy">Your job is not to convince her on this page. It is to <strong>remove the last reason not to click.</strong></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8 — CTA -->
+<div class="lbl">Slide 8 / 8 — CTA</div>
+<div class="slide s8">
+  <div class="s8-top"></div>
+  <div class="s8-circle"></div><div class="s8-circle2"></div>
+  <div class="inner">
+    <div class="eyebrow ey-navy" style="margin-bottom:28px;">Srav Health</div>
+    <h2>A website that<br>works as hard<br><em>as you do.</em></h2>
+    <p class="body">We build SEO-optimised websites for Ayurvedic practitioners — headline, booking page, social proof, and full conversion infrastructure — done for you.</p>
+    <div class="cta-btn"><span>Book a Free Discovery Call</span></div>
+    <div class="cta-url">sravhealth.com<span>/apply</span></div>
+    <div class="s8-brand">Srav Health · Scale Your Integrative Practice</div>
+  </div>
+</div>
+
+</body>
+</html>
