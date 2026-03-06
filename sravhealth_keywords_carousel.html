@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Srav Health — Keywords Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --navy:#1a2744; --navy2:#243158; --navy3:#2d3d65;
+  --cream:#f5f0e8; --cream2:#ede5d4; --cream3:#e4dbc8;
+  --gold:#c9a96e; --gold2:#dfc08a; --gold3:#f0e4c8;
+  --white:#fdfaf5; --muted:#8a9bb8; --mid:#5a6a7a;
+  --green:#1e3d2f; --green2:#2d5a40; --sage:#9ec4a8;
+  --red:#c0392b; --red-bg:#fde8e4;
+}
+body { background:#0c1018; display:flex; flex-direction:column; align-items:center; gap:20px; padding:40px 20px; font-family:'Jost',sans-serif; }
+.lbl { color:#2a3548; font-size:11px; letter-spacing:.15em; text-transform:uppercase; align-self:flex-start; margin-left:calc(50% - 540px); margin-bottom:2px; }
+.slide { width:1080px; height:1080px; position:relative; overflow:hidden; flex-shrink:0; }
+
+/* ── SHARED ── */
+.brand { font-family:'Jost',sans-serif; font-weight:500; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); }
+.num { font-size:12px; letter-spacing:.1em; color:var(--muted); opacity:.6; font-family:'Jost',sans-serif; }
+.top { display:flex; justify-content:space-between; align-items:center; }
+.eyebrow { font-family:'Jost',sans-serif; font-size:11px; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.eyebrow-sage { color:var(--sage); }
+.eyebrow-navy { color:var(--navy); opacity:.5; }
+.h2 { font-family:'Cormorant Garamond',serif; font-weight:400; line-height:1.0; }
+
+/* ══ SLIDE 1 — COVER ══ */
+.s1 { background:var(--navy); }
+.s1-orb1 { position:absolute; width:750px; height:750px; border-radius:50%; background:radial-gradient(circle,rgba(201,169,110,.14) 0%,transparent 65%); top:-280px; right:-200px; }
+.s1-orb2 { position:absolute; width:450px; height:450px; border-radius:50%; background:radial-gradient(circle,rgba(201,169,110,.07) 0%,transparent 65%); bottom:-150px; left:-100px; }
+.s1-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,169,110,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.03) 1px,transparent 1px); background-size:72px 72px; }
+.s1 .inner { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; padding:72px 84px; }
+.s1 .mid { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.s1 .pill { display:inline-flex; align-items:center; gap:10px; margin-bottom:32px; }
+.pill-line { width:36px; height:1px; background:var(--gold); }
+.pill-txt { font-family:'Jost',sans-serif; font-size:12px; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
+.s1 h1 { font-family:'Cormorant Garamond',serif; font-size:82px; font-weight:300; line-height:.97; color:var(--white); letter-spacing:-.02em; margin-bottom:36px; }
+.s1 h1 em { font-style:italic; color:var(--gold2); display:block; }
+.s1 .sub { font-family:'Jost',sans-serif; font-size:18px; font-weight:300; color:var(--muted); line-height:1.65; max-width:600px; }
+.s1 .bot { display:flex; align-items:center; justify-content:space-between; }
+.swipe { display:flex; align-items:center; gap:12px; font-family:'Jost',sans-serif; font-size:12px; font-weight:400; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.arr { width:40px; height:1px; background:var(--gold); position:relative; }
+.arr::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-top:1px solid var(--gold); border-right:1px solid var(--gold); transform:rotate(45deg); }
+
+/* ══ SLIDE 2 — WHY IT CHANGES EVERYTHING ══ */
+.s2 { background:var(--cream); }
+.s2 .inner { height:100%; display:flex; flex-direction:column; padding:68px 80px; }
+.s2 .h2 { font-size:58px; color:var(--navy); margin-bottom:10px; }
+.s2 .h2 em { font-style:italic; color:var(--green2); }
+.s2 .intro { font-family:'Jost',sans-serif; font-size:17px; font-weight:300; color:var(--mid); line-height:1.65; max-width:800px; margin-bottom:36px; }
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; }
+.compare-col { display:flex; flex-direction:column; gap:12px; }
+.compare-head { font-family:'Jost',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; padding-bottom:12px; border-bottom:2px solid; margin-bottom:4px; }
+.ch-red { color:var(--red); border-color:var(--red); }
+.ch-green { color:var(--green2); border-color:var(--green2); }
+.compare-item { border-radius:4px; padding:16px 18px; }
+.ci-red { background:var(--red-bg); border:1px solid rgba(192,57,43,.15); }
+.ci-green { background:#e8f2ea; border:1px solid rgba(45,90,64,.15); }
+.ci-label { font-family:'Jost',sans-serif; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px; }
+.cil-red { color:var(--red); }
+.cil-green { color:var(--green2); }
+.ci-text { font-family:'Jost',sans-serif; font-size:15px; font-weight:400; line-height:1.5; }
+.cit-red { color:#7a2020; }
+.cit-green { color:#1a3d28; }
+.s2 .rule { margin-top:20px; background:var(--navy); border-radius:4px; padding:20px 28px; }
+.rule-txt { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--gold2); line-height:1.5; }
+
+/* ══ SLIDES 3–6 — STEPS ══ */
+.step-slide { background:var(--navy); }
+.step-slide.alt { background:var(--green); }
+.step-slide .inner { height:100%; display:flex; flex-direction:column; padding:68px 80px; position:relative; z-index:1; }
+.step-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 85% 15%,rgba(201,169,110,.08) 0%,transparent 55%); }
+.step-num-big { font-family:'Cormorant Garamond',serif; font-size:200px; font-weight:300; color:rgba(255,255,255,.04); position:absolute; right:60px; bottom:-20px; line-height:1; }
+.step-tag { display:inline-flex; align-items:center; gap:12px; margin-bottom:24px; margin-top:24px; }
+.step-tag-dot { width:10px; height:10px; border-radius:50%; background:var(--gold); }
+.step-tag-txt { font-family:'Jost',sans-serif; font-size:12px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+.step-slide .h2 { font-size:66px; color:var(--white); margin-bottom:10px; }
+.step-slide .h2 em { font-style:italic; color:var(--gold2); }
+.step-slide.alt .h2 em { color:var(--sage); }
+.step-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--gold2); margin-bottom:44px; }
+.step-slide.alt .step-tagline { color:var(--sage); }
+.how-to { display:flex; flex-direction:column; gap:18px; flex:1; }
+.how-item { display:flex; gap:18px; align-items:flex-start; }
+.how-arrow { width:28px; height:28px; background:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; font-size:13px; color:var(--navy); font-weight:700; }
+.step-slide.alt .how-arrow { background:var(--sage); color:var(--green); }
+.how-text { flex:1; }
+.how-title { font-family:'Jost',sans-serif; font-size:17px; font-weight:600; color:var(--white); margin-bottom:4px; }
+.how-desc { font-family:'Jost',sans-serif; font-size:14px; font-weight:300; color:var(--muted); line-height:1.55; }
+.how-example { margin-top:8px; padding:10px 14px; background:rgba(201,169,110,.1); border-radius:3px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--gold2); line-height:1.4; }
+.step-slide.alt .how-example { background:rgba(158,196,168,.1); color:var(--sage); }
+.step-note { margin-top:28px; padding:18px 22px; border-left:3px solid var(--gold); background:rgba(201,169,110,.06); border-radius:0 4px 4px 0; }
+.step-slide.alt .step-note { border-left-color:var(--sage); background:rgba(158,196,168,.06); }
+.step-note-txt { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--gold2); line-height:1.5; }
+.step-slide.alt .step-note-txt { color:var(--sage); }
+
+/* ══ SLIDE 7 — BEFORE / AFTER ══ */
+.s7 { background:var(--cream); }
+.s7 .inner { height:100%; display:flex; flex-direction:column; padding:68px 80px; }
+.s7 .h2 { font-size:54px; color:var(--navy); margin-bottom:8px; }
+.s7 .h2 em { font-style:italic; color:var(--green2); }
+.s7 .sub { font-family:'Jost',sans-serif; font-size:16px; font-weight:300; color:var(--mid); margin-bottom:32px; line-height:1.5; }
+.ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; flex:1; }
+.ba-col { display:flex; flex-direction:column; gap:10px; }
+.ba-head { font-family:'Jost',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; padding-bottom:10px; border-bottom:2px solid; margin-bottom:2px; }
+.bah-bad { color:var(--red); border-color:var(--red); }
+.bah-good { color:var(--green2); border-color:var(--green2); }
+.ba-item { border-radius:4px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; }
+.bai-bad { background:var(--red-bg); border:1px solid rgba(192,57,43,.12); }
+.bai-good { background:#e8f2ea; border:1px solid rgba(45,90,64,.12); }
+.ba-icon { font-size:13px; font-weight:700; margin-bottom:2px; }
+.bad-icon { color:var(--red); }
+.good-icon { color:var(--green2); }
+.ba-title-txt { font-family:'Jost',sans-serif; font-size:14px; font-weight:600; line-height:1.3; }
+.bat-bad { color:#7a2020; }
+.bat-good { color:#1a3d28; }
+.ba-why { font-family:'Jost',sans-serif; font-size:12px; font-weight:300; color:var(--mid); margin-top:2px; line-height:1.4; font-style:italic; }
+.s7 .rule { margin-top:20px; background:var(--navy); border-radius:4px; padding:18px 24px; }
+
+/* ══ SLIDE 8 — CTA ══ */
+.s8 { background:var(--navy); }
+.s8-glow { position:absolute; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle,rgba(201,169,110,.1) 0%,transparent 65%); top:50%; left:50%; transform:translate(-50%,-50%); }
+.s8-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(201,169,110,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.025) 1px,transparent 1px); background-size:88px 88px; }
+.s8 .inner { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px; text-align:center; }
+.s8 .eyebrow { margin-bottom:28px; }
+.s8 h2 { font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:var(--white); line-height:1.02; letter-spacing:-.01em; margin-bottom:28px; }
+.s8 h2 em { font-style:italic; color:var(--gold2); display:block; }
+.s8 .body { font-family:'Jost',sans-serif; font-size:18px; font-weight:300; color:var(--muted); line-height:1.7; max-width:580px; margin-bottom:52px; }
+.cta-btn { background:var(--gold); padding:22px 60px; border-radius:3px; margin-bottom:32px; }
+.cta-btn span { font-family:'Jost',sans-serif; font-size:14px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--navy); }
+.cta-url { font-family:'Jost',sans-serif; font-size:14px; letter-spacing:.08em; color:rgba(255,255,255,.22); }
+.cta-url span { color:var(--gold2); }
+.s8-brand { position:absolute; bottom:48px; font-family:'Jost',sans-serif; font-size:11px; font-weight:500; letter-spacing:.25em; text-transform:uppercase; color:rgba(255,255,255,.14); }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="lbl">Slide 1 / 8 — Cover</div>
+<div class="slide s1">
+  <div class="s1-orb1"></div><div class="s1-orb2"></div><div class="s1-grid"></div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num">01 / 08</div></div>
+    <div class="mid">
+      <div class="pill"><div class="pill-line"></div><div class="pill-txt">Content Strategy</div></div>
+      <h1>She's not searching<br>Ayurveda.<br><em>She's searching<br>her symptom.</em></h1>
+      <p class="sub">A step-by-step guide to finding the exact words your ideal client types — and building content she actually finds.</p>
+    </div>
+    <div class="bot">
+      <div class="brand" style="opacity:.28;">sravhealth.com</div>
+      <div class="swipe">Swipe to learn how <div class="arr"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="lbl">Slide 2 / 8 — Why it changes everything</div>
+<div class="slide s2">
+  <div class="inner">
+    <div class="top"><div class="brand" style="color:var(--navy);opacity:.3;">Srav Health</div><div class="num" style="color:#94a3b8;">02 / 08</div></div>
+    <div class="eyebrow eyebrow-navy" style="margin-top:20px;">The core insight</div>
+    <h2 class="h2">Your client starts<br>with a <em>feeling,</em><br>not a modality.</h2>
+    <p class="intro">She does not search "Ayurvedic practitioner." She searches the thing that is keeping her up at night. Your job is to be the answer to that search — which means writing in her language, not yours.</p>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-head ch-red">What she never searches</div>
+        <div class="compare-item ci-red"><div class="ci-label cil-red">Methodology</div><div class="ci-text cit-red">"Ayurvedic practitioner near me"</div></div>
+        <div class="compare-item ci-red"><div class="ci-label cil-red">Tradition</div><div class="ci-text cit-red">"Vata Pitta dosha imbalance help"</div></div>
+        <div class="compare-item ci-red"><div class="ci-label cil-red">Credential</div><div class="ci-text cit-red">"NAMA certified Ayurveda consultation"</div></div>
+        <div class="compare-item ci-red"><div class="ci-label cil-red">Service</div><div class="ci-text cit-red">"Panchakarma detox programme online"</div></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-head ch-green">What she actually searches</div>
+        <div class="compare-item ci-green"><div class="ci-label cil-green">Symptom</div><div class="ci-text cit-green">"why am I exhausted even after 8 hours sleep"</div></div>
+        <div class="compare-item ci-green"><div class="ci-label cil-green">Frustration</div><div class="ci-text cit-green">"bloating fatigue anxiety — are these connected"</div></div>
+        <div class="compare-item ci-green"><div class="ci-label cil-green">Situation</div><div class="ci-text cit-green">"hormonal imbalance after coming off the pill"</div></div>
+        <div class="compare-item ci-green"><div class="ci-label cil-green">Failed by system</div><div class="ci-text cit-green">"labs normal but still exhausted and wired"</div></div>
+      </div>
+    </div>
+    <div class="s2 rule"><div class="rule-txt">This changes your blog titles, your homepage headline, your Instagram first line — everything.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 3 — STEP 1: AUTOCOMPLETE -->
+<div class="lbl">Slide 3 / 8 — Step 1: Google Autocomplete</div>
+<div class="slide step-slide">
+  <div class="step-bg"></div>
+  <div class="step-num-big">1</div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num">03 / 08</div></div>
+    <div class="step-tag"><div class="step-tag-dot"></div><div class="step-tag-txt">Step 01 · Free · Takes 5 minutes</div></div>
+    <h2 class="h2">Google<br><em>Autocomplete.</em></h2>
+    <div class="step-tagline">Real searches. Real women. Right now.</div>
+    <div class="how-to">
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Open Google in an incognito window</div>
+          <div class="how-desc">Incognito shows you what everyone searches — not what your personalised history suggests. This matters.</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Type the beginning of a symptom your clients present with</div>
+          <div class="how-desc">Do not complete the search. Watch what autocomplete suggests. Each suggestion is a real search term real women are typing right now.</div>
+          <div class="how-example">Type: "why am I always tired and" → autocomplete shows: "cold", "bloated", "anxious", "gaining weight"</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Copy every suggestion that matches what your clients feel</div>
+          <div class="how-desc">These are your blog post titles, your Instagram hooks, your homepage headline. Not metaphors. The actual words she types.</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-note"><div class="step-note-txt">Do this for every symptom cluster you work with. 20 minutes generates your content brief for the next 3 months.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — STEP 2: SEARCH CONSOLE -->
+<div class="lbl">Slide 4 / 8 — Step 2: Search Console</div>
+<div class="slide step-slide alt">
+  <div class="step-bg" style="background:radial-gradient(ellipse at 85% 15%,rgba(158,196,168,.1) 0%,transparent 55%);"></div>
+  <div class="step-num-big">2</div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num" style="color:#4a7a58;">04 / 08</div></div>
+    <div class="step-tag"><div class="step-tag-dot" style="background:var(--sage);"></div><div class="step-tag-txt" style="color:#4a7a58;">Step 02 · Free · Your own data</div></div>
+    <h2 class="h2">Google<br><em>Search Console.</em></h2>
+    <div class="step-tagline">See what's already bringing people to you.</div>
+    <div class="how-to">
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Go to search.google.com/search-console — it's free</div>
+          <div class="how-desc">If you do not have it set up, do it today. It shows you exactly which search terms people used to find your site. Historical data only exists from the day you install it — so the longer you wait, the more data you lose.</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Go to Performance → Search Queries</div>
+          <div class="how-desc">Sort by impressions. You will see which searches your site appears for — even if nobody clicked yet. Those high-impression, low-click terms are your highest-opportunity content gaps.</div>
+          <div class="how-example">High impressions, low clicks = Google thinks you're relevant but your title isn't compelling enough to click.</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Write one blog post targeting your top impression term</div>
+          <div class="how-desc">This is your fastest path to more organic traffic — you are already ranking for it, just not converting the impression into a click.</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-note"><div class="step-note-txt">Install Search Console before anything else. You cannot see data from before installation — every week without it is data lost permanently.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — STEP 3: INTAKE FORMS -->
+<div class="lbl">Slide 5 / 8 — Step 3: Intake Forms</div>
+<div class="slide step-slide">
+  <div class="step-bg"></div>
+  <div class="step-num-big">3</div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num">05 / 08</div></div>
+    <div class="step-tag"><div class="step-tag-dot"></div><div class="step-tag-txt">Step 03 · No tool needed · Most overlooked</div></div>
+    <h2 class="h2">Your<br><em>intake forms.</em></h2>
+    <div class="step-tagline">The best keyword research you will ever do.</div>
+    <div class="how-to">
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Pull your last 10 client intake forms</div>
+          <div class="how-desc">Find the field where clients describe how they felt before they found you. Read every answer. Do not paraphrase. Do not clean up the language.</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Copy their exact phrases — unedited</div>
+          <div class="how-desc">The words your clients use to describe their own experience are almost always more powerful content material than anything a keyword tool generates. This is because they are searching those words too.</div>
+          <div class="how-example">"Exhausted by 2pm no matter how early I sleep" · "wired at night but can't wake up" · "bloated every afternoon since my 30s"</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Turn each phrase into a blog title or Instagram hook</div>
+          <div class="how-desc">Not "Ayurveda for fatigue." The exact phrase. "Why you're exhausted by 2pm no matter how much you sleep — and what Ayurveda sees that bloodwork misses."</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-note"><div class="step-note-txt">The best positioning is discovered, not invented. Your clients' words are the most accurate map to their world — and to the search bar.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 6 — STEP 4: PEOPLE ALSO ASK -->
+<div class="lbl">Slide 6 / 8 — Step 4: People Also Ask</div>
+<div class="slide step-slide alt">
+  <div class="step-bg" style="background:radial-gradient(ellipse at 85% 15%,rgba(158,196,168,.1) 0%,transparent 55%);"></div>
+  <div class="step-num-big">4</div>
+  <div class="inner">
+    <div class="top"><div class="brand">Srav Health</div><div class="num" style="color:#4a7a58;">06 / 08</div></div>
+    <div class="step-tag"><div class="step-tag-dot" style="background:var(--sage);"></div><div class="step-tag-txt" style="color:#4a7a58;">Step 04 · Free · Instant content brief</div></div>
+    <h2 class="h2">"People<br><em>Also Ask."</em></h2>
+    <div class="step-tagline">Google's gift to content creators.</div>
+    <div class="how-to">
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Search any symptom relevant to your practice</div>
+          <div class="how-desc">Scroll past the top results. Look for the "People Also Ask" box — a dropdown of questions real users searched alongside your term. This is not Google's guess. It is actual user behaviour data.</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Each question is a content brief</div>
+          <div class="how-desc">A blog post that directly answers one People Also Ask question — with the question as the title — will rank faster and more predictably than almost any other content format at the early stage.</div>
+          <div class="how-example">Search "hormonal fatigue women" → PAA shows: "Why am I so tired all the time as a woman?" → That is your next blog title.</div>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-arrow">→</div>
+        <div class="how-text">
+          <div class="how-title">Click each question — more appear below</div>
+          <div class="how-desc">The PAA box expands as you click. A single 5-minute session generates 20–30 question-led content ideas, all backed by real search demand.</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-note"><div class="step-note-txt">One PAA session per month keeps your content calendar full for 4–6 weeks. Low effort. High relevance.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 7 — BEFORE / AFTER -->
+<div class="lbl">Slide 7 / 8 — Before & After Examples</div>
+<div class="slide s7">
+  <div class="inner">
+    <div class="top"><div class="brand" style="color:var(--navy);opacity:.3;">Srav Health</div><div class="num" style="color:#94a3b8;">07 / 08</div></div>
+    <div class="eyebrow eyebrow-navy" style="margin-top:18px;">Put it into practice</div>
+    <h2 class="h2">Same topic.<br><em>Different language.</em><br>Different results.</h2>
+    <p class="sub">Every example below covers the same Ayurvedic topic. The right-hand version leads with her experience, not your methodology.</p>
+    <div class="ba-grid">
+      <div class="ba-col">
+        <div class="ba-head bah-bad">❌ Methodology-first — she scrolls past</div>
+        <div class="ba-item bai-bad"><div class="ba-icon bad-icon">✕</div><div class="ba-title-txt bat-bad">"Vata imbalance: causes, symptoms and Ayurvedic remedies"</div><div class="ba-why">She does not know she has Vata imbalance. She will never search this.</div></div>
+        <div class="ba-item bai-bad"><div class="ba-icon bad-icon">✕</div><div class="ba-title-txt bat-bad">"Ayurveda for hormonal health in women"</div><div class="ba-why">Too broad. No emotional hook. Nobody searches this with urgency.</div></div>
+        <div class="ba-item bai-bad"><div class="ba-icon bad-icon">✕</div><div class="ba-title-txt bat-bad">"The benefits of Panchakarma detoxification"</div><div class="ba-why">She does not know what Panchakarma is. This does not help her find you.</div></div>
+        <div class="ba-item bai-bad"><div class="ba-icon bad-icon">✕</div><div class="ba-title-txt bat-bad">"Dinacharya: building a daily Ayurvedic routine"</div><div class="ba-why">Sanskrit title. She will not search this. It feels like homework, not help.</div></div>
+      </div>
+      <div class="ba-col">
+        <div class="ba-head bah-good">✅ Symptom-first — she stops and reads</div>
+        <div class="ba-item bai-good"><div class="ba-icon good-icon">✓</div><div class="ba-title-txt bat-good">"Why you're always cold, anxious, and exhausted — and what it actually means"</div><div class="ba-why">She recognises herself immediately. This is what she types at 11pm.</div></div>
+        <div class="ba-item bai-good"><div class="ba-icon good-icon">✓</div><div class="ba-title-txt bat-good">"Labs came back normal but you still feel terrible. Here's why."</div><div class="ba-why">High-intent. This is the sentence in her head. She clicks immediately.</div></div>
+        <div class="ba-item bai-good"><div class="ba-icon good-icon">✓</div><div class="ba-title-txt bat-good">"How a 5-day gut reset changed my client's energy for the first time in 3 years"</div><div class="ba-why">Outcome-led. Specific. Credible. Curiosity-driving without being clickbait.</div></div>
+        <div class="ba-item bai-good"><div class="ba-icon good-icon">✓</div><div class="ba-title-txt bat-good">"The morning routine that took my client from 3am wake-ups to sleeping through"</div><div class="ba-why">She sees the outcome she wants. The methodology is revealed inside.</div></div>
+      </div>
+    </div>
+    <div class="s2 rule" style="margin-top:16px;"><div class="rule-txt">The Ayurvedic framework is the answer. Her symptom is always the headline.</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 8 — CTA -->
+<div class="lbl">Slide 8 / 8 — CTA</div>
+<div class="slide s8">
+  <div class="s8-glow"></div><div class="s8-grid"></div>
+  <div class="inner">
+    <div class="eyebrow">Srav Health</div>
+    <h2>Write content<br><em>she actually finds.</em></h2>
+    <p class="body">We build the keyword strategy, write the blog posts, and manage the content system that brings the right clients to your practice — consistently.</p>
+    <div class="cta-btn"><span>Book a Free Discovery Call</span></div>
+    <div class="cta-url">sravhealth.com<span>/apply</span></div>
+    <div class="s8-brand">Srav Health · Scale Your Integrative Practice</div>
+  </div>
+</div>
+
+</body>
+</html>
