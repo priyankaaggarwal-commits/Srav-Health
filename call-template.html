@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Template — Srav Health</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5A3D; --green-dark: #1E3D29; --green-mid: #3D7A54;
+      --navy: #1B2A4A; --ivory: #F5F0E8; --ivory-dark: #EDE8DC;
+      --gold: #C4A35A; --gold-light: #D4B86A;
+      --white: #fff; --text: #1A1A1A; --text-mid: #444; --text-light: #888;
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { padding-bottom: 80px; font-family: var(--font-sans); background: #2e4a38; color: var(--ivory); min-height: 100vh; }
+
+    /* TOP BAR */
+    .topbar { background: #1e3d29; border-bottom: 1px solid rgba(245,240,232,0.1); padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    .topbar-left { display: flex; align-items: center; gap: 20px; }
+    .topbar-logo { font-family: var(--font-display); font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.6); }
+    .topbar-divider { width: 1px; height: 20px; background: rgba(245,240,232,0.1); }
+    .topbar-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.35); }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .phase-tabs { display: flex; gap: 4px; }
+    .phase-tab { padding: 6px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.3); cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+    .phase-tab.active { color: var(--gold); border-color: rgba(196,163,90,0.3); background: rgba(196,163,90,0.06); }
+    .phase-tab.done { color: rgba(196,163,90,0.5); }
+    .timer-display { font-family: var(--font-display); font-size: 13px; color: var(--gold); letter-spacing: 2px; padding: 6px 14px; border: 1px solid rgba(196,163,90,0.2); cursor: pointer; min-width: 80px; text-align: center; }
+    .timer-display.warning { color: #e8956a; border-color: rgba(232,149,106,0.3); }
+
+    /* LAYOUT */
+    .shell { display: flex; padding-top: 56px; min-height: 100vh; }
+    .sidebar { width: 280px; flex-shrink: 0; background: #1e3d29; border-right: 1px solid rgba(245,240,232,0.08); padding: 32px 24px; position: fixed; top: 56px; left: 0; bottom: 0; overflow-y: auto; }
+    .content { margin-left: 280px; flex: 1; padding: 40px 48px; max-width: 900px; }
+
+    /* SIDEBAR */
+    .sidebar-section { margin-bottom: 28px; }
+    .sidebar-section-label { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,163,90,0.45); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(245,240,232,0.05); }
+    .practitioner-name { font-family: var(--font-serif); font-size: 20px; color: var(--ivory); margin-bottom: 4px; }
+    .practitioner-meta { font-size: 11px; color: rgba(245,240,232,0.35); line-height: 1.6; }
+    .stage-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(196,163,90,0.3); color: var(--gold); margin-top: 8px; }
+
+    /* SCORE PILLS in sidebar */
+    .score-summary { display: flex; flex-direction: column; gap: 6px; }
+    .score-row { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: rgba(245,240,232,0.45); }
+    .score-pill { font-size: 9px; letter-spacing: 1px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+    .score-pill.high { background: rgba(196,163,90,0.2); color: var(--gold); }
+    .score-pill.med { background: rgba(61,122,84,0.2); color: #7ab894; }
+    .score-pill.low { background: rgba(245,240,232,0.08); color: rgba(245,240,232,0.3); }
+
+    /* QUICK NOTES */
+    .quick-note { width: 100%; background: rgba(245,240,232,0.07); border: 1px solid rgba(245,240,232,0.14); color: rgba(245,240,232,0.85); font-family: var(--font-sans); font-size: 12px; font-weight: 300; padding: 10px 12px; outline: none; resize: none; line-height: 1.6; transition: border-color 0.2s; }
+    .quick-note:focus { border-color: rgba(196,163,90,0.35); }
+    .quick-note::placeholder { color: rgba(245,240,232,0.25); }
+
+    /* PHASE PANELS */
+    .phase-panel { display: none; }
+    .phase-panel.active { display: block; animation: panelIn 0.3s ease; }
+    @keyframes panelIn { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: translateX(0); } }
+    .phase-header { margin-bottom: 36px; }
+    .phase-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(196,163,90,0.5); margin-bottom: 8px; }
+    .phase-title { font-family: var(--font-serif); font-size: 34px; font-weight: 300; color: var(--ivory); line-height: 1.2; }
+    .phase-title em { font-style: italic; color: var(--gold); }
+    .phase-desc { font-size: 13px; color: rgba(245,240,232,0.4); line-height: 1.7; margin-top: 10px; max-width: 600px; }
+
+    /* FIELD GROUPS */
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+    .field-grid.single { grid-template-columns: 1fr; }
+    .field-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(196,163,90,0.5); }
+    .field-input { background: rgba(245,240,232,0.14); border: 1px solid rgba(245,240,232,0.25); color: var(--ivory); font-family: var(--font-sans); font-size: 13px; font-weight: 300; padding: 10px 14px; outline: none; transition: border-color 0.2s; width: 100%; }
+    .field-input:focus { border-color: rgba(196,163,90,0.6); }
+    .field-input::placeholder { color: rgba(245,240,232,0.38); }
+    .field-select { background: rgba(245,240,232,0.14); border: 1px solid rgba(245,240,232,0.25); color: var(--ivory); font-family: var(--font-sans); font-size: 13px; padding: 10px 14px; outline: none; width: 100%; cursor: pointer; appearance: none; }
+    .field-select option { background: #2e4a38; color: var(--ivory); }
+    .field-textarea { background: rgba(245,240,232,0.14); border: 1px solid rgba(245,240,232,0.25); color: var(--ivory); font-family: var(--font-sans); font-size: 13px; font-weight: 300; padding: 10px 14px; outline: none; resize: vertical; width: 100%; min-height: 72px; line-height: 1.6; transition: border-color 0.2s; }
+    .field-textarea:focus { border-color: rgba(196,163,90,0.6); }
+    .field-textarea::placeholder { color: rgba(245,240,232,0.38); }
+
+    /* SECTION DIVIDERS */
+    .section-divider { display: flex; align-items: center; gap: 12px; margin: 32px 0 24px; }
+    .section-divider-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(196,163,90,0.4); white-space: nowrap; }
+    .section-divider-line { flex: 1; height: 1px; background: rgba(245,240,232,0.07); }
+
+    /* STAGE SELECTOR */
+    .stage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+    .stage-card { padding: 16px 18px; border: 1px solid rgba(245,240,232,0.15); cursor: pointer; transition: all 0.2s; background: rgba(245,240,232,0.05); }
+    .stage-card:hover { border-color: rgba(196,163,90,0.4); background: rgba(196,163,90,0.08); }
+    .stage-card.selected { border-color: rgba(196,163,90,0.6); background: rgba(196,163,90,0.12); }
+    .stage-num { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
+    .stage-name { font-size: 13px; color: var(--ivory); font-weight: 400; margin-bottom: 4px; }
+    .stage-desc { font-size: 11px; color: rgba(245,240,232,0.5); line-height: 1.5; }
+
+    /* BLOCKER SCORING */
+    .blocker-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .blocker-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid rgba(245,240,232,0.14); background: rgba(245,240,232,0.06); }
+    .blocker-name { flex: 1; font-size: 13px; color: rgba(245,240,232,0.85); }
+    .blocker-scores { display: flex; gap: 6px; }
+    .score-btn { padding: 5px 12px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid rgba(245,240,232,0.1); background: none; color: rgba(245,240,232,0.3); cursor: pointer; transition: all 0.15s; font-family: var(--font-sans); }
+    .score-btn:hover { border-color: rgba(196,163,90,0.3); color: rgba(245,240,232,0.6); }
+    .score-btn.active-high { background: rgba(196,163,90,0.18); border-color: var(--gold); color: var(--gold); }
+    .score-btn.active-med { background: rgba(61,122,84,0.2); border-color: #3D7A54; color: #7ab894; }
+    .score-btn.active-low { background: rgba(245,240,232,0.06); border-color: rgba(245,240,232,0.15); color: rgba(245,240,232,0.4); }
+    .blocker-note { width: 180px; flex-shrink: 0; }
+
+    /* OPPORTUNITY TAGS */
+    .opp-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .opp-tag { padding: 8px 16px; border: 1px solid rgba(245,240,232,0.1); font-size: 12px; color: rgba(245,240,232,0.5); cursor: pointer; transition: all 0.2s; }
+    .opp-tag:hover { border-color: rgba(196,163,90,0.3); color: rgba(245,240,232,0.8); }
+    .opp-tag.selected { background: rgba(61,122,84,0.15); border-color: rgba(61,122,84,0.4); color: #7ab894; }
+
+    /* PRIORITY MATRIX */
+    .matrix-wrap { margin-bottom: 32px; }
+    .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 280px; margin-bottom: 12px; }
+    .matrix-cell { padding: 16px; border: 1px solid rgba(245,240,232,0.13); background: rgba(245,240,232,0.05); cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+    .matrix-cell:hover { background: rgba(245,240,232,0.09); }
+    .matrix-cell.selected { border-color: rgba(196,163,90,0.5); background: rgba(196,163,90,0.1); }
+    .matrix-cell-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+    .matrix-cell-title { font-family: var(--font-serif); font-size: 16px; color: var(--ivory); line-height: 1.3; }
+    .matrix-cell-desc { font-size: 11px; color: rgba(245,240,232,0.3); line-height: 1.5; }
+    .matrix-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .matrix-axis-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.2); text-align: center; padding: 4px; }
+    .matrix-y-label { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.2); margin-right: 8px; align-self: center; }
+
+    /* AI SUMMARY */
+    .ai-panel { background: rgba(27,42,74,0.4); border: 1px solid rgba(196,163,90,0.2); padding: 32px; margin-top: 32px; }
+    .ai-panel-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .ai-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(196,163,90,0.3); padding: 3px 10px; }
+    .ai-panel-title { font-family: var(--font-serif); font-size: 20px; color: var(--ivory); }
+    .ai-output { font-size: 14px; color: rgba(245,240,232,0.75); line-height: 1.85; font-weight: 300; font-family: var(--font-serif); font-style: italic; min-height: 80px; }
+    .ai-output.loading { color: rgba(245,240,232,0.3); }
+    .ai-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+    .ai-section { background: rgba(245,240,232,0.03); border: 1px solid rgba(245,240,232,0.07); padding: 16px; }
+    .ai-section-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(196,163,90,0.5); margin-bottom: 8px; }
+    .ai-section-content { font-size: 13px; color: rgba(245,240,232,0.6); line-height: 1.7; }
+
+    /* PROPOSAL BUTTON */
+    .proposal-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--green-dark); font-family: var(--font-sans); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; padding: 14px 28px; border: none; cursor: pointer; transition: background 0.2s; text-decoration: none; margin-top: 24px; }
+    .proposal-btn:hover { background: var(--gold-light); }
+
+    /* NAV BTNS */
+    .phase-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(245,240,232,0.07); }
+    .btn-phase { padding: 12px 28px; font-family: var(--font-sans); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-phase-next { background: var(--gold); color: var(--green-dark); border: none; font-weight: 500; }
+    .btn-phase-next:hover { background: var(--gold-light); }
+    .btn-phase-back { background: none; border: 1px solid rgba(245,240,232,0.12); color: rgba(245,240,232,0.4); }
+    .btn-phase-back:hover { border-color: rgba(245,240,232,0.3); color: rgba(245,240,232,0.7); }
+    .btn-generate { background: var(--navy); border: 1px solid rgba(196,163,90,0.3); color: var(--gold); padding: 12px 28px; font-family: var(--font-sans); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-generate:hover { background: rgba(196,163,90,0.08); }
+
+    /* TYPING */
+    .typing-dots { display: inline-flex; gap: 4px; align-items: center; }
+    .typing-dots span { width: 5px; height: 5px; border-radius: 50%; background: rgba(196,163,90,0.5); animation: td 1.2s infinite; }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes td { 0%,80%,100%{opacity:0.2} 40%{opacity:1} }
+
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .content { margin-left: 0; padding: 24px 20px; }
+      .field-grid, .stage-grid, .ai-sections { grid-template-columns: 1fr; }
+      .phase-tabs { display: none; }
+    }
+    /* ── SAVE BAR ── */
+    .save-bar{position:fixed;bottom:72px;right:24px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;z-index:500}
+    .save-btn{background:var(--green-dark);border:1px solid rgba(196,163,90,.3);color:var(--gold);font-family:var(--font-sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 18px;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .save-btn:hover{background:var(--green);border-color:var(--gold)}
+    .save-btn.sec{color:rgba(245,240,232,.3);border-color:rgba(245,240,232,.1);font-size:9px}
+    .save-btn.sec:hover{color:rgba(245,240,232,.6);border-color:rgba(245,240,232,.25)}
+    .toast{background:rgba(27,42,74,.95);color:var(--ivory);font-size:11px;padding:10px 18px;border-left:2px solid var(--gold);opacity:0;transition:opacity .3s;pointer-events:none;text-align:right}
+    .toast.show{opacity:1}
+    /* ── TOOL NAV BAR ── */
+    .tool-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(27,42,74,0.95);backdrop-filter:blur(12px);border:1px solid rgba(245,240,232,0.1);display:flex;align-items:center;gap:0;padding:0 4px;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,0.35);}
+    .tn-item{display:flex;align-items:center;gap:7px;padding:11px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.4);text-decoration:none;transition:all 0.18s;white-space:nowrap;}
+    .tn-item:hover{color:var(--ivory);background:rgba(245,240,232,0.06);}
+    .tn-item.active{color:var(--gold);}
+    .tn-item.tn-home{color:rgba(196,163,90,0.5);border-right:1px solid rgba(245,240,232,0.08);margin-right:4px;}
+    .tn-item.tn-home:hover{color:var(--gold);}
+    .tn-arrow{font-size:10px;color:rgba(245,240,232,0.15);padding:0 2px;pointer-events:none;}
+    .tn-divider{width:1px;height:20px;background:rgba(245,240,232,0.08);}
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-logo">SRAV HEALTH</span>
+    <div class="topbar-divider"></div>
+    <span class="topbar-title">Discovery Call Template</span>
+  </div>
+  <div class="topbar-right">
+    <div class="phase-tabs">
+      <div class="phase-tab active" onclick="goPhase(0)" id="ptab0">Snapshot</div>
+      <div class="phase-tab" onclick="goPhase(1)" id="ptab1">Vision</div>
+      <div class="phase-tab" onclick="goPhase(2)" id="ptab2">Blockers</div>
+      <div class="phase-tab" onclick="goPhase(3)" id="ptab3">Priority</div>
+    </div>
+    <div class="timer-display" id="timerDisplay" onclick="toggleTimer()" title="Click to start/pause">00:00</div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Practitioner</div>
+      <div class="practitioner-name" id="sb-name">—</div>
+      <div class="practitioner-meta" id="sb-meta">—</div>
+      <div class="stage-badge" id="sb-stage" style="display:none"></div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Blocker scores</div>
+      <div class="score-summary" id="scoreSummary">
+        <div style="font-size:11px;color:rgba(245,240,232,0.2);">Complete Phase 3 to see scores</div>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Quick notes</div>
+      <textarea class="quick-note" rows="5" placeholder="Running notes..." id="quickNotes"></textarea>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Links</div>
+      <div id="sb-links" style="font-size:11px;color:rgba(245,240,232,0.25);line-height:1.8;">—</div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- ── PHASE 1: SNAPSHOT ── -->
+    <div class="phase-panel active" id="phase0">
+      <div class="phase-header">
+        <p class="phase-label">Phase 1 of 4</p>
+        <h2 class="phase-title">Practice <em>Snapshot</em></h2>
+        <p class="phase-desc">Start here. Pre-fill what you know from intake, then confirm and add nuance together at the start of the call. Open with something specific you noticed.</p>
+      </div>
+
+      <div class="field-grid">
+        <div class="field"><label class="field-label">Full name</label><input class="field-input" id="f-name" placeholder="Dr. Sarah Chen" oninput="updateSidebar()"></div>
+        <div class="field"><label class="field-label">Modality</label><input class="field-input" id="f-modality" placeholder="Ayurveda, TCM, Functional..."></div>
+      </div>
+      <div class="field-grid three">
+        <div class="field"><label class="field-label">Years in practice</label><input class="field-input" id="f-years" placeholder="e.g. 5 years"></div>
+        <div class="field"><label class="field-label">Active clients</label><input class="field-input" id="f-clients" placeholder="e.g. 20–30"></div>
+        <div class="field"><label class="field-label">Work mode</label>
+          <select class="field-select" id="f-mode"><option value="">Select...</option><option>Virtual only</option><option>In-person only</option><option>Hybrid</option></select>
+        </div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label class="field-label">Geography / target market</label>
+          <select class="field-select" id="f-geo" onchange="updateSidebar()">
+            <option value="">Select primary market...</option>
+            <option>California, USA</option>
+            <option>Colorado, USA</option>
+            <option>Texas, USA</option>
+            <option>USA — multi-state / national</option>
+            <option>Other — international / global virtual</option>
+          </select>
+        </div>
+        <div class="field"><label class="field-label">Revenue range (monthly, USD)</label>
+          <select class="field-select" id="f-revenue"><option value="">Select...</option><option>Under $1,000</option><option>$1,000–$3,000</option><option>$3,000–$7,000</option><option>$7,000–$15,000</option><option>Over $15,000</option></select>
+        </div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Practice Stage</span><div class="section-divider-line"></div></div>
+      <div class="stage-grid" id="stageGrid">
+        <div class="stage-card" onclick="selectStage(this,1,'Founding')">
+          <div class="stage-num">Stage 1</div>
+          <div class="stage-name">Founding</div>
+          <div class="stage-desc">Under 2 years, building client base, still finding niche and offer. Problem: positioning + first acquisition.</div>
+        </div>
+        <div class="stage-card" onclick="selectStage(this,2,'Building')">
+          <div class="stage-num">Stage 2</div>
+          <div class="stage-name">Building</div>
+          <div class="stage-desc">2–5 years, some word of mouth working, inconsistent flow. Problem: converting interest + systemising.</div>
+        </div>
+        <div class="stage-card" onclick="selectStage(this,3,'Plateaued')">
+          <div class="stage-num">Stage 3</div>
+          <div class="stage-name">Plateaued</div>
+          <div class="stage-desc">Established but stuck. Revenue or clients stalled, often burned out on marketing. Problem: offer design + channel.</div>
+        </div>
+        <div class="stage-card" onclick="selectStage(this,4,'Scaling')">
+          <div class="stage-num">Stage 4</div>
+          <div class="stage-name">Scaling</div>
+          <div class="stage-desc">Clear on what works, wants growth without more time. Problem: tech + automation + brand authority.</div>
+        </div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Offering & Pricing</span><div class="section-divider-line"></div></div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">Current services offered</label><textarea class="field-textarea" id="f-services" placeholder="e.g. Initial consultation £150, follow-up sessions £80, 3-month programme £600..."></textarea></div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label class="field-label">Pricing — your assessment</label>
+          <select class="field-select" id="f-pricing-assess"><option value="">Select...</option><option>Under-priced for market</option><option>Broadly aligned to market</option><option>Premium — well justified</option><option>Unclear / needs benchmarking</option></select>
+        </div>
+        <div class="field"><label class="field-label">Primary marketing channel</label>
+          <select class="field-select" id="f-channel"><option value="">Select...</option><option>Word of mouth</option><option>Instagram</option><option>LinkedIn</option><option>Google / SEO</option><option>Practitioner referrals</option><option>None / unclear</option></select>
+        </div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Website Assessment (your review)</span><div class="section-divider-line"></div></div>
+      <div class="field-grid three">
+        <div class="field"><label class="field-label">Clarity (1–5)</label>
+          <select class="field-select" id="f-web-clarity"><option value="">—</option><option>1 — Very unclear</option><option>2</option><option>3 — Adequate</option><option>4</option><option>5 — Very clear</option></select>
+        </div>
+        <div class="field"><label class="field-label">Trust signals (1–5)</label>
+          <select class="field-select" id="f-web-trust"><option value="">—</option><option>1 — None</option><option>2</option><option>3 — Some</option><option>4</option><option>5 — Strong</option></select>
+        </div>
+        <div class="field"><label class="field-label">Conversion (1–5)</label>
+          <select class="field-select" id="f-web-conv"><option value="">—</option><option>1 — No clear CTA</option><option>2</option><option>3 — Adequate</option><option>4</option><option>5 — Strong</option></select>
+        </div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label class="field-label">Tools in use</label><input class="field-input" id="f-tools" placeholder="e.g. Calendly, Practice Better, Notion, WhatsApp..."></div>
+        <div class="field"><label class="field-label">Retention indicators</label>
+          <select class="field-select" id="f-retention"><option value="">Select...</option><option>Strong — clients rebook + refer</option><option>Moderate — some repeat clients</option><option>Weak — mostly single sessions</option><option>Unknown</option></select>
+        </div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Client Make-up Today</span><div class="section-divider-line"></div></div>
+      <div class="field-grid three">
+        <div class="field"><label class="field-label">Primary condition / issue</label><input class="field-input" id="f-client-condition" placeholder="e.g. Hormonal, gut health, stress..."></div>
+        <div class="field"><label class="field-label">Typical client profile</label><input class="field-input" id="f-client-profile" placeholder="e.g. Women 35–50, working professionals..."></div>
+        <div class="field"><label class="field-label">Avg. spend per client (USD)</label><input class="field-input" id="f-client-spend" placeholder="e.g. $400 one-off, $1,200/yr"></div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label class="field-label">% of clients on programmes vs one-offs</label>
+          <select class="field-select" id="f-client-type"><option value="">Select...</option><option>Mostly one-off sessions</option><option>Mix — some programmes, some one-offs</option><option>Mostly multi-session programmes</option><option>Fully programme-based</option></select>
+        </div>
+        <div class="field"><label class="field-label">Referral rate (roughly)</label>
+          <select class="field-select" id="f-referral-rate"><option value="">Select...</option><option>Almost none refer</option><option>Some refer occasionally</option><option>Regular referrals — maybe 1-2/month</option><option>Strong referral engine — main source</option></select>
+        </div>
+      </div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">What do clients say they came for vs. what they actually needed?</label><textarea class="field-textarea" id="f-client-gap" placeholder="e.g. They come saying 'I need more energy' but the real issue is always burnout + poor boundaries at work..."></textarea></div>
+      </div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">Opening observation (what you noticed from their intake / links)</label><textarea class="field-textarea" id="f-observation" placeholder="e.g. Your Instagram has strong content but the bio doesn't lead anywhere and the website has no clear next step..."></textarea></div>
+      </div>
+
+      <div class="phase-nav">
+        <div></div>
+        <button class="btn-phase btn-phase-next" onclick="goPhase(1)">Vision & Goals →</button>
+      </div>
+    </div>
+
+    <!-- ── PHASE 2: VISION ── -->
+    <div class="phase-panel" id="phase1">
+      <div class="phase-header">
+        <p class="phase-label">Phase 2 of 4</p>
+        <h2 class="phase-title">Vision & <em>Goals</em></h2>
+        <p class="phase-desc">Read back their intake vision statement first. Then work through these together — push for specific numbers. Most practitioners have never been asked this precisely.</p>
+      </div>
+
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">Their vision (from intake — read this back to them first)</label><textarea class="field-textarea" id="f-vision" rows="3" placeholder="Paste from intake form..."></textarea></div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">How They Want to Work</span><div class="section-divider-line"></div></div>
+      <div class="field-grid">
+        <div class="field"><label class="field-label">Ideal work mode</label>
+          <select class="field-select" id="f-ideal-mode"><option value="">Select...</option><option>Fully virtual</option><option>Mostly virtual, some in-person</option><option>Mostly in-person</option><option>Doesn't matter</option></select>
+        </div>
+        <div class="field"><label class="field-label">Client hours per week (ideal)</label><input class="field-input" id="f-hours" placeholder="e.g. 15–20 hours"></div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Financial Goals — Push for Specifics</span><div class="section-divider-line"></div></div>
+      <div class="field-grid three">
+        <div class="field"><label class="field-label">Comfortable monthly income</label><input class="field-input" id="f-income-comfort" placeholder="e.g. $5,000"></div>
+        <div class="field"><label class="field-label">Exciting monthly income</label><input class="field-input" id="f-income-exciting" placeholder="e.g. $10,000"></div>
+        <div class="field"><label class="field-label">Timeline to goal</label><input class="field-input" id="f-timeline" placeholder="e.g. 12 months"></div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Ideal Client</span><div class="section-divider-line"></div></div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">Describe their ideal client specifically — not demographic, but struggle + desire</label><textarea class="field-textarea" id="f-ideal-client" placeholder="e.g. Women 35–50 with hormonal imbalance who've tried conventional medicine and are ready to invest seriously in a different approach..."></textarea></div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">The Joy Question</span><div class="section-divider-line"></div></div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">What does the version of the practice that gives you the most joy look like day to day?</label><textarea class="field-textarea" id="f-joy" placeholder="Let them paint this picture — note the emotional language they use..."></textarea></div>
+      </div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">What would they stop doing tomorrow if they could?</label><textarea class="field-textarea" id="f-stop" placeholder="e.g. Chasing enquiries on Instagram, admin, one-off sessions with no follow through..."></textarea></div>
+      </div>
+
+      <div class="phase-nav">
+        <button class="btn-phase btn-phase-back" onclick="goPhase(0)">← Snapshot</button>
+        <button class="btn-phase btn-phase-next" onclick="goPhase(2)">Blockers & Opportunities →</button>
+      </div>
+    </div>
+
+    <!-- ── PHASE 3: BLOCKERS ── -->
+    <div class="phase-panel" id="phase2">
+      <div class="phase-header">
+        <p class="phase-label">Phase 3 of 4</p>
+        <h2 class="phase-title">Blockers & <em>Opportunities</em></h2>
+        <p class="phase-desc">Score each blocker based on what they tell you — and what you observed. Then flag opportunities. Your hypothesis from Phase 1 should be tested here — let them confirm or redirect it.</p>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Blocker Scoring — click to score each</span><div class="section-divider-line"></div></div>
+      <div class="blocker-list" id="blockerList">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Opportunities — select all that are present</span><div class="section-divider-line"></div></div>
+      <div class="opp-grid" id="oppGrid">
+        <div class="opp-tag" onclick="toggleOpp(this)">Untapped channel with right audience</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Existing clients to upgrade or retain</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Offering that runs without their time</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Niche authority not yet claimed</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Referral network not activated</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Pricing uplift — clearly under-priced</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Group programme potential</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Tech could save significant time</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Strong personal story not yet used</div>
+        <div class="opp-tag" onclick="toggleOpp(this)">Quick win — low effort high return</div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">Hypothesis check</span><div class="section-divider-line"></div></div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">Your hypothesis going in — was it right? What did you learn?</label><textarea class="field-textarea" id="f-hypothesis" placeholder="e.g. Thought the problem was content — actually it's that their offer is too broad and pricing is too low to attract serious clients..."></textarea></div>
+      </div>
+
+      <div class="phase-nav">
+        <button class="btn-phase btn-phase-back" onclick="goPhase(1)">← Vision</button>
+        <button class="btn-phase btn-phase-next" onclick="goPhase(3)">Priority Matrix →</button>
+      </div>
+    </div>
+
+    <!-- ── PHASE 4: PRIORITY + AI ── -->
+    <div class="phase-panel" id="phase3">
+      <div class="phase-header">
+        <p class="phase-label">Phase 4 of 4</p>
+        <h2 class="phase-title">Priority Matrix & <em>Offer</em></h2>
+        <p class="phase-desc">Select the quadrant that best describes their top priority, then generate the AI summary. This becomes the foundation of the proposal.</p>
+      </div>
+
+      <div class="matrix-wrap">
+        <div style="display:flex;align-items:center;margin-bottom:6px;">
+          <div style="width:24px;"></div>
+          <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.2);text-align:center;padding:4px;">High Readiness</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.2);text-align:center;padding:4px;">Low Readiness</div>
+          </div>
+        </div>
+        <div style="display:flex;">
+          <div style="display:flex;flex-direction:column;justify-content:space-around;padding-right:8px;width:24px;">
+            <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.2);">High Impact</div>
+            <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,0.2);">Low Impact</div>
+          </div>
+          <div class="matrix-grid" style="flex:1;">
+            <div class="matrix-cell" onclick="selectMatrix(this,'do-first')" id="mc-do-first">
+              <div class="matrix-cell-label">Do First</div>
+              <div class="matrix-cell-title">High impact · High readiness</div>
+              <div class="matrix-cell-desc">This is the offer. They're ready and it will move the needle most.</div>
+            </div>
+            <div class="matrix-cell" onclick="selectMatrix(this,'build-toward')" id="mc-build-toward">
+              <div class="matrix-cell-label">Build Toward</div>
+              <div class="matrix-cell-title">High impact · Low readiness</div>
+              <div class="matrix-cell-desc">The right play but needs foundation work first. Sequence accordingly.</div>
+            </div>
+            <div class="matrix-cell" onclick="selectMatrix(this,'quick-win')" id="mc-quick-win">
+              <div class="matrix-cell-label">Quick Win</div>
+              <div class="matrix-cell-title">Low impact · High readiness</div>
+              <div class="matrix-cell-desc">Good for momentum. Not the main play but builds confidence and trust.</div>
+            </div>
+            <div class="matrix-cell" onclick="selectMatrix(this,'not-now')" id="mc-not-now">
+              <div class="matrix-cell-label">Not Now</div>
+              <div class="matrix-cell-title">Low impact · Low readiness</div>
+              <div class="matrix-cell-desc">Revisit in 90 days. Taking this on now would distract from what matters.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-divider"><span class="section-divider-label">The Specific Priority & Offer</span><div class="section-divider-line"></div></div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">Top priority — one specific thing</label><input class="field-input" id="f-priority" placeholder="e.g. Redesign offer into a 3-month programme, reposition niche, relaunch with LinkedIn as primary channel"></div>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label class="field-label">Recommended work streams</label><textarea class="field-textarea" id="f-workstreams" placeholder="e.g. Strategy + positioning, website, content system"></textarea></div>
+        <div class="field"><label class="field-label">Engagement type</label>
+          <select class="field-select" id="f-engagement"><option value="">Select...</option><option>Foundations (one-time audit + roadmap)</option><option>Build (90-day engagement)</option><option>Scale (ongoing retainer)</option><option>Build + Scale</option></select>
+        </div>
+      </div>
+      <div class="field-grid single">
+        <div class="field"><label class="field-label">3 measurable outcomes in 90 days</label><textarea class="field-textarea" id="f-outcomes" placeholder="e.g. 1. Flagship programme launched and priced. 2. LinkedIn content system running — 3 posts/week. 3. 5 qualified enquiries/month from inbound..."></textarea></div>
+      </div>
+
+      <!-- AI SUMMARY -->
+      <div class="ai-panel">
+        <div class="ai-panel-header">
+          <div class="ai-badge">AI Summary</div>
+          <div class="ai-panel-title">Generate practice summary & proposal draft</div>
+        </div>
+        <div class="ai-output" id="aiOutput">Complete the fields above, then click Generate to create a personalised summary and proposal opening.</div>
+        <div class="ai-sections" id="aiSections" style="display:none;">
+          <div class="ai-section"><div class="ai-section-label">Priority recommendation</div><div class="ai-section-content" id="aiPriority">—</div></div>
+          <div class="ai-section"><div class="ai-section-label">Proposal opening line</div><div class="ai-section-content" id="aiOpening">—</div></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
+          <button class="btn-generate" onclick="generateAI()" id="generateBtn">Generate AI Summary →</button>
+          <a class="proposal-btn" id="proposalLink" href="#" target="_blank" style="display:none;">Open Proposal Builder →</a>
+        </div>
+      </div>
+
+      <div class="phase-nav">
+        <button class="btn-phase btn-phase-back" onclick="goPhase(2)">← Blockers</button>
+        <div></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ── BLOCKERS DATA ──
+const BLOCKERS = [
+  { id: 'lead_gen', name: 'Lead generation — not enough right clients finding them' },
+  { id: 'conversion', name: 'Conversion — enquiries not turning into committed clients' },
+  { id: 'offer_pricing', name: 'Offer & pricing — wrong structure, wrong price, wrong client' },
+  { id: 'time', name: 'Time & capacity — clinical work leaves nothing for growth' },
+  { id: 'tech', name: 'Tech & tools — missing, overwhelming, or disconnected' },
+  { id: 'brand', name: 'Brand & authority — invisible outside existing network' },
+  { id: 'retention', name: 'Retention — clients don\'t stay, refer, or rebook' },
+];
+
+const blockerScores = {};
+const opportunities = [];
+let currentPhase = 0;
+let selectedStage = null;
+let selectedMatrix = null;
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
+
+// Build blocker list
+function buildBlockers() {
+  const list = document.getElementById('blockerList');
+  BLOCKERS.forEach(b => {
+    blockerScores[b.id] = null;
+    const row = document.createElement('div');
+    row.className = 'blocker-row';
+    row.innerHTML = `
+      <div class="blocker-name">${b.name}</div>
+      <div class="blocker-scores">
+        <button class="score-btn" onclick="scoreBlocker('${b.id}','high',this)">High</button>
+        <button class="score-btn" onclick="scoreBlocker('${b.id}','med',this)">Med</button>
+        <button class="score-btn" onclick="scoreBlocker('${b.id}','low',this)">Low</button>
+      </div>
+      <div class="blocker-note"><input class="field-input" style="font-size:11px;padding:6px 10px;" placeholder="Note..." id="bn-${b.id}"></div>`;
+    list.appendChild(row);
+  });
+}
+
+function scoreBlocker(id, level, btn) {
+  const row = btn.closest('.blocker-row');
+  row.querySelectorAll('.score-btn').forEach(b => b.className = 'score-btn');
+  btn.className = `score-btn active-${level === 'high' ? 'high' : level === 'med' ? 'med' : 'low'}`;
+  blockerScores[id] = level;
+  updateScoreSidebar();
+}
+
+function updateScoreSidebar() {
+  const summary = document.getElementById('scoreSummary');
+  summary.innerHTML = '';
+  BLOCKERS.forEach(b => {
+    const score = blockerScores[b.id];
+    if (!score) return;
+    const row = document.createElement('div');
+    row.className = 'score-row';
+    const shortName = b.name.split('—')[0].trim();
+    row.innerHTML = `<span>${shortName}</span><span class="score-pill ${score}">${score}</span>`;
+    summary.appendChild(row);
+  });
+  if (summary.innerHTML === '') summary.innerHTML = '<div style="font-size:11px;color:rgba(245,240,232,0.2);">No scores yet</div>';
+}
+
+function toggleOpp(tag) {
+  tag.classList.toggle('selected');
+}
+
+// Stage selection
+function selectStage(card, num, name) {
+  document.querySelectorAll('.stage-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedStage = { num, name };
+  const badge = document.getElementById('sb-stage');
+  badge.textContent = 'Stage ' + num + ' — ' + name;
+  badge.style.display = 'inline-block';
+}
+
+// Matrix selection
+function selectMatrix(cell, type) {
+  document.querySelectorAll('.matrix-cell').forEach(c => c.classList.remove('selected'));
+  cell.classList.add('selected');
+  selectedMatrix = type;
+}
+
+// Sidebar update
+function updateSidebar() {
+  const name = document.getElementById('f-name').value.trim();
+  const modality = document.getElementById('f-modality').value.trim();
+  const mode = document.getElementById('f-mode').value;
+  document.getElementById('sb-name').textContent = name || '—';
+  document.getElementById('sb-meta').textContent = [modality, mode].filter(Boolean).join(' · ') || '—';
+}
+
+// Phase navigation
+function goPhase(n) {
+  document.getElementById('phase' + currentPhase).classList.remove('active');
+  document.getElementById('ptab' + currentPhase).classList.remove('active');
+  if (currentPhase < n) document.getElementById('ptab' + currentPhase).classList.add('done');
+  currentPhase = n;
+  document.getElementById('phase' + n).classList.add('active');
+  document.getElementById('ptab' + n).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Timer
+function toggleTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+  } else {
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+      const s = String(timerSeconds % 60).padStart(2, '0');
+      const display = document.getElementById('timerDisplay');
+      display.textContent = m + ':' + s;
+      if (timerSeconds > 1800) display.classList.add('warning');
+    }, 1000);
+    timerRunning = true;
+  }
+}
+
+// AI Generation
+async function generateAI() {
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  const aiOutput = document.getElementById('aiOutput');
+  aiOutput.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div> Generating...';
+  aiOutput.className = 'ai-output loading';
+
+  // Gather all data
+  const data = {
+    name: document.getElementById('f-name').value,
+    modality: document.getElementById('f-modality').value,
+    years: document.getElementById('f-years').value,
+    clients: document.getElementById('f-clients').value,
+    mode: document.getElementById('f-mode').value,
+    revenue: document.getElementById('f-revenue').value,
+    stage: selectedStage ? `Stage ${selectedStage.num} — ${selectedStage.name}` : 'Unknown',
+    services: document.getElementById('f-services').value,
+    pricingAssess: document.getElementById('f-pricing-assess').value,
+    channel: document.getElementById('f-channel').value,
+    retention: document.getElementById('f-retention').value,
+    clientCondition: document.getElementById('f-client-condition').value,
+    clientProfile:   document.getElementById('f-client-profile').value,
+    clientSpend:     document.getElementById('f-client-spend').value,
+    clientType:      document.getElementById('f-client-type').value,
+    referralRate:    document.getElementById('f-referral-rate').value,
+    clientGap:       document.getElementById('f-client-gap').value,
+    vision: document.getElementById('f-vision').value,
+    idealMode: document.getElementById('f-ideal-mode').value,
+    hours: document.getElementById('f-hours').value,
+    incomeComfort: document.getElementById('f-income-comfort').value,
+    incomeExciting: document.getElementById('f-income-exciting').value,
+    timeline: document.getElementById('f-timeline').value,
+    idealClient: document.getElementById('f-ideal-client').value,
+    joy: document.getElementById('f-joy').value,
+    stop: document.getElementById('f-stop').value,
+    blockers: BLOCKERS.filter(b => blockerScores[b.id]).map(b => `${b.name}: ${blockerScores[b.id]}`).join('; '),
+    opportunities: Array.from(document.querySelectorAll('.opp-tag.selected')).map(t => t.textContent).join(', '),
+    hypothesis: document.getElementById('f-hypothesis').value,
+    matrix: selectedMatrix || 'not selected',
+    priority: document.getElementById('f-priority').value,
+    workstreams: document.getElementById('f-workstreams').value,
+    engagement: document.getElementById('f-engagement').value,
+    outcomes: document.getElementById('f-outcomes').value,
+    notes: document.getElementById('quickNotes').value,
+  };
+
+  const prompt = `You are a practice growth advisor at Srav Health. Based on the following discovery call notes, generate three things:
+
+1. A 2-3 sentence practice situation summary (warm, specific, insightful — written as if reflecting back to the practitioner)
+2. A clear priority recommendation (1-2 sentences, specific to their situation)
+3. A compelling proposal opening line (1 sentence, personalised, that shows you truly understood them)
+
+CALL DATA:
+Practitioner: ${data.name}, ${data.modality}, ${data.years} experience
+Current: ${data.clients} active clients, ${data.mode}, ${data.revenue}/month
+Stage: ${data.stage}
+Services: ${data.services}
+Pricing assessment: ${data.pricingAssess}
+Primary channel: ${data.channel}
+Retention: ${data.retention}
+Client make-up: ${data.clientCondition}, ${data.clientProfile}, avg spend ${data.clientSpend}
+Programme vs one-off split: ${data.clientType}
+Referral rate: ${data.referralRate}
+Presenting vs real problem: ${data.clientGap}
+
+Vision (their words): ${data.vision}
+Ideal work mode: ${data.idealMode}, ${data.hours} client hours/week
+Financial goal: ${data.incomeComfort} comfortable, ${data.incomeExciting} exciting, by ${data.timeline}
+Ideal client: ${data.idealClient}
+What brings joy: ${data.joy}
+What they'd stop: ${data.stop}
+
+Blockers scored: ${data.blockers}
+Opportunities identified: ${data.opportunities}
+Hypothesis result: ${data.hypothesis}
+
+Priority matrix: ${data.matrix}
+Recommended priority: ${data.priority}
+Work streams: ${data.workstreams}
+Engagement type: ${data.engagement}
+90-day outcomes: ${data.outcomes}
+
+Respond in this exact JSON format, no markdown:
+{
+  "summary": "...",
+  "priority": "...",
+  "opening": "..."
+}`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const result = await response.json();
+    const text = result.content[0].text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(text);
+
+    aiOutput.className = 'ai-output';
+    aiOutput.textContent = parsed.summary;
+    document.getElementById('aiPriority').textContent = parsed.priority;
+    document.getElementById('aiOpening').textContent = parsed.opening;
+    document.getElementById('aiSections').style.display = 'grid';
+
+    // Build proposal URL
+    buildProposalLink(data, parsed);
+
+    // Save to localStorage
+    saveToLocal();
+
+    // Send to Formspree as backup record
+    fetch('https://formspree.io/f/xjgejpbv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        _subject: `Call notes — ${data.name} — ${new Date().toLocaleDateString('en-GB')}`,
+        practitioner: data.name,
+        modality:     data.modality,
+        revenue:      data.revenue,
+        stage:        data.stage,
+        vision:       data.vision,
+        idealClient:  data.idealClient,
+        incomeGoal:   data.incomeExciting,
+        timeline:     data.timeline,
+        blockers:     data.blockers,
+        opportunities:data.opportunities,
+        hypothesis:   data.hypothesis,
+        outcomes:     data.outcomes,
+        engagement:   data.engagement,
+        aiSummary:    parsed.summary,
+      })
+    }).catch(e => console.warn('Formspree send failed:', e));
+
+  } catch(e) {
+    aiOutput.className = 'ai-output';
+    aiOutput.textContent = 'Generation failed — check your connection and try again.';
+    console.error(e);
+  }
+  btn.disabled = false;
+}
+
+function buildProposalLink(data, ai) {
+  const params = new URLSearchParams({
+    name:        data.name,
+    modality:    data.modality,
+    stage:       data.stage,
+    vision:      data.vision,
+    priority:    data.priority,
+    workstreams: data.workstreams,
+    engagement:  data.engagement,
+    outcomes:    data.outcomes,
+    incomeGoal:  data.incomeExciting,
+    timeline:    data.timeline,
+    summary:     ai.summary,
+    aiPriority:  ai.priority,
+    opening:     ai.opening,
+    channel:     data.channel,
+    idealClient: data.idealClient,
+  });
+  const link = document.getElementById('proposalLink');
+  link.href = 'proposal.html?' + params.toString();
+  link.style.display = 'inline-flex';
+}
+
+// Init
+buildBlockers();
+document.getElementById('f-name').addEventListener('input', updateSidebar);
+document.getElementById('f-modality').addEventListener('input', updateSidebar);
+document.getElementById('f-mode').addEventListener('change', updateSidebar);
+</script>
+
+<!-- SAVE BAR -->
+<div class="save-bar">
+  <div class="toast" id="toast"></div>
+  <button class="save-btn" onclick="downloadNotes()">↓ Download Notes</button>
+  <button class="save-btn sec" onclick="clearDraft()">✕ Clear Draft</button>
+</div>
+
+<script>
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── AUTOSAVE / LOCALSTORAGE ──
+const FIELD_IDS = [
+  'f-name','f-modality','f-years','f-clients','f-mode','f-geo','f-revenue',
+  'f-services','f-pricing-assess','f-channel','f-retention',
+  'f-client-condition','f-client-profile','f-client-spend','f-client-type','f-referral-rate','f-client-gap',
+  'f-web-clarity','f-web-trust','f-web-conv','f-tools','f-observation',
+  'f-vision','f-ideal-mode','f-hours','f-income-comfort','f-income-exciting',
+  'f-timeline','f-ideal-client','f-joy','f-stop','f-hypothesis',
+  'f-priority','f-workstreams','f-engagement','f-outcomes','quickNotes'
+];
+
+function saveToLocal() {
+  const data = {};
+  FIELD_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value;
+  });
+  // Blocker notes
+  document.querySelectorAll('[id^="bn-"]').forEach(el => { data[el.id] = el.value; });
+  data._stage    = selectedStage ? JSON.stringify(selectedStage) : null;
+  data._blockers = JSON.stringify(blockerScores);
+  data._opps     = Array.from(document.querySelectorAll('.opp-tag.selected')).map(t => t.textContent);
+  data._matrix   = selectedMatrix;
+  data._phase    = currentPhase;
+  data._saved    = new Date().toISOString();
+  localStorage.setItem('srav_call_draft', JSON.stringify(data));
+}
+
+function loadFromLocal() {
+  const raw = localStorage.getItem('srav_call_draft');
+  if (!raw) return;
+  try {
+    const data = JSON.parse(raw);
+    FIELD_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && data[id] !== undefined) el.value = data[id];
+    });
+    // Blocker notes (DOM built after buildBlockers runs)
+    setTimeout(() => {
+      Object.keys(data).filter(k => k.startsWith('bn-')).forEach(k => {
+        const el = document.getElementById(k);
+        if (el) el.value = data[k];
+      });
+    }, 100);
+    if (data._stage)   { selectedStage = JSON.parse(data._stage); }
+    if (data._blockers) {
+      const scores = JSON.parse(data._blockers);
+      Object.assign(blockerScores, scores);
+      // Re-highlight score buttons after DOM ready
+      setTimeout(() => {
+        Object.entries(scores).forEach(([id, level]) => {
+          if (!level) return;
+          const row = document.querySelector(`#blockerList .blocker-row:nth-child(${BLOCKERS.findIndex(b=>b.id===id)+1})`);
+          if (row) {
+            const btn = Array.from(row.querySelectorAll('.score-btn')).find(b => b.textContent.toLowerCase() === level);
+            if (btn) btn.className = `score-btn active-${level === 'high' ? 'high' : level === 'med' ? 'med' : 'low'}`;
+          }
+        });
+        updateScoreSidebar();
+      }, 150);
+    }
+    if (data._matrix) {
+      selectedMatrix = data._matrix;
+      const cell = document.getElementById('mc-' + data._matrix);
+      if (cell) cell.classList.add('selected');
+    }
+    if (data._stage) {
+      const badge = document.getElementById('sb-stage');
+      badge.textContent = 'Stage ' + selectedStage.num + ' — ' + selectedStage.name;
+      badge.style.display = 'inline-block';
+      // Re-highlight stage card
+      setTimeout(() => {
+        document.querySelectorAll('.stage-card').forEach((c, i) => {
+          if (i + 1 === selectedStage.num) c.classList.add('selected');
+        });
+      }, 100);
+    }
+    if (data._opps) {
+      document.querySelectorAll('.opp-tag').forEach(t => {
+        if (data._opps.includes(t.textContent)) t.classList.add('selected');
+      });
+    }
+    updateSidebar();
+    if (data._saved) {
+      const d = new Date(data._saved);
+      showToast('Draft restored — ' + d.toLocaleDateString('en-GB',{day:'numeric',month:'short'}) + ' ' + d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}));
+    }
+  } catch(e) { console.error('Failed to load draft:', e); }
+}
+
+function clearDraft() {
+  if (confirm('Clear saved draft? This cannot be undone.')) {
+    localStorage.removeItem('srav_call_draft');
+    showToast('Draft cleared');
+  }
+}
+
+// ── DOWNLOAD NOTES ──
+function downloadNotes() {
+  saveToLocal();
+  const name = document.getElementById('f-name').value || 'unnamed';
+  const date = new Date().toISOString().split('T')[0];
+  const lines = [
+    'SRAV HEALTH — DISCOVERY CALL NOTES',
+    '='.repeat(44),
+    `Date: ${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`,
+    '',
+    'PRACTITIONER',
+    `Name: ${document.getElementById('f-name').value || '—'}`,
+    `Modality: ${document.getElementById('f-modality').value || '—'}`,
+    `Years: ${document.getElementById('f-years').value || '—'}`,
+    `Active clients: ${document.getElementById('f-clients').value || '—'}`,
+    `Revenue: ${document.getElementById('f-revenue').value || '—'}`,
+    `Stage: ${selectedStage ? 'Stage ' + selectedStage.num + ' — ' + selectedStage.name : '—'}`,
+    '',
+    'CLIENT MAKE-UP',
+    `Condition: ${document.getElementById('f-client-condition').value || '—'}`,
+    `Profile: ${document.getElementById('f-client-profile').value || '—'}`,
+    `Avg spend: ${document.getElementById('f-client-spend').value || '—'}`,
+    `Programme split: ${document.getElementById('f-client-type').value || '—'}`,
+    `Referral rate: ${document.getElementById('f-referral-rate').value || '—'}`,
+    `Presenting vs real: ${document.getElementById('f-client-gap').value || '—'}`,
+    '',
+    'VISION & GOALS',
+    `Vision: ${document.getElementById('f-vision').value || '—'}`,
+    `Ideal income: ${document.getElementById('f-income-exciting').value || '—'} by ${document.getElementById('f-timeline').value || '—'}`,
+    `Ideal client: ${document.getElementById('f-ideal-client').value || '—'}`,
+    `Would stop: ${document.getElementById('f-stop').value || '—'}`,
+    '',
+    'BLOCKERS',
+    ...BLOCKERS.map(b => `${b.name.split('—')[0].trim()}: ${blockerScores[b.id] || 'not scored'}`),
+    '',
+    'OPPORTUNITIES',
+    Array.from(document.querySelectorAll('.opp-tag.selected')).map(t => '· ' + t.textContent).join('\n') || '—',
+    '',
+    'HYPOTHESIS',
+    document.getElementById('f-hypothesis').value || '—',
+    '',
+    'PRIORITY & OFFER',
+    `Priority: ${document.getElementById('f-priority').value || '—'}`,
+    `Work streams: ${document.getElementById('f-workstreams').value || '—'}`,
+    `Engagement: ${document.getElementById('f-engagement').value || '—'}`,
+    `Outcomes: ${document.getElementById('f-outcomes').value || '—'}`,
+    '',
+    'QUICK NOTES',
+    document.getElementById('quickNotes').value || '—',
+  ];
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `srav-call-${name.replace(/\s+/g,'-').toLowerCase()}-${date}.txt`;
+  a.click();
+  showToast('Notes downloaded');
+}
+
+// ── WIRE UP AUTOSAVE ──
+window.addEventListener('load', () => {
+  loadFromLocal();
+  document.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('change', saveToLocal);
+    el.addEventListener('input',  saveToLocal);
+  });
+});
+</script>
+
+<!-- TOOL NAV -->
+<div class="tool-nav">
+  <a class="tn-item tn-home" href="srav-tools.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    Hub
+  </a>
+  <a class="tn-item" href="pre-intake.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    01 · Intake
+  </a>
+  <div class="tn-arrow">→</div>
+  <a class="tn-item active" href="call-template.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    02 · Call
+  </a>
+  <div class="tn-arrow">→</div>
+  <a class="tn-item" href="proposal.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    03 · Proposal
+  </a>
+</div>
+</body>
+</html>
