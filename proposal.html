@@ -921,21 +921,20 @@ function saveProp() {
   localStorage.setItem(key, JSON.stringify(data));
 
   // Formspree backup
-  fetch('https://formspree.io/f/xjgejpbv', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      _subject: `Proposal saved — ${gp('name','unknown')} — ${new Date().toLocaleDateString('en-GB')}`,
-      practitioner: gp('name'),
-      engagement:   gp('engagement'),
-      summary:      data.summary,
-      vision:       data.vision,
-      price:        data.price,
-      workstreams:  activeStreams.map(a => a.id).join(', '),
-      proposalUrl:  window.location.href,
-    })
-  }).catch(e => console.warn('Formspree send failed:', e));
-
+  const pfd = new FormData();
+pfd.append('_subject',     `Proposal saved — ${gp('name','unknown')} — ${new Date().toLocaleDateString('en-GB')}`);
+pfd.append('practitioner', gp('name'));
+pfd.append('engagement',   gp('engagement'));
+pfd.append('summary',      data.summary);
+pfd.append('vision',       data.vision);
+pfd.append('price',        data.price);
+pfd.append('workstreams',  activeStreams.map(a => a.id).join(', '));
+pfd.append('proposalUrl',  window.location.href);
+fetch('https://formspree.io/f/xjgejpbv', {
+  method: 'POST',
+  body: pfd
+}).catch(e => console.warn('Formspree send failed:', e));
+  
   showPropToast('Saved · ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}));
 }
 
