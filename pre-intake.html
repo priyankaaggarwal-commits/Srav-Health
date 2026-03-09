@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Before Your Call — Srav Health</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2D5A3D; --green-dark: #1E3D29; --green-mid: #3D7A54;
+      --navy: #1B2A4A; --ivory: #F5F0E8; --ivory-dark: #EDE8DC;
+      --gold: #C4A35A; --gold-light: #D4B86A;
+      --surface: rgba(255,255,255,0.06);
+      --surface-hover: rgba(255,255,255,0.1);
+      --border: rgba(255,255,255,0.12);
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'DM Sans', sans-serif;
+      --nav-h: 64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { padding-bottom: 80px; font-family: var(--font-sans); background: #243d2e; color: var(--ivory); min-height: 100vh; overflow-x: hidden; }
+
+    /* NAV */
+    .nav { height: var(--nav-h); background: rgba(30,61,41,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; position: fixed; top: 0; left: 0; right: 0; z-index: 50; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-wordmark { font-family: var(--font-display); font-size: 13px; letter-spacing: 4px; color: var(--ivory); }
+    .nav-div { width: 1px; height: 22px; background: rgba(255,255,255,0.1); }
+    .nav-page { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,240,232,0.38); }
+
+    /* LAYOUT */
+    .page { padding-top: var(--nav-h); min-height: 100vh; display: flex; }
+    .sidebar { width: 360px; flex-shrink: 0; background: rgba(45,90,61,0.5); padding: 56px 44px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.06); position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h)); overflow-y: auto; }
+    .main { flex: 1; padding: 56px 72px; max-width: 760px; }
+
+    /* SIDEBAR */
+    .sb-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(196,163,90,0.65); margin-bottom: 18px; }
+    .sb-title { font-family: var(--font-serif); font-size: 30px; font-weight: 300; line-height: 1.3; margin-bottom: 18px; }
+    .sb-title em { font-style: italic; color: var(--gold); }
+    .sb-body { font-size: 13px; line-height: 1.85; color: rgba(245,240,232,0.52); font-weight: 300; margin-bottom: 32px; }
+    .sb-checks { display: flex; flex-direction: column; gap: 12px; }
+    .sb-check { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: rgba(245,240,232,0.58); line-height: 1.5; }
+    .sb-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.6; flex-shrink: 0; margin-top: 5px; }
+    .sb-foot { font-size: 10px; color: rgba(245,240,232,0.2); letter-spacing: 0.5px; line-height: 1.7; }
+
+    /* PROGRESS */
+    .progress-wrap { margin-bottom: 48px; display: none; }
+    .progress-wrap.show { display: block; }
+    .prog-bar { display: flex; gap: 4px; margin-bottom: 8px; }
+    .prog-step { height: 2px; flex: 1; background: rgba(255,255,255,0.09); transition: background 0.4s; border-radius: 1px; }
+    .prog-step.done { background: var(--gold); }
+    .prog-step.active { background: rgba(196,163,90,0.5); }
+    .prog-meta { display: flex; justify-content: space-between; }
+    .prog-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(245,240,232,0.27); }
+
+    /* SCREENS */
+    .screen { display: none; }
+    .screen.active { display: block; animation: fadeUp 0.38s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* INTRO */
+    .intro-eyebrow { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(196,163,90,0.6); margin-bottom: 14px; }
+    .intro-title { font-family: var(--font-serif); font-size: clamp(30px, 4vw, 46px); font-weight: 300; line-height: 1.15; margin-bottom: 20px; }
+    .intro-title em { font-style: italic; color: var(--gold); }
+    .intro-body { font-size: 15px; line-height: 1.85; color: rgba(245,240,232,0.58); font-weight: 300; max-width: 540px; margin-bottom: 40px; }
+    .intro-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 44px; }
+    .intro-card { background: var(--surface); border: 1px solid var(--border); padding: 22px 20px; }
+    .intro-card-icon { font-size: 22px; margin-bottom: 10px; }
+    .intro-card-title { font-size: 13px; color: rgba(245,240,232,0.8); font-weight: 400; margin-bottom: 5px; }
+    .intro-card-desc { font-size: 12px; color: rgba(245,240,232,0.35); line-height: 1.6; }
+    .intro-start { background: var(--gold); color: var(--green-dark); font-family: var(--font-sans); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; padding: 15px 44px; border: none; cursor: pointer; transition: background 0.2s; }
+    .intro-start:hover { background: var(--gold-light); }
+    .intro-note { font-size: 11px; color: rgba(245,240,232,0.22); margin-top: 14px; }
+
+    /* QUESTION */
+    .q-num { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(196,163,90,0.55); margin-bottom: 10px; }
+    .q-text { font-family: var(--font-serif); font-size: clamp(22px, 3vw, 30px); font-weight: 300; line-height: 1.3; margin-bottom: 8px; }
+    .q-sub { font-size: 13px; color: rgba(245,240,232,0.4); font-weight: 300; line-height: 1.7; margin-bottom: 28px; }
+
+    /* MCQ OPTIONS */
+    .opts { display: flex; flex-direction: column; gap: 8px; }
+    .opts.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .opt { background: var(--surface); border: 1px solid var(--border); padding: 13px 18px; font-family: var(--font-sans); font-size: 13px; color: rgba(245,240,232,0.7); text-align: left; cursor: pointer; transition: all 0.18s; font-weight: 300; display: flex; align-items: center; gap: 12px; width: 100%; }
+    .opt:hover { background: var(--surface-hover); border-color: rgba(196,163,90,0.35); color: var(--ivory); }
+    .opt.sel { background: rgba(196,163,90,0.13); border-color: rgba(196,163,90,0.55); color: var(--ivory); }
+    .opt.sel .odot { background: var(--gold); border-color: var(--gold); }
+    .odot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(245,240,232,0.25); flex-shrink: 0; transition: all 0.18s; }
+    .multi-hint { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.22); margin-bottom: 12px; }
+
+    /* OR DIVIDER */
+    .or-div { display: flex; align-items: center; gap: 12px; margin: 20px 0 14px; }
+    .or-line { flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+    .or-text { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,240,232,0.2); white-space: nowrap; }
+
+    /* FREE TYPE */
+    .free-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(245,240,232,0.28); margin-bottom: 7px; }
+    .free-ta { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--ivory); font-family: var(--font-sans); font-size: 13px; font-weight: 300; padding: 13px 16px; outline: none; resize: none; line-height: 1.65; transition: border-color 0.2s; }
+    .free-ta::placeholder { color: rgba(245,240,232,0.17); }
+    .free-ta:focus { border-color: rgba(196,163,90,0.4); }
+
+    /* VISION */
+    .vision-ta { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--ivory); font-family: var(--font-sans); font-size: 14px; font-weight: 300; padding: 16px 20px; outline: none; resize: none; line-height: 1.75; transition: border-color 0.2s; margin-bottom: 10px; }
+    .vision-ta::placeholder { color: rgba(245,240,232,0.17); }
+    .vision-ta:focus { border-color: rgba(196,163,90,0.4); }
+    .vision-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+    .vision-hint { font-size: 11px; transition: color 0.25s; color: rgba(245,240,232,0.28); }
+    .vision-hint.met { color: rgba(196,163,90,0.6); }
+    .vision-count { font-size: 10px; color: rgba(245,240,232,0.2); }
+
+    /* LINKS */
+    .links-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 10px; }
+    .link-row { display: flex; align-items: center; gap: 12px; }
+    .link-ico { width: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: rgba(245,240,232,0.3); }
+    .link-lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.3); width: 100px; flex-shrink: 0; }
+    .link-inp { flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--ivory); font-family: var(--font-sans); font-size: 13px; font-weight: 300; padding: 11px 14px; outline: none; transition: border-color 0.2s; }
+    .link-inp::placeholder { color: rgba(245,240,232,0.16); }
+    .link-inp:focus { border-color: rgba(196,163,90,0.38); }
+    .links-note { font-size: 11px; color: rgba(245,240,232,0.22); margin-bottom: 28px; line-height: 1.6; }
+
+    /* AI FILL */
+    .ai-bar { display: flex; align-items: center; gap: 12px; background: rgba(27,42,74,0.4); border: 1px solid rgba(196,163,90,0.18); padding: 13px 16px; margin-bottom: 22px; }
+    .ai-bar-text { flex: 1; font-size: 12px; color: rgba(245,240,232,0.45); line-height: 1.5; }
+    .ai-bar-text strong { color: rgba(245,240,232,0.75); font-weight: 400; }
+    .ai-bar-btn { background: rgba(196,163,90,0.12); border: 1px solid rgba(196,163,90,0.3); color: var(--gold); font-family: var(--font-sans); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 16px; cursor: pointer; transition: all 0.2s; white-space: nowrap; flex-shrink: 0; }
+    .ai-bar-btn:hover { background: rgba(196,163,90,0.2); }
+    .ai-bar-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .ai-search-wrap { margin-bottom: 20px; display: none; }
+    .ai-search-row { display: flex; gap: 10px; align-items: flex-end; }
+    .ai-search-inp { flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--ivory); font-family: var(--font-sans); font-size: 13px; padding: 11px 14px; outline: none; }
+    .ai-search-inp:focus { border-color: rgba(196,163,90,0.4); }
+    .ai-search-inp::placeholder { color: rgba(245,240,232,0.16); }
+    .ai-status { font-size: 11px; color: rgba(196,163,90,0.5); margin-top: 8px; min-height: 16px; }
+
+    /* NAV BTNS */
+    .nav-btns { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+    .btn-next { background: var(--gold); color: var(--green-dark); font-family: var(--font-sans); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; padding: 14px 32px; border: none; cursor: pointer; transition: background 0.2s; }
+    .btn-next:hover { background: var(--gold-light); }
+    .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
+    .btn-back { background: none; border: 1px solid rgba(255,255,255,0.12); color: rgba(245,240,232,0.42); font-family: var(--font-sans); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 22px; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: rgba(255,255,255,0.3); color: rgba(245,240,232,0.7); }
+
+    /* COMPLETE */
+    .complete { display: none; text-align: center; padding: 80px 40px; flex-direction: column; align-items: center; gap: 20px; }
+    .complete.show { display: flex; }
+    .complete-icon { width: 64px; height: 64px; border-radius: 50%; border: 1px solid rgba(196,163,90,0.3); display: flex; align-items: center; justify-content: center; }
+    .complete-title { font-family: var(--font-serif); font-size: 40px; font-weight: 300; }
+    .complete-body { font-size: 15px; color: rgba(245,240,232,0.48); max-width: 420px; line-height: 1.85; }
+
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { padding: 40px 24px; max-width: 100%; }
+      .nav { padding: 0 24px; }
+      .opts.two-col { grid-template-columns: 1fr; }
+      .intro-cards { grid-template-columns: 1fr; }
+    }
+    /* ── TOOL NAV BAR ── */
+    .tool-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(27,42,74,0.95);backdrop-filter:blur(12px);border:1px solid rgba(245,240,232,0.1);display:flex;align-items:center;gap:0;padding:0 4px;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,0.35);}
+    .tn-item{display:flex;align-items:center;gap:7px;padding:11px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,0.4);text-decoration:none;transition:all 0.18s;white-space:nowrap;}
+    .tn-item:hover{color:var(--ivory);background:rgba(245,240,232,0.06);}
+    .tn-item.active{color:var(--gold);}
+    .tn-item.tn-home{color:rgba(196,163,90,0.5);border-right:1px solid rgba(245,240,232,0.08);margin-right:4px;}
+    .tn-item.tn-home:hover{color:var(--gold);}
+    .tn-arrow{font-size:10px;color:rgba(245,240,232,0.15);padding:0 2px;pointer-events:none;}
+    .tn-divider{width:1px;height:20px;background:rgba(245,240,232,0.08);}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <svg width="26" height="32" viewBox="0 0 56 68" fill="none">
+      <path d="M28 8 C16 8 8 18 8 30 C8 42 16 54 26 58 C28 59 31 58 32 56 C33 54 31 52 28 50 C22 47 16 40 16 30 C16 20 21 14 28 14 C35 14 40 20 40 28 C40 33 37 37 33 39" stroke="rgba(196,163,90,0.85)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="28" cy="30" r="4" fill="#C4A35A"/><circle cx="28" cy="30" r="1.8" fill="#E8C878"/>
+    </svg>
+    <span class="nav-wordmark">SRAV HEALTH</span>
+    <div class="nav-div"></div>
+    <span class="nav-page">Before Your Call</span>
+  </div>
+</nav>
+
+<div class="page">
+  <aside class="sidebar">
+    <div>
+      <p class="sb-label">Pre-call intake</p>
+      <h2 class="sb-title">A few quick questions so your discovery call <em>counts.</em></h2>
+      <p class="sb-body">No right or wrong answers here. This helps our team arrive with specific observations about your practice — so you spend the 30 minutes going deeper, not catching up.</p>
+      <div class="sb-checks">
+        <div class="sb-check"><div class="sb-dot"></div>About 3 minutes to complete</div>
+        <div class="sb-check"><div class="sb-dot"></div>Click to select — type if you prefer</div>
+        <div class="sb-check"><div class="sb-dot"></div>Reviewed before your call</div>
+        <div class="sb-check"><div class="sb-dot"></div>Your answers are confidential</div>
+      </div>
+    </div>
+    <p class="sb-foot">Only the Srav Health team will see your answers. They are never shared.</p>
+  </aside>
+
+  <main class="main">
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="prog-bar">
+        <div class="prog-step" id="ps0"></div>
+        <div class="prog-step" id="ps1"></div>
+        <div class="prog-step" id="ps2"></div>
+        <div class="prog-step" id="ps3"></div>
+        <div class="prog-step" id="ps4"></div>
+        <div class="prog-step" id="ps5"></div>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-label" id="progLabel">Question 1 of 6</span>
+        <span class="prog-label" id="progPct">0% complete</span>
+      </div>
+    </div>
+
+    <!-- ══ INTRO ══ -->
+    <div class="screen active" id="s-intro">
+      <p class="intro-eyebrow">Welcome</p>
+      <h1 class="intro-title">Before your<br>discovery call <em>with us.</em></h1>
+      <p class="intro-body">You've booked a 30-minute discovery call — great. These six short questions help our team prepare something specific for you, rather than spending the first half catching up on background. No wrong answers. Nothing here is a test.</p>
+      <div class="intro-cards">
+        <div class="intro-card">
+          <div class="intro-card-icon">⏱</div>
+          <div class="intro-card-title">About 3 minutes</div>
+          <div class="intro-card-desc">Mostly click-to-select. Every question has a free-type option if you want to add nuance.</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-card-icon">6</div>
+          <div class="intro-card-title">Six questions total</div>
+          <div class="intro-card-desc">Your practice, your situation, your goals. Nothing generic or off-the-shelf.</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-card-icon">🔒</div>
+          <div class="intro-card-title">Completely confidential</div>
+          <div class="intro-card-desc">Only our team sees your answers. Never shared, reviewed only for your call.</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-card-icon">→</div>
+          <div class="intro-card-title">A better call, guaranteed</div>
+          <div class="intro-card-desc">We'll arrive with specific observations about your practice — not generic questions.</div>
+        </div>
+      </div>
+      <button class="intro-start" onclick="startForm()">Let's begin →</button>
+      <p class="intro-note">You can go back and change any answer before submitting.</p>
+    </div>
+
+    <!-- ══ Q1: How you work ══ -->
+    <div class="screen" id="s-0">
+      <p class="q-num">Question 1 of 6</p>
+      <h2 class="q-text">How do you currently work with clients?</h2>
+      <p class="q-sub">Click to select. Click the same option again to deselect. Or skip straight to typing below.</p>
+      <div class="opts two-col" id="opts-0">
+        <button class="opt" onclick="toggleSingle(this,0)"><div class="odot"></div>Virtual only</button>
+        <button class="opt" onclick="toggleSingle(this,0)"><div class="odot"></div>In-person only</button>
+        <button class="opt" onclick="toggleSingle(this,0)"><div class="odot"></div>Hybrid — both</button>
+        <button class="opt" onclick="toggleSingle(this,0)"><div class="odot"></div>Still figuring this out</button>
+      </div>
+      <div class="or-div"><div class="or-line"></div><span class="or-text">or describe in your own words</span><div class="or-line"></div></div>
+      <p class="free-label">Your own answer (optional if you selected above)</p>
+      <textarea class="free-ta" id="ft-0" rows="2" placeholder="e.g. Mostly virtual but I see local clients in person on Thursdays..." oninput="onFreeType(0)"></textarea>
+      <div class="nav-btns" style="margin-top:28px;">
+        <button class="btn-next" id="next-0" onclick="goNext(0)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══ Q2: Practice stage ══ -->
+    <div class="screen" id="s-1">
+      <p class="q-num">Question 2 of 6</p>
+      <h2 class="q-text">Where would you say your practice is right now?</h2>
+      <p class="q-sub">Pick what feels most honest. Click the same option again to deselect.</p>
+      <div class="opts" id="opts-1">
+        <button class="opt" onclick="toggleSingle(this,1)"><div class="odot"></div>Early days — I'm building my client base and still finding my footing</button>
+        <button class="opt" onclick="toggleSingle(this,1)"><div class="odot"></div>Gaining momentum — clients are coming in but it feels inconsistent</button>
+        <button class="opt" onclick="toggleSingle(this,1)"><div class="odot"></div>Established but stuck — I have a practice but growth has plateaued</button>
+        <button class="opt" onclick="toggleSingle(this,1)"><div class="odot"></div>Ready to scale — I know what works, I need the system to grow it</button>
+      </div>
+      <div class="or-div"><div class="or-line"></div><span class="or-text">or describe in your own words</span><div class="or-line"></div></div>
+      <p class="free-label">Your own answer (optional if you selected above)</p>
+      <textarea class="free-ta" id="ft-1" rows="2" placeholder="e.g. I've been going 3 years, have steady clients but haven't grown in 18 months..." oninput="onFreeType(1)"></textarea>
+      <div class="nav-btns" style="margin-top:28px;">
+        <button class="btn-back" onclick="goBack(1)">← Back</button>
+        <button class="btn-next" id="next-1" onclick="goNext(1)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══ Q3: Where clients come from ══ -->
+    <div class="screen" id="s-2">
+      <p class="q-num">Question 3 of 6</p>
+      <h2 class="q-text">Where do most of your new clients come from right now?</h2>
+      <p class="q-sub">Your primary source. Click to select, click again to deselect.</p>
+      <div class="opts" id="opts-2">
+        <button class="opt" onclick="toggleSingle(this,2)"><div class="odot"></div>Word of mouth and personal referrals</button>
+        <button class="opt" onclick="toggleSingle(this,2)"><div class="odot"></div>Social media — Instagram, LinkedIn, or similar</button>
+        <button class="opt" onclick="toggleSingle(this,2)"><div class="odot"></div>Google search or my website</button>
+        <button class="opt" onclick="toggleSingle(this,2)"><div class="odot"></div>Referrals from other practitioners or clinics</button>
+        <button class="opt" onclick="toggleSingle(this,2)"><div class="odot"></div>Honestly not sure — it varies and I don't track it</button>
+      </div>
+      <div class="or-div"><div class="or-line"></div><span class="or-text">or describe in your own words</span><div class="or-line"></div></div>
+      <p class="free-label">Your own answer (optional if you selected above)</p>
+      <textarea class="free-ta" id="ft-2" rows="2" placeholder="e.g. Mostly from a local Facebook group and one GP who refers to me..." oninput="onFreeType(2)"></textarea>
+      <div class="nav-btns" style="margin-top:28px;">
+        <button class="btn-back" onclick="goBack(2)">← Back</button>
+        <button class="btn-next" id="next-2" onclick="goNext(2)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══ Q4: Time drains ══ -->
+    <div class="screen" id="s-3">
+      <p class="q-num">Question 4 of 6</p>
+      <h2 class="q-text">Outside of seeing clients, what's taking up most of your energy?</h2>
+      <p class="q-sub">Select all that apply. Click any option again to deselect it.</p>
+      <p class="multi-hint">Select all that apply</p>
+      <div class="opts" id="opts-3">
+        <button class="opt" onclick="toggleMulti(this,3)"><div class="odot"></div>Showing up on social media and creating content</button>
+        <button class="opt" onclick="toggleMulti(this,3)"><div class="odot"></div>Admin, scheduling, and client communications</button>
+        <button class="opt" onclick="toggleMulti(this,3)"><div class="odot"></div>Trying to figure out how to find more clients</button>
+        <button class="opt" onclick="toggleMulti(this,3)"><div class="odot"></div>Converting enquiries into paying clients</button>
+        <button class="opt" onclick="toggleMulti(this,3)"><div class="odot"></div>Managing or figuring out tech tools</button>
+        <button class="opt" onclick="toggleMulti(this,3)"><div class="odot"></div>Worrying about whether my pricing and offers are right</button>
+      </div>
+      <div class="or-div"><div class="or-line"></div><span class="or-text">or describe in your own words</span><div class="or-line"></div></div>
+      <p class="free-label">Anything else taking your energy? (optional if you selected above)</p>
+      <textarea class="free-ta" id="ft-3" rows="2" placeholder="e.g. Insurance paperwork, managing part-time staff, keeping up with CPD..." oninput="onFreeTypeMulti(3)"></textarea>
+      <div class="nav-btns" style="margin-top:28px;">
+        <button class="btn-back" onclick="goBack(3)">← Back</button>
+        <button class="btn-next" id="next-3" onclick="goNext(3)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══ Q5: Links ══ -->
+    <div class="screen" id="s-4">
+      <p class="q-num">Question 5 of 6</p>
+      <h2 class="q-text">Share your links so Priyanka can review your practice before the call.</h2>
+      <p class="q-sub">All optional — even one link helps. Priyanka will look at what you share before your call.</p>
+
+      <div class="ai-bar" id="aiBar">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="rgba(196,163,90,0.7)" stroke-width="1.5" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
+        <div class="ai-bar-text"><strong>Let AI find your links.</strong> Type your practice name + city and we'll try to find your profiles automatically.</div>
+        <button class="ai-bar-btn" onclick="showAISearch()">Try it →</button>
+      </div>
+      <div class="ai-search-wrap" id="aiSearchWrap">
+        <div class="ai-search-row">
+          <input class="ai-search-inp" id="aiQ" placeholder="e.g. Lotus Ayurveda, San Francisco CA">
+          <button class="ai-bar-btn" id="aiRunBtn" onclick="runAIFill()" style="padding:11px 18px;">Search →</button>
+        </div>
+        <div class="ai-status" id="aiStatus"></div>
+      </div>
+
+      <div class="links-list">
+        <div class="link-row">
+          <div class="link-ico"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg></div>
+          <span class="link-lbl">Website</span>
+          <input class="link-inp" id="link-web" type="url" placeholder="https://yourpractice.com">
+        </div>
+        <div class="link-row">
+          <div class="link-ico"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+          <span class="link-lbl">Instagram</span>
+          <input class="link-inp" id="link-ig" type="url" placeholder="https://instagram.com/yourhandle">
+        </div>
+        <div class="link-row">
+          <div class="link-ico"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <span class="link-lbl">LinkedIn</span>
+          <input class="link-inp" id="link-li" type="url" placeholder="https://linkedin.com/in/yourname">
+        </div>
+        <div class="link-row">
+          <div class="link-ico"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <span class="link-lbl">Google Biz</span>
+          <input class="link-inp" id="link-google" type="url" placeholder="Your Google Business Profile URL">
+        </div>
+        <div class="link-row">
+          <div class="link-ico"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <span class="link-lbl">Yelp</span>
+          <input class="link-inp" id="link-yelp" type="url" placeholder="Your Yelp business page URL">
+        </div>
+        <div class="link-row">
+          <div class="link-ico"><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
+          <span class="link-lbl">Other</span>
+          <input class="link-inp" id="link-other" type="url" placeholder="Facebook, TikTok, directory listing...">
+        </div>
+      </div>
+      <p class="links-note">At least one link helps Priyanka prepare something specific for your call. If your website isn't live yet, that's totally fine — skip it.</p>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="goBack(4)">← Back</button>
+        <button class="btn-next" id="next-4" onclick="goNext(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══ Q6: Vision ══ -->
+    <div class="screen" id="s-5">
+      <p class="q-num">Question 6 of 6</p>
+      <h2 class="q-text">If the next 12 months went exactly right — what would your practice look like?</h2>
+      <p class="q-sub">Don't hold back. Paint the picture — clients, income, how you're spending your days, how it feels. The more specific, the more Priyanka can bring to your call.</p>
+      <textarea class="vision-ta" id="vision-text" rows="7"
+        placeholder="e.g. I'd be working 4 days a week with around 20 clients I genuinely love — people who are serious about their health and don't haggle on price. I'd be earning around $8,000 a month consistently. I'd have a programme that runs without me being on every single session. And I'd feel like an authority in my field — people would seek me out, not the other way around..."
+        oninput="checkVision()"></textarea>
+      <div class="vision-meta">
+        <span class="vision-hint" id="vision-hint">✎  Write at least 40 characters so Priyanka has something to work with</span>
+        <span class="vision-count" id="vision-count">0 chars</span>
+      </div>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="goBack(5)">← Back</button>
+        <button class="btn-next" id="next-5" onclick="submitForm()" disabled>Submit →</button>
+      </div>
+    </div>
+
+    <!-- COMPLETE -->
+    <div class="complete" id="completeScreen">
+      <div class="complete-icon">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#C4A35A" stroke-width="1.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 class="complete-title">You're all set.</h2>
+      <p class="complete-body">Our team will review your answers before your call. You'll get much more out of the 30 minutes — we'll arrive with specific observations about your practice, not generic questions. See you soon.</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const FORMSPREE_ID = 'xjgejpbv';
+const TOTAL_Q = 6;
+let cur = 'intro';
+const mcq  = {};   // qIdx → string (single)
+const multi = {};  // qIdx → Set<string>
+
+/* ── START ── */
+function startForm() {
+  document.getElementById('s-intro').classList.remove('active');
+  document.getElementById('progressWrap').classList.add('show');
+  cur = 0;
+  document.getElementById('s-0').classList.add('active');
+  setProgress(0);
+}
+
+/* ── SINGLE TOGGLE — click again deselects ── */
+function toggleSingle(btn, q) {
+  const wasSel = btn.classList.contains('sel');
+  // Clear all
+  btn.closest('.opts').querySelectorAll('.opt').forEach(b => {
+    b.classList.remove('sel');
+    b.querySelector('.odot').style.background = '';
+    b.querySelector('.odot').style.borderColor = '';
+  });
+  if (!wasSel) {
+    btn.classList.add('sel');
+    btn.querySelector('.odot').style.background = '#C4A35A';
+    btn.querySelector('.odot').style.borderColor = '#C4A35A';
+    mcq[q] = btn.textContent.trim();
+  } else {
+    delete mcq[q];
+  }
+  // Free type keeps its own value — MCQ overrides only display
+  refreshNext(q);
+}
+
+/* ── MULTI TOGGLE ── */
+function toggleMulti(btn, q) {
+  if (!multi[q]) multi[q] = new Set();
+  const txt = btn.textContent.trim();
+  if (btn.classList.contains('sel')) {
+    btn.classList.remove('sel');
+    btn.querySelector('.odot').style.background = '';
+    btn.querySelector('.odot').style.borderColor = '';
+    multi[q].delete(txt);
+  } else {
+    btn.classList.add('sel');
+    btn.querySelector('.odot').style.background = '#C4A35A';
+    btn.querySelector('.odot').style.borderColor = '#C4A35A';
+    multi[q].add(txt);
+  }
+  refreshNext(q);
+}
+
+/* ── FREE TYPE — clears MCQ selection, stands on its own ── */
+function onFreeType(q) {
+  const val = document.getElementById('ft-' + q).value.trim();
+  if (val.length > 0) {
+    // Clear MCQ visually (free text takes over)
+    const grid = document.getElementById('opts-' + q);
+    if (grid) grid.querySelectorAll('.opt').forEach(b => {
+      b.classList.remove('sel');
+      b.querySelector('.odot').style.background = '';
+      b.querySelector('.odot').style.borderColor = '';
+    });
+    delete mcq[q];
+  }
+  refreshNext(q);
+}
+
+function onFreeTypeMulti(q) {
+  refreshNext(q);
+}
+
+/* ── REFRESH NEXT BTN ── */
+function refreshNext(q) {
+  const btn = document.getElementById('next-' + q);
+  if (!btn) return;
+  let ok = false;
+  if (q === 3) {
+    const hasMulti = multi[3] && multi[3].size > 0;
+    const hasFree  = document.getElementById('ft-3').value.trim().length > 0;
+    ok = hasMulti || hasFree;
+  } else {
+    const hasMCQ  = !!mcq[q];
+    const ft = document.getElementById('ft-' + q);
+    const hasFree = ft && ft.value.trim().length > 0;
+    ok = hasMCQ || hasFree;
+  }
+  btn.disabled = !ok;
+}
+
+/* ── VISION ── */
+const MIN_VISION = 40;
+function checkVision() {
+  const val = document.getElementById('vision-text').value.trim();
+  const len = val.length;
+  const hint = document.getElementById('vision-hint');
+  const count = document.getElementById('vision-count');
+  count.textContent = len + ' chars';
+  if (len >= MIN_VISION) {
+    hint.textContent = '✓ That\'s great — ready to submit';
+    hint.classList.add('met');
+    document.getElementById('next-5').disabled = false;
+  } else {
+    const rem = MIN_VISION - len;
+    hint.textContent = '✎  ' + rem + ' more character' + (rem === 1 ? '' : 's') + ' before you can submit';
+    hint.classList.remove('met');
+    document.getElementById('next-5').disabled = true;
+  }
+}
+
+/* ── NAV ── */
+function goNext(from) {
+  document.getElementById('s-' + from).classList.remove('active');
+  cur = from + 1;
+  document.getElementById('s-' + cur).classList.add('active');
+  setProgress(cur);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack(from) {
+  document.getElementById('s-' + from).classList.remove('active');
+  if (from === 0) {
+    cur = 'intro';
+    document.getElementById('progressWrap').classList.remove('show');
+    document.getElementById('s-intro').classList.add('active');
+  } else {
+    cur = from - 1;
+    document.getElementById('s-' + cur).classList.add('active');
+    setProgress(cur);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setProgress(idx) {
+  for (let i = 0; i < TOTAL_Q; i++) {
+    const el = document.getElementById('ps' + i);
+    el.className = 'prog-step' + (i < idx ? ' done' : i === idx ? ' active' : '');
+  }
+  document.getElementById('progLabel').textContent = 'Question ' + (idx + 1) + ' of ' + TOTAL_Q;
+  document.getElementById('progPct').textContent = Math.round((idx / TOTAL_Q) * 100) + '% complete';
+}
+
+/* ── GET COMBINED ANSWER ── */
+function getAns(q) {
+  const ft = document.getElementById('ft-' + q);
+  const freeVal = ft ? ft.value.trim() : '';
+  if (q === 3) {
+    const sel = multi[3] ? Array.from(multi[3]) : [];
+    return [...sel, ...(freeVal ? [freeVal] : [])].join(' | ');
+  }
+  return freeVal || mcq[q] || '';
+}
+
+/* ── AI AUTOFILL ── */
+function showAISearch() {
+  document.getElementById('aiBar').style.display = 'none';
+  document.getElementById('aiSearchWrap').style.display = 'block';
+  document.getElementById('aiQ').focus();
+}
+
+async function runAIFill() {
+  const q = document.getElementById('aiQ').value.trim();
+  if (!q) return;
+  const btn = document.getElementById('aiRunBtn');
+  const status = document.getElementById('aiStatus');
+  btn.disabled = true; btn.textContent = 'Searching...';
+  status.textContent = 'Looking up your practice profiles...';
+
+  const prompt = `A health practitioner gave their practice name and location: "${q}"
+
+Generate the most likely profile URLs for this practice. Return ONLY valid JSON, no markdown:
+{
+  "website": "",
+  "instagram": "",
+  "linkedin": "",
+  "google_business": "",
+  "yelp": "",
+  "note": ""
+}
+
+Rules: Use standard URL patterns (e.g. instagram.com/handle). If unsure of exact handle, use a Google search URL instead: https://www.google.com/search?q=site:yelp.com+PRACTICE+NAME. Keep note to one sentence. Return empty string if not confident.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 400, messages: [{ role: 'user', content: prompt }] })
+    });
+    const data = await res.json();
+    const parsed = JSON.parse(data.content[0].text.replace(/```json|```/g, '').trim());
+    if (parsed.website)          document.getElementById('link-web').value    = parsed.website;
+    if (parsed.instagram)        document.getElementById('link-ig').value     = parsed.instagram;
+    if (parsed.linkedin)         document.getElementById('link-li').value     = parsed.linkedin;
+    if (parsed.google_business)  document.getElementById('link-google').value = parsed.google_business;
+    if (parsed.yelp)             document.getElementById('link-yelp').value   = parsed.yelp;
+    status.textContent = parsed.note || 'Done — please check and correct any links.';
+    status.style.color = 'rgba(196,163,90,0.7)';
+  } catch(e) {
+    status.textContent = 'Could not auto-fill — please enter your links manually.';
+  }
+  btn.disabled = false; btn.textContent = 'Search →';
+}
+
+/* ── SUBMIT ── */
+async function submitForm() {
+  const payload = {
+    _subject:        'Pre-Call Intake — Srav Health',
+    how_they_work:   getAns(0),
+    practice_stage:  getAns(1),
+    client_source:   getAns(2),
+    time_drains:     getAns(3),
+    website:         document.getElementById('link-web').value.trim(),
+    instagram:       document.getElementById('link-ig').value.trim(),
+    linkedin:        document.getElementById('link-li').value.trim(),
+    google_business: document.getElementById('link-google').value.trim(),
+    yelp:            document.getElementById('link-yelp').value.trim(),
+    other_link:      document.getElementById('link-other').value.trim(),
+    vision_12months: document.getElementById('vision-text').value.trim(),
+    submitted_at:    new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }) + ' PT'
+  };
+  try {
+    await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) { console.warn(e); }
+
+  document.getElementById('s-5').classList.remove('active');
+  document.getElementById('progressWrap').classList.remove('show');
+  document.getElementById('completeScreen').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+<!-- TOOL NAV -->
+<div class="tool-nav">
+  <a class="tn-item tn-home" href="srav-tools.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    Hub
+  </a>
+  <a class="tn-item active" href="pre-intake.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    01 · Intake
+  </a>
+  <div class="tn-arrow">→</div>
+  <a class="tn-item" href="call-template.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    02 · Call
+  </a>
+  <div class="tn-arrow">→</div>
+  <a class="tn-item" href="proposal.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    03 · Proposal
+  </a>
+</div>
+</body>
+</html>
