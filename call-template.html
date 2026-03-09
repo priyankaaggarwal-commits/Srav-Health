@@ -764,28 +764,26 @@ Respond in this exact JSON format, no markdown:
     saveToLocal();
 
     // Send to Formspree as backup record
-    fetch('https://formspree.io/f/xjgejpbv', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        _subject: `Call notes — ${data.name} — ${new Date().toLocaleDateString('en-GB')}`,
-        practitioner: data.name,
-        modality:     data.modality,
-        revenue:      data.revenue,
-        stage:        data.stage,
-        vision:       data.vision,
-        idealClient:  data.idealClient,
-        incomeGoal:   data.incomeExciting,
-        timeline:     data.timeline,
-        blockers:     data.blockers,
-        opportunities:data.opportunities,
-        hypothesis:   data.hypothesis,
-        outcomes:     data.outcomes,
-        engagement:   data.engagement,
-        aiSummary:    parsed.summary,
-      })
-    }).catch(e => console.warn('Formspree send failed:', e));
-
+  const fd = new FormData();
+fd.append('_subject', `Call notes — ${data.name} — ${new Date().toLocaleDateString('en-GB')}`);
+fd.append('practitioner', data.name);
+fd.append('modality',     data.modality);
+fd.append('revenue',      data.revenue);
+fd.append('stage',        data.stage);
+fd.append('vision',       data.vision);
+fd.append('idealClient',  data.idealClient);
+fd.append('incomeGoal',   data.incomeExciting);
+fd.append('timeline',     data.timeline);
+fd.append('blockers',     data.blockers);
+fd.append('opportunities',data.opportunities);
+fd.append('hypothesis',   data.hypothesis);
+fd.append('outcomes',     data.outcomes);
+fd.append('engagement',   data.engagement);
+fd.append('aiSummary',    parsed.summary);
+fetch('https://formspree.io/f/xjgejpbv', {
+  method: 'POST',
+  body: fd
+}).catch(e => console.warn('Formspree send failed:', e));
   } catch(e) {
     aiOutput.className = 'ai-output';
     aiOutput.textContent = 'Generation failed — check your connection and try again.';
